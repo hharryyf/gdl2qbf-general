@@ -5,9 +5,6 @@ import queue
 import clingo
 import json
 
-
-
-
 def log_action_encoding(inputfile, player, f):
     ################ log-encoding #################
     moveL = set()
@@ -58,13 +55,7 @@ def log_action_encoding(inputfile, player, f):
     print(file=f)
 
 
-
 def build_quantifier(current, gamefile, formulafile, quantifier):
-    '''
-        Construct the quantifier prefix of the QASP based on the encoding method GD
-        specify the gamefile, the logarithmic encoding file, output to the quantifier file
-    '''
-
     cmd = f'clingo --output=smodels action-generator.lp log-encoding.lp {gamefile} {formulafile}  > smodels.txt'
     os.system(f"bash -c '{cmd}'")
 
@@ -216,12 +207,11 @@ def build_quantifier(current, gamefile, formulafile, quantifier):
 def gdl2qbf(current, other, gamefile, formula, preprocess, outfile):
     logfile = 'log-encoding.lp'
     f = open(logfile, 'w')
-    #print_2_player_asp(current=curr_player, other=other_player, file=encodefile)
     for o in other:
         log_action_encoding(gamefile, o, f)
     f.close()
     build_quantifier(current, gamefile, formula, 'quantifier.lp')
-    cmd = f'clingo --output=smodels {gamefile}  {formula} action-generator.lp log-encoding.lp quantifier.lp | python qasp2qbf.py --no-warnings | lp2normal2 | lp2acyc | lp2sat | python qasp2qbf.py --cnf2qdimacs > {outfile}'
+    cmd = f'clingo --output=smodels {gamefile}  {formula} action-generator.lp log-encoding.lp quantifier.lp | python qasp2qbf.py | lp2normal2 | lp2acyc | lp2sat | python qasp2qbf.py --cnf2qdimacs > {outfile}'
     os.system(f"bash -c '{cmd}'")
 
     if preprocess == True:
@@ -248,10 +238,11 @@ if __name__ == "__main__":
     output = js['output']
     fp.close()
     if len(other) == 0:
-        print('Solving Coorperative goal')
+        # cooperate goal
         cmd = f'clingo {gamefile} {formula} helper/show-does.lp action-generator.lp'
         os.system(f"bash -c '{cmd}'")
         exit(0)
 
+    # competitive goal
     gdl2qbf(current, other, gamefile, formula, preprocessor, output)
     
