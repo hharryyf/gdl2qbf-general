@@ -1,0 +1,173 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;; Connect Four 5x5
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; ROLE Relations
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(role xplayer)
+(role oplayer)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; BASE & INPUT Relations
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(<= (base (cell ?x ?y ?p)) (x ?x) (y ?y) (role ?p))
+(base (control xplayer))
+(base (control oplayer))
+
+(<= (input ?p (drop ?x)) (role ?p) (x ?x))
+(<= (input ?p noop) (role ?p))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; INIT Relations
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(init (control xplayer))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; LEGAL Relations
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(<= (legal xplayer noop)
+    (true (control oplayer)))
+(<= (legal xplayer (drop ?x))
+    (true (control xplayer))
+    (columnOpen ?x))
+    
+(<= (legal oplayer noop)
+    (true (control xplayer)))
+(<= (legal oplayer (drop ?x))
+    (true (control oplayer))
+    (columnOpen ?x))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; NEXT Relations
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(<= (next (cell ?x 1 ?player))
+    (does ?player (drop ?x))
+	  (columnEmpty ?x))
+(<= (next (cell ?x ?y2 ?player))
+    (does ?player (drop ?x))
+    (cellOpen ?x ?y2)
+    (succ ?y1 ?y2)
+    (not (cellOpen ?x ?y1))) 
+(<= (next (cell ?x ?y ?player))
+    (true (cell ?x ?y ?player)))
+    
+(<= (next (control xplayer))
+    (true (control oplayer)))
+(<= (next (control oplayer))
+    (true (control xplayer)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; TERMINAL Relations
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(<= terminal
+    (line xplayer))
+(<= terminal
+    (line oplayer))
+(<= terminal
+    (not boardOpen))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; GOAL Relations
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(<= (goal xplayer 100)
+    (line xplayer))
+(<= (goal xplayer 50)
+    (not (line xplayer))
+    (not (line oplayer))
+    (not boardOpen))
+(<= (goal xplayer 0)
+    (line oplayer))
+(<= (goal xplayer 0)
+    (not (line xplayer))
+    (not (line oplayer))
+    boardOpen)
+    
+(<= (goal oplayer 100)
+    (line oplayer))
+(<= (goal oplayer 50)
+    (not (line xplayer))
+    (not (line oplayer))
+    (not boardOpen))
+(<= (goal oplayer 0)
+    (line xplayer))
+(<= (goal oplayer 0)
+    (not (line xplayer))
+    (not (line oplayer))
+    boardOpen)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; View Definitions
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(<= (cellOpen ?x ?y)
+    (x ?x)
+    (y ?y)
+    (not (true (cell ?x ?y xplayer)))
+    (not (true (cell ?x ?y oplayer))))
+(<= (columnOpen ?x)
+    (cellOpen ?x 5))
+(<= (columnEmpty ?x)
+    (cellOpen ?x 1))
+(<= boardOpen
+    (x ?x)
+    (columnOpen ?x))
+
+(<= (line ?player)
+    (true (cell ?x1 ?y ?player))
+    (succ ?x1 ?x2)
+    (succ ?x2 ?x3)
+    (succ ?x3 ?x4)
+    (true (cell ?x2 ?y ?player))
+    (true (cell ?x3 ?y ?player))
+    (true (cell ?x4 ?y ?player)))
+(<= (line ?player)
+    (true (cell ?x ?y1 ?player))
+    (succ ?y1 ?y2)
+    (succ ?y2 ?y3)
+    (succ ?y3 ?y4)
+    (true (cell ?x ?y2 ?player))
+    (true (cell ?x ?y3 ?player))
+    (true (cell ?x ?y4 ?player)))
+(<= (line ?player)
+    (true (cell ?x1 ?y1 ?player))
+    (succ ?x1 ?x2)
+    (succ ?x2 ?x3)
+    (succ ?x3 ?x4)
+    (succ ?y1 ?y2)
+    (succ ?y2 ?y3)
+    (succ ?y3 ?y4)
+    (true (cell ?x2 ?y2 ?player))
+    (true (cell ?x3 ?y3 ?player))
+    (true (cell ?x4 ?y4 ?player)))
+(<= (line ?player)
+    (true (cell ?x1 ?y4 ?player))
+    (succ ?x1 ?x2)
+    (succ ?x2 ?x3)
+    (succ ?x3 ?x4)
+    (succ ?y3 ?y4)
+    (succ ?y2 ?y3)
+    (succ ?y1 ?y2)
+    (true (cell ?x2 ?y3 ?player))
+    (true (cell ?x3 ?y2 ?player))
+    (true (cell ?x4 ?y1 ?player)))
+    
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Static Relations
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(succ 1 2) (succ 2 3) (succ 3 4) (succ 4 5)
+
+(x 1) (x 2) (x 3) (x 4) (x 5)
+(y 1) (y 2) (y 3) (y 4) (y 5)
+
+

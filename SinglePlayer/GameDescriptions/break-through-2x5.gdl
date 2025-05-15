@@ -1,0 +1,203 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;; Breakthrough 2x5
+;;;
+;;; This version of Breakthrough integrates MG's bugfix:
+;;;     There was no goal or terminal clause for the case
+;;;     that one player has lost all pieces!
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; ROLE Relations
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(role xplayer)
+(role oplayer)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; INIT Relations
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(init (cell 1 1 xplayer))
+(init (cell 2 1 xplayer))
+(init (cell 1 2 xplayer))
+(init (cell 2 2 xplayer))
+
+(init (cell 1 4 oplayer))
+(init (cell 2 4 oplayer))
+(init (cell 1 5 oplayer))
+(init (cell 2 5 oplayer))
+
+(init (control xplayer))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; LEGAL Relations
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(<= (legal xplayer (move ?x ?y1 ?x ?y2))
+    (true (control xplayer))
+    (true (cell ?x ?y1 xplayer))
+    (plusplusy ?y1 ?y2)
+    (cellEmpty ?x ?y2))
+(<= (legal xplayer (move ?x1 ?y1 ?x2 ?y2))
+    (true (control xplayer))
+    (true (cell ?x1 ?y1 xplayer))
+    (plusplusy ?y1 ?y2)
+    (plusplusx ?x1 ?x2)
+    (not (true (cell ?x2 ?y2 xplayer))))
+(<= (legal xplayer (move ?x1 ?y1 ?x2 ?y2))
+    (true (control xplayer))
+    (true (cell ?x1 ?y1 xplayer))
+    (plusplusy ?y1 ?y2)
+    (plusplusx ?x2 ?x1)
+    (not (true (cell ?x2 ?y2 xplayer))))
+
+(<= (legal oplayer (move ?x ?y1 ?x ?y2))
+    (true (control oplayer))
+    (true (cell ?x ?y1 oplayer))
+    (plusplusy ?y2 ?y1)
+    (cellEmpty ?x ?y2))
+(<= (legal oplayer (move ?x1 ?y1 ?x2 ?y2))
+    (true (control oplayer))
+    (true (cell ?x1 ?y1 oplayer))
+    (plusplusy ?y2 ?y1)
+    (plusplusx ?x1 ?x2)
+    (not (true (cell ?x2 ?y2 oplayer))))
+(<= (legal oplayer (move ?x1 ?y1 ?x2 ?y2))
+    (true (control oplayer))
+    (true (cell ?x1 ?y1 oplayer))
+    (plusplusy ?y2 ?y1)
+    (plusplusx ?x2 ?x1)
+    (not (true (cell ?x2 ?y2 oplayer))))
+    
+(<= (legal xplayer noop)
+    (true (control oplayer)))
+(<= (legal oplayer noop)
+    (true (control xplayer)))
+    
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; NEXT Relations
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    
+(<= (next (cell ?x2 ?y2 ?player))
+    (role ?player)
+    (does ?player (move ?x1 ?y1 ?x2 ?y2)))
+(<= (next (cell ?x3 ?y3 ?state))
+    (true (cell ?x3 ?y3 ?state))
+    (role ?player)
+    (does ?player (move ?x1 ?y1 ?x2 ?y2))
+    (differentCell ?x1 ?y1 ?x3 ?y3)
+    (differentCell ?x2 ?y2 ?x3 ?y3))
+    
+(<= (next (control xplayer))
+    (true (control oplayer)))
+(<= (next (control oplayer))
+    (true (control xplayer)))
+    
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; TERMINAL Relations
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(<= terminal 
+    xplayerWin)
+(<= terminal
+    oplayerWin)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; GOAL Relations
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(<= (goal xplayer 100)
+    xplayerWin)
+(<= (goal xplayer 0)
+    (not xplayerWin))
+    
+(<= (goal oplayer 100)
+    oplayerWin)
+(<= (goal oplayer 0)
+    (not oplayerWin))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; View Definitions
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(<= (cell ?x ?y)
+    (xindex ?x)
+    (yindex ?y))
+    
+(<= (cellEmpty ?x ?y)
+    (cell ?x ?y)
+    (not (true (cell ?x ?y xplayer)))
+    (not (true (cell ?x ?y oplayer))))
+    
+(<= (differentCell ?x1 ?y1 ?x2 ?y2)
+    (cell ?x1 ?y1)
+    (cell ?x2 ?y2)
+    (distinct ?x1 ?x2))
+(<= (differentCell ?x1 ?y1 ?x2 ?y2)
+    (cell ?x1 ?y1)
+    (cell ?x2 ?y2)
+    (distinct ?y1 ?y2))
+    
+(<= xplayerWin
+    (xindex ?x)
+    (true (cell ?x 5 xplayer)))
+(<= oplayerWin
+    (xindex ?x)
+    (true (cell ?x 1 oplayer)))
+    
+; MG's bugfix    
+(<= xplayerWin
+	(not oplayerCell))
+(<= oplayerWin
+	(not xplayerCell))
+(<= xplayerCell
+	(cell ?x ?y)
+	(true (cell ?x ?y xplayer)))
+(<= oplayerCell
+	(cell ?x ?y)
+	(true (cell ?x ?y oplayer)))    
+    
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Static Relations
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(xindex 1) (xindex 2) 
+(yindex 1) (yindex 2) (yindex 3) (yindex 4) (yindex 5)
+(plusplusx 1 2)  
+(plusplusy 1 2)  (plusplusy 2 3) (plusplusy 3 4) (plusplusy 4 5)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Bases and inputs
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(<= (base (cell ?x ?y ?player))
+	(xindex ?x)
+	(yindex ?y)
+	(role ?player))
+(<= (base (control ?player))
+	(role ?player))
+	
+(<= (input xplayer (move ?x ?y1 ?x ?y2))
+	(xindex ?x)
+    (plusplusy ?y1 ?y2))
+(<= (input xplayer (move ?x1 ?y1 ?x2 ?y2))
+    (plusplusy ?y1 ?y2)
+    (plusplusx ?x1 ?x2))
+(<= (input xplayer (move ?x1 ?y1 ?x2 ?y2))
+    (plusplusy ?y1 ?y2)
+    (plusplusx ?x2 ?x1))
+
+(<= (input oplayer (move ?x ?y1 ?x ?y2))
+	(xindex ?x)
+    (plusplusy ?y2 ?y1))
+(<= (input oplayer (move ?x1 ?y1 ?x2 ?y2))
+    (plusplusy ?y2 ?y1)
+    (plusplusx ?x1 ?x2))
+(<= (input oplayer (move ?x1 ?y1 ?x2 ?y2))
+    (plusplusy ?y2 ?y1)
+    (plusplusx ?x2 ?x1))
+	
+(<= (input ?player noop)
+	(role ?player))
