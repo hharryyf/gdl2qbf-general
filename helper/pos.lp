@@ -1,0 +1,3 @@
+{positive}.
+:- not positive.
+

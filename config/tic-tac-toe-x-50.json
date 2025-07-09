@@ -1,9 +1,0 @@
-{
-    "path": "SinglePlayer/Translations/tic-tac-toe.asp",
-    "current": ["xplayer"],
-    "other": ["oplayer"],
-    "formula": "formula/tic-tac-toe-x-50.lp",
-    "preprocessor": true,
-    "output": "instances/tic-tac-toe.qdimacs"
-   }
-   

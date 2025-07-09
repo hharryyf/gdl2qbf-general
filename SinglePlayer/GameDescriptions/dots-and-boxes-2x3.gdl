@@ -173,3 +173,16 @@
 (succ 3 4)
 (succ 4 5)
 (succ 5 6)
+
+; Bases and inputs
+
+(<= (input ?player (draw ?x ?y1 ?x ?y2))
+	(role ?player)
+	(xindex ?x)
+	(next_index_y ?y1 ?y2))
+(<= (input ?player (draw ?x1 ?y ?x2 ?y))
+	(role ?player)
+	(next_index_x ?x1 ?x2)
+	(yindex ?y))
+(<= (input ?player noop)
+	(role ?player))

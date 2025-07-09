@@ -1,10 +1,10 @@
 {
- "path": "SinglePlayer/Translations/tic-tac-toe.asp",
+ "path": "SinglePlayer/Translations/dots-and-boxes-2x3.asp",
  "current": ["xplayer"],
  "other": ["oplayer"],
  "formula": "formula/tic-tac-toe-x-100.lp",
  "preprocessor": true,
- "output": "instances/tic-tac-toe.qdimacs",
+ "output": "instances/dots-and-boxes-2x3.qdimacs",
  "lp2sat": false,
  "gc": false
 }

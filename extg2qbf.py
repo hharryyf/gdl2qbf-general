@@ -50,13 +50,27 @@ def log_action_encoding(inputfile, player, f):
                         print(f'moveL({player}, {k+1}' + f', T), ' + f'legal({player}, {moveL[j]}, T), not terminated(T).', file=f)
                 else:
                     print(f'moveL({player}, {k+1}' + f', T), ', end='', file=f)
+        # else:
+        #     # other actions, map to does(player, 0)
+        #     print(f'does({player}, {moveL[0]}, T) :- ', end='', file=f)
+        #     for k in range(0, tol):
+        #         if ((i >> k) & 1) == 0:
+        #             print('not ', end='', file=f)
+        #         if k == tol - 1:
+        #             if i == 0:
+        #                 print(f'moveL({player}, {k+1}' + f', T), ' + f'legal({player}, {moveL[0]}, T), not terminated(T).', file=f)
+        #             else:
+        #                 print(f'moveL({player}, {k+1}' + f', T), ' + f'legal({player}, {moveL[0]}, T), not terminated(T).', file=f)
+        #         else:
+        #             print(f'moveL({player}, {k+1}' + f', T), ', end='', file=f)
+        
         j += 1
     
     print(file=f)
 
 
 def build_quantifier(current, gamefile, formulafile, quantifier):
-    cmd = f'clingo --output=smodels action-generator.lp log-encoding.lp {gamefile} {formulafile}  > smodels.txt'
+    cmd = f'clingo --output=smodels action-generator-2.lp helper/pos.lp log-encoding.lp {gamefile} {formulafile}  > smodels.txt'
     os.system(f"bash -c '{cmd}'")
 
     outputfile = open(file=quantifier, mode='w')
@@ -211,7 +225,7 @@ def gdl2qbf(current, other, gamefile, formula, preprocess, outfile):
         log_action_encoding(gamefile, o, f)
     f.close()
     build_quantifier(current, gamefile, formula, 'quantifier.lp')
-    cmd = f'clingo --output=smodels {gamefile}  {formula} action-generator.lp log-encoding.lp quantifier.lp | python qasp2qbf.py | lp2normal2 | lp2acyc | lp2sat | python qasp2qbf.py --cnf2qdimacs > {outfile}'
+    cmd = f'clingo --output=smodels {gamefile}  {formula} action-generator-2.lp log-encoding.lp quantifier.lp | python qasp2qbf.py | lp2normal2 | lp2acyc | lp2sat | python qasp2qbf.py --cnf2qdimacs > {outfile}'
     os.system(f"bash -c '{cmd}'")
 
     if preprocess == True:
@@ -236,13 +250,27 @@ if __name__ == "__main__":
     formula = js['formula']
     preprocessor = js['preprocessor']
     output = js['output']
+    gc = js['gc']
+    lp2sat = js['lp2sat']
     fp.close()
     if len(other) == 0:
         # cooperate goal
-        cmd = f'clingo {gamefile} {formula} helper/show-does.lp action-generator.lp'
+        cmd = f'clingo {gamefile} {formula} helper/show-does.lp helper/pos.lp action-generator.lp'
         os.system(f"bash -c '{cmd}'")
         exit(0)
 
+    if len(current) == 0:
+        # co-NP property
+        if gc == False and lp2sat == False:
+            print('co-NP property, please reverse the answer:')
+            cmd = f'clingo {gamefile} {formula} helper/rev.lp action-generator.lp'
+            os.system(f"bash -c '{cmd}'")
+            exit(0)
+        elif gc == True:
+            check = '{' + f'action-generator.lp,helper/rev.lp,{gamefile},{formula}' + '}'
+            cmd = f'time python gc1.py helper/show-nothing.lp  -C {check}'
+            os.system(f"bash -c '{cmd}'")
+            exit(0)
     # competitive goal
     gdl2qbf(current, other, gamefile, formula, preprocessor, output)
     

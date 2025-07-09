@@ -16,48 +16,51 @@ nextXindexXy(2, 3).
 true(boxXcount(xplayer, 0), 1).
 true(boxXcount(oplayer, 0), 1).
 true(control(xplayer), 1).
-undrawn(X52516, X52517, X52516, X52519, X52541) :- xindex(X52516), nextXindexXy(X52517, X52519), not true(line(X52516, X52517, X52516, X52519), X52541), domdomain(13, X52517), domdomain(14, X52519), tdom(X52541), domdomain(1, X52516), domdomain(2, X52517), domdomain(1, X52516), domdomain(2, X52519).
-undrawn(X52516, X52517, X52518, X52517, X52541) :- nextXindexXx(X52516, X52518), yindex(X52517), not true(line(X52516, X52517, X52518, X52517), X52541), domdomain(2, X52516), domdomain(12, X52518), tdom(X52541), domdomain(1, X52516), domdomain(2, X52517), domdomain(1, X52518), domdomain(2, X52517).
-anyXundrawn(X52523) :- undrawn(X52518, X52519, X52520, X52521, X52523), domdomain(1, X52518), domdomain(2, X52519), domdomain(1, X52520), domdomain(2, X52521), tdom(X52523).
-legal(X52516, draw(X52519, X52520, X52521, X52522), X52537) :- true(control(X52516), X52537), undrawn(X52519, X52520, X52521, X52522, X52537), tdom(X52537), domdomain(4, X52516), domdomain(1, X52519), domdomain(2, X52520), domdomain(1, X52521), domdomain(2, X52522).
-true(line(X52518, X52519, X52520, X52521), X52533 + 1) :- does(X52525, draw(X52518, X52519, X52520, X52521), X52533), domdomain(4, X52525), mtdom(X52533), domdomain(1, X52518), domdomain(2, X52519), domdomain(1, X52520), domdomain(2, X52521).
-true(line(X52518, X52519, X52520, X52521), X52532 + 1) :- true(line(X52518, X52519, X52520, X52521), X52532), mtdom(X52532), domdomain(1, X52518), domdomain(2, X52519), domdomain(1, X52520), domdomain(2, X52521).
-legal(X52516, noop, X52531) :- role(X52516), not true(control(X52516), X52531), tdom(X52531), domdomain(4, X52516).
-vXdrawn(X52516, X52517, X52516, X52519, X52531) :- does(X52523, draw(X52516, X52517, X52516, X52519), X52531), domdomain(4, X52523), tdom(X52531), domdomain(1, X52516), domdomain(2, X52517), domdomain(1, X52516), domdomain(2, X52519).
-hXdrawn(X52516, X52517, X52518, X52517, X52531) :- does(X52523, draw(X52516, X52517, X52518, X52517), X52531), domdomain(4, X52523), tdom(X52531), domdomain(1, X52516), domdomain(2, X52517), domdomain(1, X52518), domdomain(2, X52517).
-boxXformed(X52516, X52517, X52553) :- vXdrawn(X52516, X52517, X52516, X52524, X52553), true(line(X52516, X52524, X52532, X52524), X52553), true(line(X52516, X52517, X52532, X52517), X52553), true(line(X52532, X52517, X52532, X52524), X52553), domdomain(1, X52532), domdomain(2, X52524), tdom(X52553), domdomain(1, X52516), domdomain(2, X52517).
-boxXformed(X52516, X52517, X52553) :- vXdrawn(X52521, X52517, X52521, X52524, X52553), true(line(X52516, X52517, X52521, X52517), X52553), true(line(X52516, X52517, X52516, X52524), X52553), true(line(X52516, X52524, X52521, X52524), X52553), domdomain(1, X52521), domdomain(1, X52521), domdomain(2, X52524), tdom(X52553), domdomain(1, X52516), domdomain(2, X52517).
-boxXformed(X52516, X52517, X52553) :- hXdrawn(X52516, X52517, X52523, X52517, X52553), true(line(X52523, X52517, X52523, X52533), X52553), true(line(X52516, X52517, X52516, X52533), X52553), true(line(X52516, X52533, X52523, X52533), X52553), domdomain(2, X52533), domdomain(1, X52523), tdom(X52553), domdomain(1, X52516), domdomain(2, X52517).
-boxXformed(X52516, X52517, X52553) :- hXdrawn(X52516, X52522, X52523, X52522, X52553), true(line(X52516, X52517, X52516, X52522), X52553), true(line(X52516, X52517, X52523, X52517), X52553), true(line(X52523, X52517, X52523, X52522), X52553), domdomain(2, X52522), domdomain(1, X52523), domdomain(2, X52522), tdom(X52553), domdomain(1, X52516), domdomain(2, X52517).
-anyXboxXformed(X52521) :- boxXformed(X52518, X52519, X52521), domdomain(1, X52518), domdomain(2, X52519), tdom(X52521).
-twoXboxesXformed(X52531) :- boxXformed(X52518, X52519, X52531), boxXformed(X52523, X52524, X52531), X52518 != X52523, domdomain(1, X52523), domdomain(2, X52524), domdomain(1, X52518), domdomain(2, X52519), tdom(X52531).
-twoXboxesXformed(X52531) :- boxXformed(X52518, X52519, X52531), boxXformed(X52523, X52524, X52531), X52519 != X52524, domdomain(1, X52523), domdomain(2, X52524), domdomain(1, X52518), domdomain(2, X52519), tdom(X52531).
-true(boxXcount(X52518, X52519), X52536 + 1) :- true(boxXcount(X52518, X52519), X52536), not true(control(X52518), X52536), mtdom(X52536), domdomain(4, X52518), domdomain(5, X52519).
-true(boxXcount(X52518, X52519), X52538 + 1) :- true(boxXcount(X52518, X52519), X52538), true(control(X52518), X52538), not anyXboxXformed(X52538), tdom(X52538), mtdom(X52538), domdomain(4, X52518), domdomain(5, X52519).
-true(boxXcount(X52518, X52519), X52545 + 1) :- true(boxXcount(X52518, X52526), X52545), true(control(X52518), X52545), anyXboxXformed(X52545), not twoXboxesXformed(X52545), succ(X52526, X52519), domdomain(8, X52526), domdomain(7, X52519), tdom(X52545), domdomain(5, X52526), mtdom(X52545), domdomain(4, X52518), domdomain(5, X52519).
-true(boxXcount(X52518, X52519), X52546 + 1) :- true(boxXcount(X52518, X52526), X52546), true(control(X52518), X52546), twoXboxesXformed(X52546), succ(X52526, X52539), succ(X52539, X52519), domdomain(8, X52539), domdomain(7, X52519), domdomain(8, X52526), domdomain(7, X52539), tdom(X52546), domdomain(5, X52526), mtdom(X52546), domdomain(4, X52518), domdomain(5, X52519).
-true(control(X52518), X52528 + 1) :- true(control(X52518), X52528), anyXboxXformed(X52528), tdom(X52528), mtdom(X52528), domdomain(4, X52518).
-true(control(xplayer), X52530 + 1) :- true(control(oplayer), X52530), not anyXboxXformed(X52530), tdom(X52530), mtdom(X52530).
-true(control(oplayer), X52530 + 1) :- true(control(xplayer), X52530), not anyXboxXformed(X52530), tdom(X52530), mtdom(X52530).
-true(box(X52518, X52519, x), X52533 + 1) :- boxXformed(X52518, X52519, X52533), true(control(xplayer), X52533), tdom(X52533), mtdom(X52533), domdomain(1, X52518), domdomain(2, X52519).
-true(box(X52518, X52519, o), X52533 + 1) :- boxXformed(X52518, X52519, X52533), true(control(oplayer), X52533), tdom(X52533), mtdom(X52533), domdomain(1, X52518), domdomain(2, X52519).
-true(box(X52518, X52519, X52520), X52530 + 1) :- true(box(X52518, X52519, X52520), X52530), mtdom(X52530), domdomain(1, X52518), domdomain(2, X52519), domdomain(3, X52520).
-terminal(X52520) :- not anyXundrawn(X52520), tdom(X52520).
-xXwins(X52535) :- true(boxXcount(xplayer, X52521), X52535), true(boxXcount(oplayer, X52528), X52535), gt(X52521, X52528), domdomain(7, X52521), domdomain(8, X52528), domdomain(5, X52528), domdomain(5, X52521), tdom(X52535).
-oXwins(X52535) :- true(boxXcount(xplayer, X52521), X52535), true(boxXcount(oplayer, X52528), X52535), gt(X52528, X52521), domdomain(7, X52528), domdomain(8, X52521), domdomain(5, X52528), domdomain(5, X52521), tdom(X52535).
-oXwins(X52530) :- true(boxXcount(xplayer, X52521), X52530), true(boxXcount(oplayer, X52521), X52530), domdomain(5, X52521), tdom(X52530).
-goal(xplayer, 100, X52521) :- xXwins(X52521), tdom(X52521).
-goal(xplayer, 0, X52523) :- not xXwins(X52523), tdom(X52523).
-goal(oplayer, 100, X52521) :- oXwins(X52521), tdom(X52521).
-goal(oplayer, 0, X52523) :- not oXwins(X52523), tdom(X52523).
-gt(X52516, X52517) :- succ(X52517, X52516), domdomain(7, X52516), domdomain(8, X52517).
-gt(X52516, X52517) :- succ(X52521, X52516), gt(X52521, X52517), succ(X52517, X52532), domdomain(7, X52532), domdomain(7, X52521), domdomain(8, X52521), domdomain(7, X52516), domdomain(8, X52517).
+undrawn(X55865, X55866, X55865, X55868, X55890) :- xindex(X55865), nextXindexXy(X55866, X55868), not true(line(X55865, X55866, X55865, X55868), X55890), domdomain(13, X55866), domdomain(14, X55868), tdom(X55890), domdomain(1, X55865), domdomain(2, X55866), domdomain(1, X55865), domdomain(2, X55868).
+undrawn(X55865, X55866, X55867, X55866, X55890) :- nextXindexXx(X55865, X55867), yindex(X55866), not true(line(X55865, X55866, X55867, X55866), X55890), domdomain(2, X55865), domdomain(12, X55867), tdom(X55890), domdomain(1, X55865), domdomain(2, X55866), domdomain(1, X55867), domdomain(2, X55866).
+anyXundrawn(X55872) :- undrawn(X55867, X55868, X55869, X55870, X55872), domdomain(1, X55867), domdomain(2, X55868), domdomain(1, X55869), domdomain(2, X55870), tdom(X55872).
+legal(X55865, draw(X55868, X55869, X55870, X55871), X55886) :- true(control(X55865), X55886), undrawn(X55868, X55869, X55870, X55871, X55886), tdom(X55886), domdomain(4, X55865), domdomain(1, X55868), domdomain(2, X55869), domdomain(1, X55870), domdomain(2, X55871).
+true(line(X55867, X55868, X55869, X55870), X55882 + 1) :- does(X55874, draw(X55867, X55868, X55869, X55870), X55882), domdomain(4, X55874), mtdom(X55882), domdomain(1, X55867), domdomain(2, X55868), domdomain(1, X55869), domdomain(2, X55870).
+true(line(X55867, X55868, X55869, X55870), X55881 + 1) :- true(line(X55867, X55868, X55869, X55870), X55881), mtdom(X55881), domdomain(1, X55867), domdomain(2, X55868), domdomain(1, X55869), domdomain(2, X55870).
+legal(X55865, noop, X55880) :- role(X55865), not true(control(X55865), X55880), tdom(X55880), domdomain(4, X55865).
+vXdrawn(X55865, X55866, X55865, X55868, X55880) :- does(X55872, draw(X55865, X55866, X55865, X55868), X55880), domdomain(4, X55872), tdom(X55880), domdomain(1, X55865), domdomain(2, X55866), domdomain(1, X55865), domdomain(2, X55868).
+hXdrawn(X55865, X55866, X55867, X55866, X55880) :- does(X55872, draw(X55865, X55866, X55867, X55866), X55880), domdomain(4, X55872), tdom(X55880), domdomain(1, X55865), domdomain(2, X55866), domdomain(1, X55867), domdomain(2, X55866).
+boxXformed(X55865, X55866, X55902) :- vXdrawn(X55865, X55866, X55865, X55873, X55902), true(line(X55865, X55873, X55881, X55873), X55902), true(line(X55865, X55866, X55881, X55866), X55902), true(line(X55881, X55866, X55881, X55873), X55902), domdomain(1, X55881), domdomain(2, X55873), tdom(X55902), domdomain(1, X55865), domdomain(2, X55866).
+boxXformed(X55865, X55866, X55902) :- vXdrawn(X55870, X55866, X55870, X55873, X55902), true(line(X55865, X55866, X55870, X55866), X55902), true(line(X55865, X55866, X55865, X55873), X55902), true(line(X55865, X55873, X55870, X55873), X55902), domdomain(1, X55870), domdomain(1, X55870), domdomain(2, X55873), tdom(X55902), domdomain(1, X55865), domdomain(2, X55866).
+boxXformed(X55865, X55866, X55902) :- hXdrawn(X55865, X55866, X55872, X55866, X55902), true(line(X55872, X55866, X55872, X55882), X55902), true(line(X55865, X55866, X55865, X55882), X55902), true(line(X55865, X55882, X55872, X55882), X55902), domdomain(2, X55882), domdomain(1, X55872), tdom(X55902), domdomain(1, X55865), domdomain(2, X55866).
+boxXformed(X55865, X55866, X55902) :- hXdrawn(X55865, X55871, X55872, X55871, X55902), true(line(X55865, X55866, X55865, X55871), X55902), true(line(X55865, X55866, X55872, X55866), X55902), true(line(X55872, X55866, X55872, X55871), X55902), domdomain(2, X55871), domdomain(1, X55872), domdomain(2, X55871), tdom(X55902), domdomain(1, X55865), domdomain(2, X55866).
+anyXboxXformed(X55870) :- boxXformed(X55867, X55868, X55870), domdomain(1, X55867), domdomain(2, X55868), tdom(X55870).
+twoXboxesXformed(X55880) :- boxXformed(X55867, X55868, X55880), boxXformed(X55872, X55873, X55880), X55867 != X55872, domdomain(1, X55872), domdomain(2, X55873), domdomain(1, X55867), domdomain(2, X55868), tdom(X55880).
+twoXboxesXformed(X55880) :- boxXformed(X55867, X55868, X55880), boxXformed(X55872, X55873, X55880), X55868 != X55873, domdomain(1, X55872), domdomain(2, X55873), domdomain(1, X55867), domdomain(2, X55868), tdom(X55880).
+true(boxXcount(X55867, X55868), X55885 + 1) :- true(boxXcount(X55867, X55868), X55885), not true(control(X55867), X55885), mtdom(X55885), domdomain(4, X55867), domdomain(5, X55868).
+true(boxXcount(X55867, X55868), X55887 + 1) :- true(boxXcount(X55867, X55868), X55887), true(control(X55867), X55887), not anyXboxXformed(X55887), tdom(X55887), mtdom(X55887), domdomain(4, X55867), domdomain(5, X55868).
+true(boxXcount(X55867, X55868), X55894 + 1) :- true(boxXcount(X55867, X55875), X55894), true(control(X55867), X55894), anyXboxXformed(X55894), not twoXboxesXformed(X55894), succ(X55875, X55868), domdomain(8, X55875), domdomain(7, X55868), tdom(X55894), domdomain(5, X55875), mtdom(X55894), domdomain(4, X55867), domdomain(5, X55868).
+true(boxXcount(X55867, X55868), X55895 + 1) :- true(boxXcount(X55867, X55875), X55895), true(control(X55867), X55895), twoXboxesXformed(X55895), succ(X55875, X55888), succ(X55888, X55868), domdomain(8, X55888), domdomain(7, X55868), domdomain(8, X55875), domdomain(7, X55888), tdom(X55895), domdomain(5, X55875), mtdom(X55895), domdomain(4, X55867), domdomain(5, X55868).
+true(control(X55867), X55877 + 1) :- true(control(X55867), X55877), anyXboxXformed(X55877), tdom(X55877), mtdom(X55877), domdomain(4, X55867).
+true(control(xplayer), X55879 + 1) :- true(control(oplayer), X55879), not anyXboxXformed(X55879), tdom(X55879), mtdom(X55879).
+true(control(oplayer), X55879 + 1) :- true(control(xplayer), X55879), not anyXboxXformed(X55879), tdom(X55879), mtdom(X55879).
+true(box(X55867, X55868, x), X55882 + 1) :- boxXformed(X55867, X55868, X55882), true(control(xplayer), X55882), tdom(X55882), mtdom(X55882), domdomain(1, X55867), domdomain(2, X55868).
+true(box(X55867, X55868, o), X55882 + 1) :- boxXformed(X55867, X55868, X55882), true(control(oplayer), X55882), tdom(X55882), mtdom(X55882), domdomain(1, X55867), domdomain(2, X55868).
+true(box(X55867, X55868, X55869), X55879 + 1) :- true(box(X55867, X55868, X55869), X55879), mtdom(X55879), domdomain(1, X55867), domdomain(2, X55868), domdomain(3, X55869).
+terminal(X55869) :- not anyXundrawn(X55869), tdom(X55869).
+xXwins(X55884) :- true(boxXcount(xplayer, X55870), X55884), true(boxXcount(oplayer, X55877), X55884), gt(X55870, X55877), domdomain(7, X55870), domdomain(8, X55877), domdomain(5, X55877), domdomain(5, X55870), tdom(X55884).
+oXwins(X55884) :- true(boxXcount(xplayer, X55870), X55884), true(boxXcount(oplayer, X55877), X55884), gt(X55877, X55870), domdomain(7, X55877), domdomain(8, X55870), domdomain(5, X55877), domdomain(5, X55870), tdom(X55884).
+oXwins(X55879) :- true(boxXcount(xplayer, X55870), X55879), true(boxXcount(oplayer, X55870), X55879), domdomain(5, X55870), tdom(X55879).
+goal(xplayer, 100, X55870) :- xXwins(X55870), tdom(X55870).
+goal(xplayer, 0, X55872) :- not xXwins(X55872), tdom(X55872).
+goal(oplayer, 100, X55870) :- oXwins(X55870), tdom(X55870).
+goal(oplayer, 0, X55872) :- not oXwins(X55872), tdom(X55872).
+gt(X55865, X55866) :- succ(X55866, X55865), domdomain(7, X55865), domdomain(8, X55866).
+gt(X55865, X55866) :- succ(X55870, X55865), gt(X55870, X55866), succ(X55866, X55881), domdomain(7, X55881), domdomain(7, X55870), domdomain(8, X55870), domdomain(7, X55865), domdomain(8, X55866).
 succ(0, 1).
 succ(1, 2).
 succ(2, 3).
 succ(3, 4).
 succ(4, 5).
 succ(5, 6).
+input(X55865, draw(X55868, X55869, X55868, X55871)) :- role(X55865), xindex(X55868), nextXindexXy(X55869, X55871), domdomain(13, X55869), domdomain(14, X55871), domdomain(4, X55865), domdomain(1, X55868), domdomain(2, X55869), domdomain(1, X55868), domdomain(2, X55871).
+input(X55865, draw(X55868, X55869, X55870, X55869)) :- role(X55865), nextXindexXx(X55868, X55870), yindex(X55869), domdomain(2, X55868), domdomain(12, X55870), domdomain(4, X55865), domdomain(1, X55868), domdomain(2, X55869), domdomain(1, X55870), domdomain(2, X55869).
+input(X55864, noop) :- role(X55864), domdomain(4, X55864).
 domdomain(1, 1).
 domdomain(1, 2).
 domdomain(1, 3).
