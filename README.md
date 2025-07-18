@@ -12,8 +12,8 @@ python extg2qbf.py config/[the name of the game.json]
 ```
 
 Then, run
+
 ```
 caqe bloq_[the name of the game].qdimacs
 
-'''
-
+```
