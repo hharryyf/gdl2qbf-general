@@ -18,6 +18,6 @@ caqe bloq_[the name of the game].qdimacs
 
 ```
 
-The proof is available [here](https://www.ifaamas.org/Proceedings/aamas2024/pdfs/p807.pdf)
+The proof is available [here](https://github.com/hharryyf/gdl2qbf-general/blob/main/NMR_25_QBF-15-16.pdf)
 
 
