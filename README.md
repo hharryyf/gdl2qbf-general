@@ -17,3 +17,7 @@ Then, run
 caqe bloq_[the name of the game].qdimacs
 
 ```
+
+The proof is available [here](https://www.ifaamas.org/Proceedings/aamas2024/pdfs/p807.pdf)
+
+
