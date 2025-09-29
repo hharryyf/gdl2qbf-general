@@ -70,7 +70,7 @@ def log_action_encoding(inputfile, player, f):
 
 
 def build_quantifier(current, gamefile, formulafile, quantifier):
-    cmd = f'clingo --output=smodels action-generator-2.lp helper/pos.lp log-encoding.lp {gamefile} {formulafile}  > smodels.txt'
+    cmd = f'clingo --output=smodels action-generator-2.lp helper/pos.lp log-encoding.lp {gamefile} {formulafile} | lp2normal2  > smodels.txt'
     os.system(f"bash -c '{cmd}'")
 
     outputfile = open(file=quantifier, mode='w')
