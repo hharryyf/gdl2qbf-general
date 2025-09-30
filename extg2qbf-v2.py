@@ -34,29 +34,12 @@ def log_action_encoding(inputfile, player, f):
     print(f'ldom({player}, 1..{tol}).', file=f)
     print('% log-encoding', file=f)
 
-    #print(":- {" + f"legal({player},A,T) : input({player},A)" + "} 0, not terminated(T), mtdom(T).", file=f)
-    #print(":- 2 {" + f"does({player},A,T) : input({player},A)" + "}, not terminated(T), mtdom(T).", file=f)
-
     print(f"{{moveL({player}, M, T) : ldom({player}, M)}} :- mtdom(T).",file=f)
     
-    print(f'does({player}, A, T) :- justify({player}, A, T), mtdom(T).', file=f)
-
-    ff = 'mtdom(T)'
-
-    for c in moveL:
-        ff += f', not justify({player}, {c}, T)'
-    ff += '.'
-
-    for i in range(len(moveL)):
-        cmv = f'legal({player}, {moveL[i]}, T)'
-        for j in range(i):
-            cmv += f', not legal({player}, {moveL[j]}, T)'
-        print(f'does({player}, {moveL[i]}, T) :- {cmv}, {ff}', file=f)
-
     j = 0
     for i in range(0, 1 << tol):
         if j < len(moveL):
-            print(f'justify({player}, {moveL[j]}, T) :- ', end='', file=f)
+            print(f'does({player}, {moveL[j]}, T) :- ', end='', file=f)
             for k in range(0, tol):
                 if ((i >> k) & 1) == 0:
                     print('not ', end='', file=f)
@@ -95,7 +78,7 @@ def build_quantifier(current, gamefile, formulafile, quantifier):
     state, mxv = 0, 0
     edge = set()
     vertex, universal, exist = {}, {}, {}
-
+    otherexist = {}
     with open('smodels.txt') as f:
         for line in f:
             line = line.strip()
@@ -137,22 +120,33 @@ def build_quantifier(current, gamefile, formulafile, quantifier):
                 mxv = max(mxv, vid)
                 newl = atom.replace('(', ',').replace(')',',').split(',')
                 ours = False
+                others = False
                 for cu in current:
                     lencu = len(f'does({cu},')
                     if atom[:lencu] == f'does({cu},':
                         ours = True
                         break
 
-                if ours == False and atom[:6] != 'moveL(':
+                if ours == False and atom[:5] == 'does(':
+                    others = True
+
+                if others == False and ours == False and atom[:6] != 'moveL(':
                     vertex[vid] = (atom, -1)
                     continue
+                    
 
                 lv = -1
                 for i in range(len(newl) - 1, -1, -1):
                     if len(newl[i]) and newl[i] != '\n':
                         lv = int(newl[i])
                         break
-                if lv != -1:
+                if others == True and lv != -1:
+                    vertex[vid] = (atom, -1)
+                    if lv not in otherexist:
+                        otherexist[lv] = []
+                    otherexist[lv].append(vid)
+                
+                if lv != -1 and others == False:
                     vertex[vid] = (atom, lv)
                     if ours == True:
                         if lv in exist:
@@ -166,6 +160,13 @@ def build_quantifier(current, gamefile, formulafile, quantifier):
                         else:
                             universal[lv] = []
                             universal[lv].append(vid)
+
+
+    for lv in universal.keys():
+        if lv in otherexist:
+            for u in universal[lv]:
+                for e in otherexist[lv]:
+                    edge.add((u,e))
 
     for e in edge:
         mxv = max(mxv, max(e[0], e[1]))
@@ -238,9 +239,7 @@ def build_quantifier(current, gamefile, formulafile, quantifier):
 def gdl2qbf(current, other, gamefile, formula, preprocess, outfile):
     logfile = 'log-encoding.lp'
     f = open(logfile, 'w')
-    # the change is here
-    for c in current:
-        print("1 {" + f"does({c},A,T) : input({c},A)" + "} 1 :- not terminated(T), mtdom(T).", file=f)
+    print("1 {" + f"does(R,A,T) : input(R,A)" + "} 1 :- not terminated(T), mtdom(T), role(R).", file=f)
     for o in other:
         log_action_encoding(gamefile, o, f)
     f.close()

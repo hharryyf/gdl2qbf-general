@@ -34,29 +34,12 @@ def log_action_encoding(inputfile, player, f):
     print(f'ldom({player}, 1..{tol}).', file=f)
     print('% log-encoding', file=f)
 
-    #print(":- {" + f"legal({player},A,T) : input({player},A)" + "} 0, not terminated(T), mtdom(T).", file=f)
-    #print(":- 2 {" + f"does({player},A,T) : input({player},A)" + "}, not terminated(T), mtdom(T).", file=f)
-
     print(f"{{moveL({player}, M, T) : ldom({player}, M)}} :- mtdom(T).",file=f)
     
-    print(f'does({player}, A, T) :- justify({player}, A, T), mtdom(T).', file=f)
-
-    ff = 'mtdom(T)'
-
-    for c in moveL:
-        ff += f', not justify({player}, {c}, T)'
-    ff += '.'
-
-    for i in range(len(moveL)):
-        cmv = f'legal({player}, {moveL[i]}, T)'
-        for j in range(i):
-            cmv += f', not legal({player}, {moveL[j]}, T)'
-        print(f'does({player}, {moveL[i]}, T) :- {cmv}, {ff}', file=f)
-
     j = 0
     for i in range(0, 1 << tol):
         if j < len(moveL):
-            print(f'justify({player}, {moveL[j]}, T) :- ', end='', file=f)
+            print(f'does({player}, {moveL[j]}, T) :- ', end='', file=f)
             for k in range(0, tol):
                 if ((i >> k) & 1) == 0:
                     print('not ', end='', file=f)
@@ -238,9 +221,7 @@ def build_quantifier(current, gamefile, formulafile, quantifier):
 def gdl2qbf(current, other, gamefile, formula, preprocess, outfile):
     logfile = 'log-encoding.lp'
     f = open(logfile, 'w')
-    # the change is here
-    for c in current:
-        print("1 {" + f"does({c},A,T) : input({c},A)" + "} 1 :- not terminated(T), mtdom(T).", file=f)
+    print("1 {" + f"does(R,A,T) : input(R,A)" + "} 1 :- not terminated(T), mtdom(T), role(R).", file=f)
     for o in other:
         log_action_encoding(gamefile, o, f)
     f.close()
