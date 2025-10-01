@@ -238,6 +238,7 @@ def build_quantifier(current, gamefile, formulafile, quantifier):
 def gdl2qbf(current, other, gamefile, formula, preprocess, outfile):
     logfile = 'log-encoding.lp'
     f = open(logfile, 'w')
+    print(":- 0 {terminated(T) : tdom(T)} 0.", file=f)
     # the change is here
     for c in current:
         print("1 {" + f"does({c},A,T) : input({c},A)" + "} 1 :- not terminated(T), mtdom(T).", file=f)

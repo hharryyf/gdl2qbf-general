@@ -270,16 +270,56 @@ def print_integrity(inputfile, player, file):
     #         print(f':- does({player},{moves[i]}, T), does({player},{moves[j]}, T), mtdom(T), not terminated(T).', file=file)
 
 
+def print_termination(inputfile, file):
+    with open(inputfile, "r") as g:
+        ASP_program = g.read()
+    ASP_program += f'#show.'
+    ASP_program += f'#show mtdom/1.'
+    # Control object is a low-level interface for controlling the grounding/solving process.
+    ctl = clingo.Control(arguments=['-W', 'none'])  # Here you can write the arguments you would pass to clingo by command line.
+    ctl.add("base", [], ASP_program)  # Adds the program to the control object.
+    ctl.ground([("base", [])])  # Grounding...
+    # Solving...
+    mx = 0
+    t = ''
+    with ctl.solve(yield_=True) as solution_iterator:
+        for model in solution_iterator:
+            # Model is an instance of clingo.solving.Model class 
+            # Reference: https://potassco.org/clingo/python-api/current/clingo/solving.html#clingo.solving.Model
+            for s in str(model).split():
+                mx = max(mx, int(s[6:-1]))
+    
+    # for i in range(1, mx + 2):
+    #     if i == 1:
+    #         t += f'not terminated({i})'
+    #     else:
+    #         t += f', not terminated({i})'
+
+    print(f':- not terminated({mx + 1}).', file=file)
+    
+
+
 def gdl2qbf(current, other, gamefile, formula, preprocess, outfile):
     logfile = 'log-encoding.lp'
     f = open(logfile, 'w')
+
+    print_termination(gamefile, f)
+    #print(":- 0 {terminated(T) : tdom(T)} 0.", file=f)
+    
+    
+    print(file=f)
+
     print(" {" + f"does(R,A,T) : input(R,A)" + "}  :- not terminated(T), mtdom(T), role(R).", file=f)
     
     for o in current:
         print_integrity(gamefile, o, f)    
 
+    print(file=f)
+
     for o in other:
         print_integrity(gamefile, o, f)    
+
+    print(file=f)
 
 
     for o in other:

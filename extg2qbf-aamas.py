@@ -222,6 +222,7 @@ def build_quantifier(current, gamefile, formulafile, quantifier):
 def gdl2qbf(current, other, gamefile, formula, preprocess, outfile):
     logfile = 'log-encoding.lp'
     f = open(logfile, 'w')
+    print(":- 0 {terminated(T) : tdom(T)} 0.", file=f)
     print("1 {" + f"does(R,A,T) : input(R,A)" + "} 1 :- not terminated(T), mtdom(T), role(R).", file=f)
     for o in other:
         log_action_encoding(gamefile, o, f)
