@@ -4,7 +4,7 @@
  "other": ["oplayer"],
  "formula": "formula/tic-tac-toe-x-100.lp",
  "preprocessor": true,
- "output": "instances/break-through-3x5.qdimacs",
+ "output": "instances/break-through-3x5-x.qdimacs",
  "lp2sat": false,
  "gc": false
 }

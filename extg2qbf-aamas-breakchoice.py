@@ -82,6 +82,8 @@ def build_quantifier(current, gamefile, formulafile, quantifier):
     edge = set()
     vertex, universal, exist = {}, {}, {}
     otherexist = {}
+    choices = set()
+    #edgespos = set()
     with open('smodels.txt') as f:
         for line in f:
             line = line.strip()
@@ -99,21 +101,38 @@ def build_quantifier(current, gamefile, formulafile, quantifier):
                             print('Unexpected Error')
                             exit(1)
                         edge.add((line[i], head))
+                        # add checks for the desired structure
+                        #if i >= line[3] + 4:
+                        #    edgespos.add((line[i], head, 1))
+                        #else:
+                        #    edgespos.add((line[i], head, -1))
+
                 # head number_of_lit number_of_neg_lit bound [negative lit] [positive lit]
                 elif line[0] == 2:
                     head = line[1]
                     for i in range(5, len(line)):
                         edge.add((line[i], head))
+                        #if i >= line[3] + 5:
+                        #    edgespos.add((line[i], head, 2))
+                        #else:
+                        #    edgespos.add((line[i], head, -2))
+
                 # number_of_head [head] number_of_lit number_of_neg_lit [negative lit] [positive lit]
                 elif line[0] == 3:
                     head_num = line[1]
                     head = []
                     for i in range(2, head_num + 2):
                         head.append(line[i])
+                        choices.add(line[i])
                     # this part can be optimized
                     for i in range(head_num + 4, len(line)):
                         for h in head:
                             edge.add((line[i], h))
+                            #if i >= line[4] + 4 + head_num:
+                            #    edgespos.add((line[i], h, 3))
+                            #else:
+                            #    edgespos.add((line[i], h, -3))
+
                 else:
                     print('Cannot handle rule of type 4+ in Clingo!')
                     exit(1)
@@ -124,6 +143,9 @@ def build_quantifier(current, gamefile, formulafile, quantifier):
                 newl = atom.replace('(', ',').replace(')',',').split(',')
                 ours = False
                 others = False
+                if atom[:5] == 'does(' or atom[:6] == 'moveL(':
+                    if vid in choices:
+                        choices.remove(vid)
                 for cu in current:
                     lencu = len(f'does({cu},')
                     if atom[:lencu] == f'does({cu},':
@@ -164,6 +186,11 @@ def build_quantifier(current, gamefile, formulafile, quantifier):
                             universal[lv] = []
                             universal[lv].append(vid)
 
+    if len(choices) != 0:
+        print('Our method is inapplicable! Clingo is rewriting choice rules! ', choices)
+        exit(1)
+    
+    #print(edgespos)
 
     for lv in universal.keys():
         if lv in otherexist:
@@ -289,12 +316,7 @@ def print_termination(inputfile, file):
             for s in str(model).split():
                 mx = max(mx, int(s[6:-1]))
     
-    # for i in range(1, mx + 2):
-    #     if i == 1:
-    #         t += f'not terminated({i})'
-    #     else:
-    #         t += f', not terminated({i})'
-
+    
     print(f':- not terminated({mx + 1}).', file=file)
     
 

@@ -18,6 +18,17 @@ caqe bloq_[the name of the game].qdimacs
 
 ```
 
+
+Our implementation makes the following assumptions of the clingo grounder. 
+
+- For any stratified GDL description, the grounded program have a stratified structure while
+the only non-stratified part of the program are the self-cycles of the choice rules
+
+- The choices in the choice rules cannot be replaced by auxiliary predicates during the grounding phase.
+
+Note that the clingo grounder obeys these 2 requirements in all our experiements. 
+
+
 The proof is available [here](https://github.com/hharryyf/gdl2qbf-general/blob/main/NMR_25_QBF-15-16.pdf)
 
 
