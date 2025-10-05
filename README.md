@@ -5,7 +5,7 @@ A converter from multi-player GDL to QBF, [the paper](https://www.ifaamas.org/Pr
 The proof and experiments of the NMR paper are available in the NMR branch.
 
 
-**The experients in the AAMAS paper were based on an old and less generic implementation that can only handle games with exactly 2 players https://github.com/hharryyf/gdl2qbf-aamas-24 while the current implementation is more general than that**
+**The experients in the AAMAS paper were based on an old and less generic implementation that can only handle games with exactly 2 players https://github.com/hharryyf/gdl2qbf while the current implementation is more general than that**
 
 
 Now we can deal with the bounded-depth strong winnability for arbitarily many players.
@@ -60,7 +60,7 @@ Our contributions are:
 * Then just run the following command
 
 ```
-python extg2qbf-aamas-breakchoice.py [path-to-the-json-configuration-file]
+python extg2qbf.py [path-to-the-json-configuration-file]
 
 ```
 
