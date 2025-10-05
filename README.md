@@ -1,18 +1,15 @@
 # gdl2qbf-general
 
-A converter from multi-player GDL to QBF, [the paper](https://www.ifaamas.org/Proceedings/aamas2024/pdfs/p807.pdf) is attached. 
+A converter from multi-player GDL games to QBF, [the paper](https://www.ifaamas.org/Proceedings/aamas2024/pdfs/p807.pdf) is attached. 
 
-The proof and experiments of the NMR paper are available in the NMR branch.
-
-
-**The experients in the AAMAS paper were based on an old and less generic implementation that can only handle games with exactly 2 players https://github.com/hharryyf/gdl2qbf while the current implementation is more general than that**
+The proof and experiments of the NMR paper are available in the NMR branch https://github.com/hharryyf/gdl2qbf-general/tree/NMR.
 
 
-Now we can deal with the bounded-depth strong winnability for arbitarily many players.
+**The experients in the AAMAS paper were based on an old and less generic implementation that can only handle games with exactly 2 players https://github.com/hharryyf/gdl2qbf while the current implementation is more general than that. We can now deal with the bounded-depth strong winnability for arbitarily many players.**
 
 ## Description
 
-The converter will translate any GDL to a QBF instance, the QBF instance is true if and only if the current player can achieve 100 points in the GDL game no matter what the other players perform.
+The converter will translate any GDL (in KIF format) to a QBF instance, the QBF instance is true if and only if the current player can achieve 100 points within N moves in the GDL game no matter what the other players perform.
 
 ## Contribution
 
@@ -20,20 +17,20 @@ In our paper, we designed the framework of converting a GDL game G to a QBF inst
 The framework is as follows:
 ```
 
-G -> Ext(G) -> QASP(G) -> QBF
+G -> Ext(G, N) -> QASP(G, N) -> QBF
 
 
 ```
 
-In this framework, G -> Ext(G) was done by Michael Thielscher in the single-player game paper (check the referenced tool in ```SinglePlayer/```, and run the eclipse prolog file EXTTranslator.ecl), QASP(G) -> QBF was done by Fandinno et al. in their qasp2qbf tool https://github.com/potassco/qasp2qbf
+In this framework, G -> Ext(G, N) was done by Michael Thielscher in the single-player game paper (check the referenced tool in ```SinglePlayer/```, and run the eclipse prolog file EXTTranslator.ecl), QASP(G, N) -> QBF was done by Fandinno et al. in their qasp2qbf tool https://github.com/potassco/qasp2qbf
 
-More specifically, EXTTranslator.ecl can convert a GDL decription in KIF format without **nested** "or" operator to Ext(G). For simplicity, the author didn't handle the nested "or" operator automatically, although it can be done automatically. Check the difference between ```GameDescriptions/tic-tac-toe.gdl``` and ```Translations/tic-tac-toe.asp``` to see how the tool works. Even if EXTranslator.ecl can handle 1-level "or" operator, for performance reasons, it is recommended that all the "or" operators in the KIF input are removed manually.
+More specifically, EXTTranslator.ecl can convert a GDL decription in KIF format without **nested** "or" operator and a depth N to Ext(G, N). For simplicity, the author didn't handle the nested "or" operator automatically. Check the difference between ```GameDescriptions/tic-tac-toe.gdl``` and ```Translations/tic-tac-toe.asp``` to see how the tool works. Note that, even if EXTranslator.ecl can handle descriptions with 1-level "or" operator, for performance reasons, it is recommended that all the "or" operators in the KIF input are removed manually.
 
 Our contributions are:
 
 * We designed the correct algorithm of converting an arbitrary GDL game to a QBF instance.
 
-* We designed and implemented an efficient encoding and quantification method that converts Ext(G) to QASP(G).
+* We designed and implemented an efficient encoding and quantification method that converts Ext(G, N) to QASP(G, N).
 
 
 ## Dependencies
@@ -52,9 +49,9 @@ Our contributions are:
 
 ## Usage
 
-* First create the answer set program Ext(G) with SinglePlayer/EXTTranslator.ecl from a GDL in KIF format
+* First create the answer set program Ext(G, N) with SinglePlayer/EXTTranslator.ecl from a GDL in KIF format
 
-* **Requirement: Ext(G) must be the temporal-extended ASP program of some valid GDL game G**
+* **Requirement: Ext(G, N) must be the N-step temporal-extended ASP program of some valid GDL game G**
 
 
 * Then just run the following command
@@ -82,7 +79,7 @@ In the json configuration file, one needs to specify:
 }
 ```
 
-- *path* is the path to the asp file describing *Ext(G)*
+- *path* is the path to the asp file describing ```Ext(G, N)```
 
 - *current* is the name of our player. 
 
