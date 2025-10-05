@@ -53,27 +53,14 @@ def log_action_encoding(inputfile, player, f):
                         print(f'moveL({player}, {k+1}' + f', T), ' + f'legal({player}, {moveL[j]}, T), not terminated(T).', file=f)
                 else:
                     print(f'moveL({player}, {k+1}' + f', T), ', end='', file=f)
-        # else:
-        #     # other actions, map to does(player, 0)
-        #     print(f'does({player}, {moveL[0]}, T) :- ', end='', file=f)
-        #     for k in range(0, tol):
-        #         if ((i >> k) & 1) == 0:
-        #             print('not ', end='', file=f)
-        #         if k == tol - 1:
-        #             if i == 0:
-        #                 print(f'moveL({player}, {k+1}' + f', T), ' + f'legal({player}, {moveL[0]}, T), not terminated(T).', file=f)
-        #             else:
-        #                 print(f'moveL({player}, {k+1}' + f', T), ' + f'legal({player}, {moveL[0]}, T), not terminated(T).', file=f)
-        #         else:
-        #             print(f'moveL({player}, {k+1}' + f', T), ', end='', file=f)
         
         j += 1
     
     print(file=f)
 
 
-def build_quantifier(current, gamefile, formulafile, quantifier):
-    cmd = f'clingo --output=smodels action-generator-2.lp log-encoding.lp {gamefile} {formulafile}  > smodels.txt'
+def build_quantifier(current, gamefile, quantifier):
+    cmd = f'clingo --output=smodels log-encoding.lp {gamefile} > smodels.txt'
     os.system(f"bash -c '{cmd}'")
 
     outputfile = open(file=quantifier, mode='w')
@@ -318,16 +305,48 @@ def print_termination(inputfile, file):
     
     
     print(f':- not terminated({mx + 1}).', file=file)
+
+def get_other(inputfile, current):
+    with open(inputfile, "r") as g:
+        ASP_program = g.read()
+    ASP_program += f'#show.'
+    ASP_program += f'#show role/1.'
+    # Control object is a low-level interface for controlling the grounding/solving process.
+    ctl = clingo.Control(arguments=['-W', 'none'])  # Here you can write the arguments you would pass to clingo by command line.
+    ctl.add("base", [], ASP_program)  # Adds the program to the control object.
+    ctl.ground([("base", [])])  # Grounding...
+    # Solving...
+    res = set()
+    with ctl.solve(yield_=True) as solution_iterator:
+        for model in solution_iterator:
+            # Model is an instance of clingo.solving.Model class 
+            # Reference: https://potassco.org/clingo/python-api/current/clingo/solving.html#clingo.solving.Model
+            for s in str(model).split():
+                if s[5:-1] != current[0]:
+                    res.add(s[5:-1]) 
     
+    return list(res)
 
 
-def gdl2qbf(current, other, gamefile, formula, preprocess, outfile):
+def gdl2qbf(current, other, gamefile, preprocess, outfile):
     logfile = 'log-encoding.lp'
     f = open(logfile, 'w')
 
-    print_termination(gamefile, f)
-    #print(":- 0 {terminated(T) : tdom(T)} 0.", file=f)
-    
+    print("tdom(1). tdom(T+1) :- tdom(T), mtdom(T).", file=f)
+
+    print(file=f)
+
+    print("terminated(T) :- terminal(T).", file=f)
+    print("terminated(T+1) :- terminated(T), mtdom(T).", file=f)
+
+    print(":- does(P,M,T), not legal(P,M,T).",file=f)
+
+    print(file=f)
+    print(f"eta(T) :- goal({current[0]}, 100, T), terminal(T).", file=f)
+    print(":- terminated(T), not terminated(T-1), not eta(T).", file=f)
+    print(":- terminated(1), not eta(1).", file=f)
+
+    print_termination(gamefile, f)    
     
     print(file=f)
 
@@ -347,8 +366,8 @@ def gdl2qbf(current, other, gamefile, formula, preprocess, outfile):
     for o in other:
         log_action_encoding(gamefile, o, f)
     f.close()
-    build_quantifier(current, gamefile, formula, 'quantifier.lp')
-    cmd = f'clingo --output=smodels {gamefile}  {formula} action-generator-2.lp log-encoding.lp quantifier.lp | python qasp2qbf.py | lp2normal2 | lp2acyc | lp2sat | python qasp2qbf.py --cnf2qdimacs > {outfile}'
+    build_quantifier(current, gamefile, 'quantifier.lp')
+    cmd = f'clingo --output=smodels {gamefile}  log-encoding.lp quantifier.lp | python qasp2qbf.py | lp2normal2 | lp2acyc | lp2sat | python qasp2qbf.py --cnf2qdimacs > {outfile}'
     os.system(f"bash -c '{cmd}'")
 
     if preprocess == True:
@@ -368,32 +387,18 @@ if __name__ == "__main__":
     fp = open(sys.argv[1])
     js = json.load(fp)
     gamefile = js['path']
-    current = js['current']
-    other = js['other']
-    formula = js['formula']
+    current = [js['current']]
+    other = get_other(gamefile, current)
     preprocessor = js['preprocessor']
     output = js['output']
-    gc = js['gc']
-    lp2sat = js['lp2sat']
     fp.close()
+    
     if len(other) == 0:
-        # cooperate goal
-        cmd = f'clingo {gamefile} {formula} helper/show-does.lp helper/pos.lp action-generator.lp'
+        # single-player game
+        cmd = f'clingo {gamefile} action-generator-single.lp'
         os.system(f"bash -c '{cmd}'")
         exit(0)
 
-    if len(current) == 0:
-        # co-NP property
-        if gc == False and lp2sat == False:
-            print('co-NP property, please reverse the answer:')
-            cmd = f'clingo {gamefile} {formula} helper/rev.lp action-generator.lp'
-            os.system(f"bash -c '{cmd}'")
-            exit(0)
-        elif gc == True:
-            check = '{' + f'action-generator.lp,helper/rev.lp,{gamefile},{formula}' + '}'
-            cmd = f'time python gc1.py helper/show-nothing.lp  -C {check}'
-            os.system(f"bash -c '{cmd}'")
-            exit(0)
     # competitive goal
-    gdl2qbf(current, other, gamefile, formula, preprocessor, output)
+    gdl2qbf(current, other, gamefile, preprocessor, output)
     

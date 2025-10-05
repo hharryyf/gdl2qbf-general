@@ -1,10 +1,6 @@
 {
  "path": "SinglePlayer/Translations/break-through-3x4.asp",
- "current": ["xplayer"],
- "other": ["oplayer"],
- "formula": "formula/tic-tac-toe-x-100.lp",
+ "current": "xplayer",
  "preprocessor": true,
- "output": "instances/break-through-3x4.qdimacs",
- "lp2sat": false,
- "gc": false
+ "output": "instances/break-through-3x4.qdimacs"
 }

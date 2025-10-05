@@ -1,4 +1,4 @@
-# the original implementation
+# quantify does o at the back of moveL
 import os
 import sys
 import time
@@ -46,9 +46,9 @@ def log_action_encoding(inputfile, player, f):
                     print('not ', end='', file=f)
                 if k == tol - 1:
                     if i == 0:
-                        print(f'moveL({player}, {k+1}' + f', T), ' + f'legal({player}, {moveL[j]}, T), not terminated(T).', file=f)
+                        print(f'moveL({player}, {k+1}' + f', T), ' + f'legal({player}, {moveL[j]}, T), not terminated(T), mtdom(T).', file=f)
                     else:
-                        print(f'moveL({player}, {k+1}' + f', T), ' + f'legal({player}, {moveL[j]}, T), not terminated(T).', file=f)
+                        print(f'moveL({player}, {k+1}' + f', T), ' + f'legal({player}, {moveL[j]}, T), not terminated(T), mtdom(T).', file=f)
                 else:
                     print(f'moveL({player}, {k+1}' + f', T), ', end='', file=f)
         # else:
@@ -70,8 +70,8 @@ def log_action_encoding(inputfile, player, f):
     print(file=f)
 
 
-def build_quantifier(current, gamefile, formulafile, quantifier):
-    cmd = f'clingo --output=smodels action-generator-2.lp log-encoding.lp {gamefile} {formulafile}  > smodels.txt'
+def build_quantifier(current, gamefile, quantifier):
+    cmd = f'clingo --output=smodels log-encoding.lp {gamefile}  > smodels.txt'
     os.system(f"bash -c '{cmd}'")
 
     outputfile = open(file=quantifier, mode='w')
@@ -79,7 +79,7 @@ def build_quantifier(current, gamefile, formulafile, quantifier):
     state, mxv = 0, 0
     edge = set()
     vertex, universal, exist = {}, {}, {}
-
+    otherexist = {}
     with open('smodels.txt') as f:
         for line in f:
             line = line.strip()
@@ -121,22 +121,33 @@ def build_quantifier(current, gamefile, formulafile, quantifier):
                 mxv = max(mxv, vid)
                 newl = atom.replace('(', ',').replace(')',',').split(',')
                 ours = False
+                others = False
                 for cu in current:
                     lencu = len(f'does({cu},')
                     if atom[:lencu] == f'does({cu},':
                         ours = True
                         break
 
-                if ours == False and atom[:6] != 'moveL(':
+                if ours == False and atom[:5] == 'does(':
+                    others = True
+
+                if others == False and ours == False and atom[:6] != 'moveL(':
                     vertex[vid] = (atom, -1)
                     continue
+                    
 
                 lv = -1
                 for i in range(len(newl) - 1, -1, -1):
                     if len(newl[i]) and newl[i] != '\n':
                         lv = int(newl[i])
                         break
-                if lv != -1:
+                if others == True and lv != -1:
+                    vertex[vid] = (atom, -1)
+                    if lv not in otherexist:
+                        otherexist[lv] = []
+                    otherexist[lv].append(vid)
+                
+                if lv != -1 and others == False:
                     vertex[vid] = (atom, lv)
                     if ours == True:
                         if lv in exist:
@@ -150,6 +161,13 @@ def build_quantifier(current, gamefile, formulafile, quantifier):
                         else:
                             universal[lv] = []
                             universal[lv].append(vid)
+
+
+    for lv in universal.keys():
+        if lv in otherexist:
+            for u in universal[lv]:
+                for e in otherexist[lv]:
+                    edge.add((u,e))
 
     for e in edge:
         mxv = max(mxv, max(e[0], e[1]))
@@ -219,16 +237,30 @@ def build_quantifier(current, gamefile, formulafile, quantifier):
     outputfile.close()
 
 
-def gdl2qbf(current, other, gamefile, formula, preprocess, outfile):
+def gdl2qbf(current, other, gamefile, preprocess, outfile):
     logfile = 'log-encoding.lp'
     f = open(logfile, 'w')
+    print("tdom(1). tdom(T+1) :- tdom(T), mtdom(T).", file=f)
+
+    print(file=f)
+
+    print("terminated(T) :- terminal(T).", file=f)
+    print("terminated(T+1) :- terminated(T), mtdom(T).", file=f)
+
+    print(":- does(P,M,T), not legal(P,M,T).",file=f)
+
+    print(file=f)
+    print(f"eta(T) :- goal({current[0]}, 100, T), terminal(T).", file=f)
+    print(":- terminated(T), not terminated(T-1), not eta(T).", file=f)
+    print(":- terminated(1), not eta(1).", file=f)
+
     print(":- 0 {terminated(T) : tdom(T)} 0.", file=f)
     print("1 {" + f"does(R,A,T) : input(R,A)" + "} 1 :- not terminated(T), mtdom(T), role(R).", file=f)
     for o in other:
         log_action_encoding(gamefile, o, f)
     f.close()
-    build_quantifier(current, gamefile, formula, 'quantifier.lp')
-    cmd = f'clingo --output=smodels {gamefile}  {formula} action-generator-2.lp log-encoding.lp quantifier.lp | python qasp2qbf.py | lp2normal2 | lp2acyc | lp2sat | python qasp2qbf.py --cnf2qdimacs > {outfile}'
+    build_quantifier(current, gamefile, 'quantifier.lp')
+    cmd = f'clingo --output=smodels {gamefile}  log-encoding.lp quantifier.lp | python qasp2qbf.py | lp2normal2 | lp2acyc | lp2sat | python qasp2qbf.py --cnf2qdimacs > {outfile}'
     os.system(f"bash -c '{cmd}'")
 
     if preprocess == True:
@@ -248,32 +280,21 @@ if __name__ == "__main__":
     fp = open(sys.argv[1])
     js = json.load(fp)
     gamefile = js['path']
-    current = js['current']
+    current = [js['current']]
     other = js['other']
-    formula = js['formula']
     preprocessor = js['preprocessor']
     output = js['output']
-    gc = js['gc']
-    lp2sat = js['lp2sat']
     fp.close()
+    if len(current) == 0:
+        print('Please specify the current player!')
+        exit(0)
+    
     if len(other) == 0:
         # cooperate goal
-        cmd = f'clingo {gamefile} {formula} helper/show-does.lp helper/pos.lp action-generator.lp'
+        cmd = f'clingo {gamefile} action-generator-single.lp'
         os.system(f"bash -c '{cmd}'")
         exit(0)
 
-    if len(current) == 0:
-        # co-NP property
-        if gc == False and lp2sat == False:
-            print('co-NP property, please reverse the answer:')
-            cmd = f'clingo {gamefile} {formula} helper/rev.lp action-generator.lp'
-            os.system(f"bash -c '{cmd}'")
-            exit(0)
-        elif gc == True:
-            check = '{' + f'action-generator.lp,helper/rev.lp,{gamefile},{formula}' + '}'
-            cmd = f'time python gc1.py helper/show-nothing.lp  -C {check}'
-            os.system(f"bash -c '{cmd}'")
-            exit(0)
     # competitive goal
-    gdl2qbf(current, other, gamefile, formula, preprocessor, output)
+    gdl2qbf(current, other, gamefile, preprocessor, output)
     
