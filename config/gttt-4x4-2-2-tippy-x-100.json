@@ -1,10 +1,6 @@
 {
  "path": "SinglePlayer/Translations/gttt-4x4-2-2-tippy.asp",
- "current": ["xplayer"],
- "other": ["oplayer"],
- "formula": "formula/tic-tac-toe-x-100.lp",
+ "current": "xplayer",
  "preprocessor": true,
- "output": "instances/gttt-4x4-2-2-tippy.qdimacs",
- "lp2sat": false,
- "gc": false
+ "output": "instances/gttt-4x4-2-2-tippy.qdimacs"
 }

@@ -1,10 +1,6 @@
 {
  "path": "SinglePlayer/Translations/connect-3-5x5.asp",
- "current": ["xplayer"],
- "other": ["oplayer"],
- "formula": "formula/tic-tac-toe-x-100.lp",
+ "current": "xplayer",
  "preprocessor": true,
- "output": "instances/connect-3-5x5.qdimacs",
- "lp2sat": false,
- "gc": false
+ "output": "instances/connect-3-5x5.qdimacs"
 }

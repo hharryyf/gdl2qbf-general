@@ -1,10 +1,6 @@
 {
  "path": "SinglePlayer/Translations/traffic-3x3.asp",
- "current": ["xplayer"],
- "other": ["oplayer"],
- "formula": "formula/tic-tac-toe-x-100.lp",
+ "current": "xplayer",
  "preprocessor": true,
- "output": "instances/traffic-3x3.qdimacs",
- "lp2sat": false,
- "gc": false
+ "output": "instances/traffic-3x3.qdimacs"
 }

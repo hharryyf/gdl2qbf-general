@@ -1,23 +1,109 @@
 # gdl2qbf-general
 
-A generalized encoding compared to our two-player zero-sum turn-taking game encoding https://github.com/hharryyf/gdl2qbf
+A converter from multi-player GDL to QBF, [the paper](https://www.ifaamas.org/Proceedings/aamas2024/pdfs/p807.pdf) is attached. 
 
-Details of the conversion can be found in extg2qbf.py and action-generator-2.lp, the directory minimax/ contains the code for the minimax solvers, minimax_slow is the solver without transposition table, minimax is the solver with the transposition table.
+The proof and experiments of the NMR paper are available in the NMR branch.
 
-To reproduce the experiments, just run:
+
+**The experients in the AAMAS paper were based on an old and less generic implementation that can only handle games with exactly 2 players https://github.com/hharryyf/gdl2qbf-aamas-24 while the current implementation is more general than that**
+
+
+Now we can deal with the bounded-depth strong winnability for arbitarily many players.
+
+## Description
+
+The converter will translate any GDL to a QBF instance, the QBF instance is true if and only if the current player can achieve 100 points in the GDL game no matter what the other players perform.
+
+## Contribution
+
+In our paper, we designed the framework of converting a GDL game G to a QBF instance.
+The framework is as follows:
+```
+
+G -> Ext(G) -> QASP(G) -> QBF
+
 
 ```
-python extg2qbf.py config/[the name of the game.json]
+
+In this framework, G -> Ext(G) was done by Michael Thielscher in the single-player game paper (check the referenced tool in ```SinglePlayer/```, and run the eclipse prolog file EXTTranslator.ecl), QASP(G) -> QBF was done by Fandinno et al. in their qasp2qbf tool https://github.com/potassco/qasp2qbf
+
+More specifically, EXTTranslator.ecl can convert a GDL decription in KIF format without **nested** "or" operator to Ext(G). For simplicity, the author didn't handle the nested "or" operator automatically, although it can be done automatically. Check the difference between ```GameDescriptions/tic-tac-toe.gdl``` and ```Translations/tic-tac-toe.asp``` to see how the tool works. Even if EXTranslator.ecl can handle 1-level "or" operator, for performance reasons, it is recommended that all the "or" operators in the KIF input are removed manually.
+
+Our contributions are:
+
+* We designed the correct algorithm of converting an arbitrary GDL game to a QBF instance.
+
+* We designed and implemented an efficient encoding and quantification method that converts Ext(G) to QASP(G).
+
+
+## Dependencies
+
+* Clingo https://github.com/potassco/guide/releases (clingo must be put into PATH)
+
+* QBF solver Caqe https://github.com/ltentrup/caqe and DepQBF  https://github.com/lonsing/depqbf 
+
+* Python 3+
+
+* QBF preprocessor bloqqer  https://fmv.jku.at/bloqqer/ (bloqqer must be put into PATH)
+
+* the dependencies of qasp2qbf (i.e., lp2normal2, lp2acyc, lp2sat) https://github.com/potassco/qasp2qbf https://research.ics.aalto.fi/software/asp/download/ (lp2normal2, lp2acyc, lp2sat must be put into PATH)
+
+* KIF to Ext(G) converter: the example usage of this tool can be found in SinglePlayer/. You need to install ECLiPSe Prolog https://eclipseclp.org/ first.
+
+## Usage
+
+* First create the answer set program Ext(G) with SinglePlayer/EXTTranslator.ecl from a GDL in KIF format
+
+* **Requirement: Ext(G) must be the temporal-extended ASP program of some valid GDL game G**
+
+
+* Then just run the following command
+
+```
+python extg2qbf-aamas-breakchoice.py [path-to-the-json-configuration-file]
 
 ```
 
-Then, run
+Example:
 
 ```
-caqe bloq_[the name of the game].qdimacs
+ python extg2qbf.py config/break-through-2x5-x-100.json  
 
 ```
 
-The proof is available [here](https://github.com/hharryyf/gdl2qbf-general/blob/main/NMR_25_QBF-15-16.pdf)
+In the json configuration file, one needs to specify:
 
+```
+{
+ "path": "SinglePlayer/Translations/break-through-2x5.asp",
+ "current": "xplayer",
+ "preprocessor": true,
+ "output": "instances/break-through-2x5.qdimacs"
+}
+```
+
+- *path* is the path to the asp file describing *Ext(G)*
+
+- *current* is the name of our player. 
+
+- *preprocessor* is a Boolean value specifying whether bloqqer preprocessing is needed
+
+- *output* is the path to the output QBF in qdimacs format. Note that if *preprocessor* option is set to true, the path to the preprocessed instance has a bloq_ prefix in the name (e.g., instances/bloq_break-through-2x5.qdimacs).
+
+You may choose any qdimacs QBF solver (e.g., Caqe, DepQBF, QUTE, RareQs) to solve the instance.
+
+
+Our implementation makes the following assumptions of the clingo grounder. 
+
+- For any stratified GDL description, the grounded program have a stratified structure while
+the only non-stratified part of the program are the self-cycles of the choice rules
+
+- The choices in the choice rules cannot be replaced by auxiliary predicates during the grounding phase.
+
+Note that the clingo grounder obeys these 2 requirements in all our experiements. 
+
+
+## Contributors
+
+* Yifan He, Abdallah Saffidine, Michael Thielscher
 

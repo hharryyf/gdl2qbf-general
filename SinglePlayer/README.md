@@ -10,4 +10,4 @@
 
 * call the "run" function with 2 parameters [ name of the game ] [ horizon ]
 
-* For example, if you want to create the temporal-extended ASP of the game tic-tac-toe, you need to place tic-tac-toe.gdl in GameDescriptions/, then call the "run" function with 2 parameters tic-tac-toe and 9. The tic-tac-toe game of depth 9 will be stored in Translations/tic-tac-toe.asp. 
+* For example, if you want to create the temporal-extended ASP of the game tic-tac-toe, you need to place tic-tac-toe.gdl in GameDescriptions/, then call the "run" function with 2 parameters ```tic-tac-toe``` and ```9```. The tic-tac-toe game of depth 9 will be stored in ```Translations/tic-tac-toe.asp```. 

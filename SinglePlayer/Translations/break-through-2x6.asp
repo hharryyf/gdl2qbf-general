@@ -1,4 +1,4 @@
-mtdom(1..15).
+mtdom(1..29).
 role(xplayer).
 role(oplayer).
 true(cell(1, 1, xplayer), 1).

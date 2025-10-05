@@ -1,6 +1,4 @@
-# unpack all the 1 {} 1 choice rules to {} chice rules
-# the only place negative cycles can exist is the choice rules
-
+# quantify does o at the back of moveL
 import os
 import sys
 import time
@@ -48,11 +46,24 @@ def log_action_encoding(inputfile, player, f):
                     print('not ', end='', file=f)
                 if k == tol - 1:
                     if i == 0:
-                        print(f'moveL({player}, {k+1}' + f', T), ' + f'legal({player}, {moveL[j]}, T), not terminated(T).', file=f)
+                        print(f'moveL({player}, {k+1}' + f', T), ' + f'legal({player}, {moveL[j]}, T), not terminated(T), mtdom(T).', file=f)
                     else:
-                        print(f'moveL({player}, {k+1}' + f', T), ' + f'legal({player}, {moveL[j]}, T), not terminated(T).', file=f)
+                        print(f'moveL({player}, {k+1}' + f', T), ' + f'legal({player}, {moveL[j]}, T), not terminated(T), mtdom(T).', file=f)
                 else:
                     print(f'moveL({player}, {k+1}' + f', T), ', end='', file=f)
+        # else:
+        #     # other actions, map to does(player, 0)
+        #     print(f'does({player}, {moveL[0]}, T) :- ', end='', file=f)
+        #     for k in range(0, tol):
+        #         if ((i >> k) & 1) == 0:
+        #             print('not ', end='', file=f)
+        #         if k == tol - 1:
+        #             if i == 0:
+        #                 print(f'moveL({player}, {k+1}' + f', T), ' + f'legal({player}, {moveL[0]}, T), not terminated(T).', file=f)
+        #             else:
+        #                 print(f'moveL({player}, {k+1}' + f', T), ' + f'legal({player}, {moveL[0]}, T), not terminated(T).', file=f)
+        #         else:
+        #             print(f'moveL({player}, {k+1}' + f', T), ', end='', file=f)
         
         j += 1
     
@@ -60,7 +71,7 @@ def log_action_encoding(inputfile, player, f):
 
 
 def build_quantifier(current, gamefile, quantifier):
-    cmd = f'clingo --output=smodels log-encoding.lp {gamefile} > smodels.txt'
+    cmd = f'clingo --output=smodels log-encoding.lp {gamefile}  > smodels.txt'
     os.system(f"bash -c '{cmd}'")
 
     outputfile = open(file=quantifier, mode='w')
@@ -69,8 +80,6 @@ def build_quantifier(current, gamefile, quantifier):
     edge = set()
     vertex, universal, exist = {}, {}, {}
     otherexist = {}
-    choices = set()
-    #edgespos = set()
     with open('smodels.txt') as f:
         for line in f:
             line = line.strip()
@@ -88,38 +97,21 @@ def build_quantifier(current, gamefile, quantifier):
                             print('Unexpected Error')
                             exit(1)
                         edge.add((line[i], head))
-                        # add checks for the desired structure
-                        #if i >= line[3] + 4:
-                        #    edgespos.add((line[i], head, 1))
-                        #else:
-                        #    edgespos.add((line[i], head, -1))
-
                 # head number_of_lit number_of_neg_lit bound [negative lit] [positive lit]
                 elif line[0] == 2:
                     head = line[1]
                     for i in range(5, len(line)):
                         edge.add((line[i], head))
-                        #if i >= line[3] + 5:
-                        #    edgespos.add((line[i], head, 2))
-                        #else:
-                        #    edgespos.add((line[i], head, -2))
-
                 # number_of_head [head] number_of_lit number_of_neg_lit [negative lit] [positive lit]
                 elif line[0] == 3:
                     head_num = line[1]
                     head = []
                     for i in range(2, head_num + 2):
                         head.append(line[i])
-                        choices.add(line[i])
                     # this part can be optimized
                     for i in range(head_num + 4, len(line)):
                         for h in head:
                             edge.add((line[i], h))
-                            #if i >= line[4] + 4 + head_num:
-                            #    edgespos.add((line[i], h, 3))
-                            #else:
-                            #    edgespos.add((line[i], h, -3))
-
                 else:
                     print('Cannot handle rule of type 4+ in Clingo!')
                     exit(1)
@@ -130,9 +122,6 @@ def build_quantifier(current, gamefile, quantifier):
                 newl = atom.replace('(', ',').replace(')',',').split(',')
                 ours = False
                 others = False
-                if atom[:5] == 'does(' or atom[:6] == 'moveL(':
-                    if vid in choices:
-                        choices.remove(vid)
                 for cu in current:
                     lencu = len(f'does({cu},')
                     if atom[:lencu] == f'does({cu},':
@@ -173,11 +162,6 @@ def build_quantifier(current, gamefile, quantifier):
                             universal[lv] = []
                             universal[lv].append(vid)
 
-    if len(choices) != 0:
-        print('Our method is inapplicable! Clingo is rewriting choice rules! ', choices)
-        exit(1)
-    
-    #print(edgespos)
 
     for lv in universal.keys():
         if lv in otherexist:
@@ -253,85 +237,9 @@ def build_quantifier(current, gamefile, quantifier):
     outputfile.close()
 
 
-def print_integrity(inputfile, player, file):
-    with open(inputfile, "r") as g:
-        ASP_program = g.read()
-    ASP_program += f'#show.'
-    ASP_program += f'#show input({player}, P) : input({player}, P).'
-    # Control object is a low-level interface for controlling the grounding/solving process.
-    ctl = clingo.Control(arguments=['-W', 'none'])  # Here you can write the arguments you would pass to clingo by command line.
-    ctl.add("base", [], ASP_program)  # Adds the program to the control object.
-    ctl.ground([("base", [])])  # Grounding...
-    moves = set()
-    # Solving...
-    with ctl.solve(yield_=True) as solution_iterator:
-        for model in solution_iterator:
-            # Model is an instance of clingo.solving.Model class 
-            # Reference: https://potassco.org/clingo/python-api/current/clingo/solving.html#clingo.solving.Model
-            for s in str(model).split():
-                moves.add(s[(7 + len(player)):-1])
-        
-    moves = list(moves)
-
-    print(f':- not terminated(T), mtdom(T)', end='', file=file)
-    for mv in moves:
-        print(f', not does({player}, {mv}, T)', end='', file=file)
-    print('.', file=file)
-
-    print(f':- does({player},A,T), does({player},B,T), A < B.', file=file)
-    # for i in range(len(moves)):
-    #     for j in range(i):
-    #         print(f':- does({player},{moves[i]}, T), does({player},{moves[j]}, T), mtdom(T), not terminated(T).', file=file)
-
-
-def print_termination(inputfile, file):
-    with open(inputfile, "r") as g:
-        ASP_program = g.read()
-    ASP_program += f'#show.'
-    ASP_program += f'#show mtdom/1.'
-    # Control object is a low-level interface for controlling the grounding/solving process.
-    ctl = clingo.Control(arguments=['-W', 'none'])  # Here you can write the arguments you would pass to clingo by command line.
-    ctl.add("base", [], ASP_program)  # Adds the program to the control object.
-    ctl.ground([("base", [])])  # Grounding...
-    # Solving...
-    mx = 0
-    t = ''
-    with ctl.solve(yield_=True) as solution_iterator:
-        for model in solution_iterator:
-            # Model is an instance of clingo.solving.Model class 
-            # Reference: https://potassco.org/clingo/python-api/current/clingo/solving.html#clingo.solving.Model
-            for s in str(model).split():
-                mx = max(mx, int(s[6:-1]))
-    
-    
-    print(f':- not terminated({mx + 1}).', file=file)
-
-def get_other(inputfile, current):
-    with open(inputfile, "r") as g:
-        ASP_program = g.read()
-    ASP_program += f'#show.'
-    ASP_program += f'#show role/1.'
-    # Control object is a low-level interface for controlling the grounding/solving process.
-    ctl = clingo.Control(arguments=['-W', 'none'])  # Here you can write the arguments you would pass to clingo by command line.
-    ctl.add("base", [], ASP_program)  # Adds the program to the control object.
-    ctl.ground([("base", [])])  # Grounding...
-    # Solving...
-    res = set()
-    with ctl.solve(yield_=True) as solution_iterator:
-        for model in solution_iterator:
-            # Model is an instance of clingo.solving.Model class 
-            # Reference: https://potassco.org/clingo/python-api/current/clingo/solving.html#clingo.solving.Model
-            for s in str(model).split():
-                if s[5:-1] != current[0]:
-                    res.add(s[5:-1]) 
-    
-    return list(res)
-
-
 def gdl2qbf(current, other, gamefile, preprocess, outfile):
     logfile = 'log-encoding.lp'
     f = open(logfile, 'w')
-
     print("tdom(1). tdom(T+1) :- tdom(T), mtdom(T).", file=f)
 
     print(file=f)
@@ -346,23 +254,8 @@ def gdl2qbf(current, other, gamefile, preprocess, outfile):
     print(":- terminated(T), not terminated(T-1), not eta(T).", file=f)
     print(":- terminated(1), not eta(1).", file=f)
 
-    print_termination(gamefile, f)    
-    
-    print(file=f)
-
-    print(" {" + f"does(R,A,T) : input(R,A)" + "}  :- not terminated(T), mtdom(T), role(R).", file=f)
-    
-    for o in current:
-        print_integrity(gamefile, o, f)    
-
-    print(file=f)
-
-    for o in other:
-        print_integrity(gamefile, o, f)    
-
-    print(file=f)
-
-
+    print(":- 0 {terminated(T) : tdom(T)} 0.", file=f)
+    print("1 {" + f"does(R,A,T) : input(R,A)" + "} 1 :- not terminated(T), mtdom(T), role(R).", file=f)
     for o in other:
         log_action_encoding(gamefile, o, f)
     f.close()
@@ -388,13 +281,16 @@ if __name__ == "__main__":
     js = json.load(fp)
     gamefile = js['path']
     current = [js['current']]
-    other = get_other(gamefile, current)
+    other = js['other']
     preprocessor = js['preprocessor']
     output = js['output']
     fp.close()
+    if len(current) == 0:
+        print('Please specify the current player!')
+        exit(0)
     
     if len(other) == 0:
-        # single-player game
+        # cooperate goal
         cmd = f'clingo {gamefile} action-generator-single.lp'
         os.system(f"bash -c '{cmd}'")
         exit(0)

@@ -1,6 +1,6 @@
 {
  "path": "SinglePlayer/Translations/break-through-3x5.asp",
- "current": "xplayer",
+ "current": "oplayer",
  "preprocessor": true,
- "output": "instances/break-through-3x5-x.qdimacs"
+ "output": "instances/break-through-3x5-o.qdimacs"
 }
