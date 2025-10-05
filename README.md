@@ -78,13 +78,13 @@ In the json configuration file, one needs to specify:
 }
 ```
 
-- *path* is the path to the asp file describing ```Ext(G, N)```
+- **path** is the path to the asp file describing ```Ext(G, N)```
 
-- *current* is the name of our player. 
+- **current** is the name of our player. 
 
-- *preprocessor* is a Boolean value specifying whether bloqqer preprocessing is needed
+- **preprocessor** is a Boolean value specifying whether bloqqer preprocessing is needed
 
-- *output* is the path to the output QBF in qdimacs format. Note that if *preprocessor* option is set to true, the path to the preprocessed instance has a bloq_ prefix in the name (e.g., instances/bloq_break-through-2x5.qdimacs).
+- **output** is the path to the output QBF in qdimacs format. Note that if *preprocessor* option is set to true, the path to the preprocessed instance has a bloq_ prefix in the name (e.g., instances/bloq_break-through-2x5.qdimacs).
 
 You may choose any qdimacs QBF solver (e.g., caqe, depqbf, qute, rareqs) to solve the instance.
 
