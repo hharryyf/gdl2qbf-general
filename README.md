@@ -56,7 +56,7 @@ Our contributions are:
 * Then just run the following command
 
 ```
-python extg2qbf.py [path-to-the-json-configuration-file]
+python extg2qbf.py [path-to-the-json-configuration-file] 
 
 ```
 
@@ -86,6 +86,7 @@ In the json configuration file, one needs to specify:
 
 - **output** is the path to the output QBF in qdimacs format. Note that if *preprocessor* option is set to true, the path to the preprocessed instance has a bloq_ prefix in the name (e.g., instances/bloq_break-through-2x5.qdimacs).
 
+
 You may choose any qdimacs QBF solver (e.g., caqe, depqbf, qute, rareqs) to solve the instance.
 
 
@@ -97,6 +98,11 @@ the only non-stratified part of the program are the self-cycles of the choice ru
 - The choices in the choice rules cannot be replaced by auxiliary predicates during the grounding phase.
 
 Note that the clingo grounder version 5.8.0 obeys these 2 requirements in all our experiements. 
+
+
+## Reproduce Results
+
+To reproduce the experiments for other quantification methods, please refer to the directory ```experiments/```
 
 
 ## Contributors
