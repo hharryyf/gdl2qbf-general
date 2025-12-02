@@ -178,6 +178,13 @@ def build_quantifier(current, gamefile, quantifier, turn):
         exit(1)
     
     #print(edgespos)
+    for lv in exist.keys():
+        if lv in otherexist:
+            for u in exist[lv]:
+                for e in otherexist[lv]:
+                    #print(vertex[u],' --- ', vertex[e])
+                    edge.add((u,e))
+
 
     for lv in universal.keys():
         if lv in otherexist:
