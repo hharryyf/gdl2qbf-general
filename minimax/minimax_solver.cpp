@@ -26,22 +26,22 @@ bool role_ok() {
         std::cerr << ex.what() << std::endl;
     }
 
-    return ((int) role.size() == 2) && (role.find(player) != role.end()); 
+    return ((int) role.size() >= 2) && ((int) role.size() <= 3) && (role.find(player) != role.end()); 
 }
 
 std::tuple<std::vector<std::vector<std::string>>, int, int> get_legal() {
     PlTermv av(2);
     PlQuery q("legal", av);
-    std::set<std::string> our, other;
+    std::set<std::string> our;
+    std::map<std::string, std::set<std::string>> other;
     std::vector<std::vector<std::string>> result;
-    std::string other_name;
     try {
         while(q.next_solution() ) {    
             if (av[0].as_string() ==player) {
                 our.insert(av[1].as_string());
             } else {
-                other.insert(av[1].as_string());
-                other_name = av[0].as_string();
+                other[av[0].as_string()].insert(av[1].as_string());
+                // other_name = av[0].as_string();
             }
         } 
 
@@ -50,18 +50,48 @@ std::tuple<std::vector<std::vector<std::string>>, int, int> get_legal() {
         std::cerr << "in legal " << ex.what() << std::endl;
     }
 
-    for (auto &s : our) {
-        for (auto &t : other) {
-            std::vector<std::string> ret;
-            std::string mv = std::string("does(").append(player).append(", ").append(s).append(")");
-            ret.push_back(mv);
-            mv = std::string("does(").append(other_name).append(", ").append(t).append(")");
-            ret.push_back(mv);
-            result.push_back(ret);
+    if ((int) other.size() == 1) {
+        for (auto &s : our) {
+            auto iter = other.begin()->second;
+            auto other_name = other.begin()->first;
+            for (auto &t : iter) {
+                std::vector<std::string> ret;
+                std::string mv = std::string("does(").append(player).append(", ").append(s).append(")");
+                ret.push_back(mv);
+                mv = std::string("does(").append(other_name).append(", ").append(t).append(")");
+                ret.push_back(mv);
+                result.push_back(ret);
+            }
+        }
+    } else {
+        for (auto &s : our) {
+            auto iter = other.begin()->second;
+            auto other_name = other.begin()->first;
+            auto iter2 = other.rbegin()->second;
+            auto other_name2 = other.rbegin()->first;
+            for (auto &t : iter) {
+                for (auto &tt : iter2) {
+                    std::vector<std::string> ret;
+                    std::string mv = std::string("does(").append(player).append(", ").append(s).append(")");
+                    ret.push_back(mv);
+                    mv = std::string("does(").append(other_name).append(", ").append(t).append(")");
+                    ret.push_back(mv);
+                    mv = std::string("does(").append(other_name2).append(", ").append(tt).append(")");
+                    ret.push_back(mv);
+                    result.push_back(ret);
+                }
+            }
         }
     }
 
-    return std::make_tuple(result, (int) our.size(), (int) other.size());
+    int sz1 = other.begin()->second.size(), sz2 = other.rbegin()->second.size();
+    if ((int) other.size() == 1) {
+        sz2 = 1;
+    }
+
+    //printf("%d\n", sz1 * sz2);
+
+    return std::make_tuple(result, (int) our.size(), sz1 * sz2);
 }
 
 bool is_terminal() {

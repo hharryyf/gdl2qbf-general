@@ -1,0 +1,6 @@
+{
+ "path": "SinglePlayer/Translations/tic-tac-toe-3player-3x3.asp",
+ "current": "xplayer",
+ "preprocessor": true,
+ "output": "instances/tic-tac-toe-3player-3x3.qdimacs"
+}

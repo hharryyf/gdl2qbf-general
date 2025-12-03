@@ -1,0 +1,6 @@
+{
+ "path": "SinglePlayer/Translations/connect-4-3player-4x4.asp",
+ "current": "xplayer",
+ "preprocessor": true,
+ "output": "instances/connect-4-3player-4x4-draw.qdimacs"
+}
