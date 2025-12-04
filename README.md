@@ -89,19 +89,6 @@ In the json configuration file, one needs to specify:
 
 You may choose any qdimacs QBF solver (e.g., caqe, depqbf, qute, rareqs) to solve the instance.
 
-
-Our implementation makes the following assumptions of the clingo grounder. 
-
-- For any stratified GDL description, the grounded program have a stratified structure while
-the only non-stratified part of the program are the self-cycles of the choice rules
-
-- The choices in the choice rules cannot be replaced by auxiliary predicates during the grounding phase.
-
-Note that the clingo grounder version 5.8.0 obeys these 2 requirements in all our experiements. 
-
-
-## Reproduce Results
-
 Note that the above command is for the dependency-based quantification method. To run experiments for the action-only quantification method, just run
 
 ```
@@ -119,6 +106,21 @@ python extg2qbf_turn.py [path-to-the-json-configuration-file] [turn.lp]
 ```
 
 Here, ```turn.lp``` is a file that is used to specify the turn of the universal players. The special predicate ```__player_turn(P, T)``` is used to specify that at timestamp T player P is taking turn. Please refer to ```o_even_turn.lp``` and ```o_z_turn.lp``` for examples.
+
+
+Our implementation makes the following assumptions of the clingo grounder. 
+
+- For any stratified GDL description, the grounded program have a stratified structure while
+the only non-stratified part of the program are the self-cycles of the choice rules
+
+- The choices in the choice rules cannot be replaced by auxiliary predicates during the grounding phase.
+
+Note that the clingo grounder version 5.8.0 obeys these 2 requirements in all our experiements. 
+
+
+## Reproduce Results
+To reproduce all experiments used in the experiments, please refer ```experiments.txt``` for more details.
+
 
 ## Contributors
 
