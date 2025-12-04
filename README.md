@@ -102,8 +102,23 @@ Note that the clingo grounder version 5.8.0 obeys these 2 requirements in all ou
 
 ## Reproduce Results
 
-To reproduce the experiments for other quantification methods, please refer to the directory ```experiments/```
+Note that the above command is for the dependency-based quantification method. To run experiments for the action-only quantification method, just run
 
+```
+python extg2qbf_does.py [path-to-the-json-configuration-file] 
+
+```
+and repeat the above procedure.
+
+To run experiments for the dependency-based quantification method with special treatments of strictly turn-taking games, just run 
+
+
+```
+python extg2qbf_turn.py [path-to-the-json-configuration-file] [turn.lp] 
+
+```
+
+Here, ```turn.lp``` is a file that is used to specify the turn of the universal players. The special predicate ```__player_turn(P, T)``` is used to specify that at timestamp T player P is taking turn. Please refer to ```o_even_turn.lp``` and ```o_z_turn.lp``` for examples.
 
 ## Contributors
 
