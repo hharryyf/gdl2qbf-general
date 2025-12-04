@@ -119,7 +119,7 @@ Note that the clingo grounder version 5.8.0 obeys these 2 requirements in all ou
 
 
 ## Reproduce Results
-To reproduce all experiments used in the experiments, please refer ```experiments.txt``` for more details.
+To reproduce all experiments used in the experiments, please refer ```experiments.md``` for more details.
 
 
 ## Contributors
