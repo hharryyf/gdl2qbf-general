@@ -47,10 +47,10 @@ def log_action_encoding(inputfile, player, f):
                 if ((i >> k) & 1) == 0:
                     print('not ', end='', file=f)
                 if k == tol - 1:
-                    if i == 0:
-                        print(f'moveL({player}, {k+1}' + f', T), ' + f'legal({player}, {moveL[j]}, T), not terminated(T).', file=f)
-                    else:
-                        print(f'moveL({player}, {k+1}' + f', T), ' + f'legal({player}, {moveL[j]}, T), not terminated(T).', file=f)
+                    #if i == 0:
+                    #    print(f'moveL({player}, {k+1}' + f', T), ' + f'legal({player}, {moveL[j]}, T), not terminated(T).', file=f)
+                    #else:
+                    print(f'moveL({player}, {k+1}' + f', T), ' + f'legal({player}, {moveL[j]}, T), not terminated(T).', file=f)
                 else:
                     print(f'moveL({player}, {k+1}' + f', T), ', end='', file=f)
         
