@@ -42,7 +42,7 @@ def log_action_encoding(inputfile, player, f):
     j = 0
     for i in range(0, 1 << tol):
         if j < len(moveL):
-            print(f'does({player}, {moveL[j]}, T) :- ', end='', file=f)
+            print(f':- not does({player}, {moveL[j]}, T), ', end='', file=f)
             for k in range(0, tol):
                 if ((i >> k) & 1) == 0:
                     print('not ', end='', file=f)
