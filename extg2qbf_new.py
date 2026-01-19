@@ -117,8 +117,8 @@ def base_encoding(inputfile, name, adv, horizon):
 
     return gamma    
 
-def model_adverse(adv, moveL, turns, horizon):
-    f = open('encoding_adverse.lp', 'w')
+def model_adverse(adv, moveL, turns, horizon, fg):
+    f = open('encoding_adverse.lp', fg)
     tol, lenl = 0, len(moveL)
     while (1 << tol) < lenl:
         tol += 1
@@ -402,13 +402,14 @@ if __name__ == '__main__':
     
     filelist = ['base_encoding.lp', path]
 
-    
+    fg = 'w'
     for o in adv:
         turns = set()
         if noop == True:
             turns = set(get_o_noop(path, horizon, 2, o))
-        model_adverse(o, gamma[o], turns, horizon)
-        filelist.append('encoding_adverse.lp')
+        model_adverse(o, gamma[o], turns, horizon, fg)
+        fg = 'a'
+    filelist.append('encoding_adverse.lp')
 
     basic_quantification(name, filelist)
     filelist.append('quantification.lp')
