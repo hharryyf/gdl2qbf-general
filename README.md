@@ -11,6 +11,9 @@ The proof and experiments of the NMR paper are available in the NMR branch https
 
 The converter will translate any GDL (in KIF format) to a QBF instance, the QBF instance is true if and only if the current player can achieve 100 points within N moves in the GDL game no matter what the other players perform.
 
+Although the papers/thesis focus on the case when the GDL description is grounded, we can easily generalize it to cases when the GDL is non-grounded. We can simply use the grounder gringo to ground the overall encoding and do the same analysis.
+
+
 ## Contribution
 
 In our paper, we designed the framework of converting a GDL game G to a QBF instance.
@@ -56,70 +59,35 @@ Our contributions are:
 * Then just run the following command
 
 ```
-python extg2qbf.py [path-to-the-json-configuration-file] 
+python extg2qbf_new.py -p=[PLAYER-NAME] -g=[EXT(G)-PATH] -o=[OUTPUT-FILE] [Optional Flags]
+
+```
+
+Run the following to see more options:
+
+```
+python extg2qbf_new.py -h
 
 ```
 
 Example:
 
 ```
- python extg2qbf.py config/break-through-2x5-x-100.json  
+python extg2qbf_new.py -p=xplayer -g=SinglePlayer/Translations/break-through-2x5.asp -o=instances/break-through-2x5.qdimacs 
 
 ```
+The unpreprocessed instance can be found in ```instances/break-through-2x5.qdimacs```
 
-In the json configuration file, one needs to specify:
-
-```
-{
- "path": "SinglePlayer/Translations/break-through-2x5.asp",
- "current": "xplayer",
- "preprocessor": true,
- "output": "instances/break-through-2x5.qdimacs"
-}
-```
-
-- **path** is the path to the asp file describing ```Ext(G, N)```
-
-- **current** is the name of our player. 
-
-- **preprocessor** is a Boolean value specifying whether bloqqer preprocessing is needed
-
-- **output** is the path to the output QBF in qdimacs format. Note that if *preprocessor* option is set to true, the path to the preprocessed instance has a bloq_ prefix in the name (e.g., instances/bloq_break-through-2x5.qdimacs).
+The bloqqer preprocessed instance can be found in ```instances/bloq_break-through-2x5.qdimacs```
 
 
-You may choose any qdimacs QBF solver (e.g., caqe, depqbf, qute, rareqs) to solve the instance.
+Our prototypical implementation makes the following assumptions of the clingo grounder. 
 
-Note that the above command is for the dependency-based quantification method. To run experiments for the action-only quantification method, just run
-
-```
-python extg2qbf_does.py [path-to-the-json-configuration-file] 
-
-```
-and repeat the above procedure.
-
-To run experiments for the dependency-based quantification method with special treatments of strictly turn-taking games, just run 
-
-
-```
-python extg2qbf_turn.py [path-to-the-json-configuration-file] [turn.lp] 
-
-```
-
-Here, ```turn.lp``` is a file that is used to specify the turn of the universal players. The special predicate ```__player_turn(P, T)``` is used to specify that at timestamp T player P is taking turn. Please refer to ```o_even_turn.lp``` and ```o_z_turn.lp``` for examples.
-
-
-Our implementation makes the following assumptions of the clingo grounder. 
-
-- For any stratified GDL description, the grounded program have a stratified structure while
-the only non-stratified part of the program are the self-cycles of the choice rules
+- For any stratified GDL description, in the grounded program, once all choice rules are removed, the remaining program is still stratified with integrity constraints
 
 - The choices in the choice rules cannot be replaced by auxiliary predicates during the grounding phase.
 
-Note that the clingo grounder version 5.8.0 obeys these 2 requirements in all our experiements. 
-
-
-## Reproduce Results
-To reproduce all experiments, please refer ```experiments.md``` for more details.
+These assumptions are important to ensure that the dependency-based quantification method is implemented correctly (i.e., the splitting analysis still holds). The clingo grounder version 5.8.0 obeys both requirements. 
 
 
 ## Contributors
