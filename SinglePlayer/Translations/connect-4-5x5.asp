@@ -1,4 +1,4 @@
-mtdom(1..21).
+mtdom(1..23).
 role(xplayer).
 role(oplayer).
 base(cell(X49861, X49862, X49863)) :- x(X49861), y(X49862), role(X49863), domdomain(2, X49861), domdomain(2, X49862), domdomain(3, X49863).

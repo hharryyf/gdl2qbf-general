@@ -2,8 +2,11 @@
 #include <SWI-Prolog.h>
 #include <SWI-cpp2.h>
 #include <SWI-cpp2.cpp>
-
+#include <chrono>
 std::string player;
+std::string otherp;
+std::string randp;
+
 std::map<std::vector<std::string>, std::pair<int, int>> table;
 /*
     swipl-ld -goal true -o minimax_solver -ld g++ -g -O minimax_solver.cpp
@@ -26,21 +29,30 @@ bool role_ok() {
         std::cerr << ex.what() << std::endl;
     }
 
-    return ((int) role.size() >= 2) && ((int) role.size() <= 3) && (role.find(player) != role.end()); 
+    std::cout << player << " " << otherp << " " << randp << std::endl;
+    if (role.find(player) == role.end()) return false;
+    if (otherp != "" && role.find(otherp) == role.end()) return false;
+    if (randp != "" && role.find(randp) == role.end()) return false;
+
+    return ((int) role.size() >= 2) && ((int) role.size() <= 3); 
 }
 
-std::tuple<std::vector<std::vector<std::string>>, int, int> get_legal() {
+std::tuple<std::set<std::string>,std::set<std::string>,std::set<std::string>> get_legal() {
     PlTermv av(2);
     PlQuery q("legal", av);
     std::set<std::string> our;
-    std::map<std::string, std::set<std::string>> other;
-    std::vector<std::vector<std::string>> result;
+    std::set<std::string> opponent;
+    std::set<std::string> rndp;
     try {
         while(q.next_solution() ) {    
+            //std::cout << "get legal " << av[0].as_string() << " " << av[1].as_string() << std::endl;
             if (av[0].as_string() ==player) {
                 our.insert(av[1].as_string());
+            } else if (av[0].as_string() == otherp) {
+                opponent.insert(av[1].as_string());
+                // other_name = av[0].as_string();
             } else {
-                other[av[0].as_string()].insert(av[1].as_string());
+                rndp.insert(av[1].as_string());
                 // other_name = av[0].as_string();
             }
         } 
@@ -50,48 +62,8 @@ std::tuple<std::vector<std::vector<std::string>>, int, int> get_legal() {
         std::cerr << "in legal " << ex.what() << std::endl;
     }
 
-    if ((int) other.size() == 1) {
-        for (auto &s : our) {
-            auto iter = other.begin()->second;
-            auto other_name = other.begin()->first;
-            for (auto &t : iter) {
-                std::vector<std::string> ret;
-                std::string mv = std::string("does(").append(player).append(", ").append(s).append(")");
-                ret.push_back(mv);
-                mv = std::string("does(").append(other_name).append(", ").append(t).append(")");
-                ret.push_back(mv);
-                result.push_back(ret);
-            }
-        }
-    } else {
-        for (auto &s : our) {
-            auto iter = other.begin()->second;
-            auto other_name = other.begin()->first;
-            auto iter2 = other.rbegin()->second;
-            auto other_name2 = other.rbegin()->first;
-            for (auto &t : iter) {
-                for (auto &tt : iter2) {
-                    std::vector<std::string> ret;
-                    std::string mv = std::string("does(").append(player).append(", ").append(s).append(")");
-                    ret.push_back(mv);
-                    mv = std::string("does(").append(other_name).append(", ").append(t).append(")");
-                    ret.push_back(mv);
-                    mv = std::string("does(").append(other_name2).append(", ").append(tt).append(")");
-                    ret.push_back(mv);
-                    result.push_back(ret);
-                }
-            }
-        }
-    }
 
-    int sz1 = other.begin()->second.size(), sz2 = other.rbegin()->second.size();
-    if ((int) other.size() == 1) {
-        sz2 = 1;
-    }
-
-    //printf("%d\n", sz1 * sz2);
-
-    return std::make_tuple(result, (int) our.size(), sz1 * sz2);
+    return std::make_tuple(our, opponent, rndp);
 }
 
 bool is_terminal() {
@@ -155,7 +127,7 @@ std::vector<std::string> query_next() {
 
 
     for (auto &s : st) result.push_back(s);
-
+    
     return result;
 }
 
@@ -185,6 +157,7 @@ std::vector<std::string> query_init() {
 
 void add_facts(std::vector<std::string> &facts) {
     for (auto &s : facts) {
+        //std::cout << "add fact: " << s << std::endl;
         std::string res = "assertz(";
         res.append(s);
         res.append(")");
@@ -202,6 +175,7 @@ void add_facts(std::vector<std::string> &facts) {
 
 void remove_facts(std::vector<std::string> &facts) {
     for (auto &s : facts) {
+        //std::cout << "remove fact: " << s << std::endl;
         std::string res = "retractall(";
         res.append(s);
         res.append(")");
@@ -262,64 +236,103 @@ int minimax(int depth, std::vector<std::string> &s_true, char *argv[]) {
     }
 
     auto legals = get_legal();
-    auto legal_moves = std::get<0>(legals);
-    auto x_sz = std::get<1>(legals);
-    auto o_sz = std::get<2>(legals);
-    
+    auto x_move = std::get<0>(legals);
+    auto o_move = std::get<1>(legals);
+    auto rd_move = std::get<2>(legals);
+    //std::cout << x_move.size() << " " << o_move.size() << " " << rd_move.size() << std::endl;
     remove_facts(s_true);
+
+    if (x_move.empty() || (o_move.empty() && otherp != "") || (rd_move.empty() && randp != "")) {
+        std::cerr << "The game is not playable!" << std::endl;
+        exit(1);
+    }
     
-    int reward = -1;
+    int reward = 0;
 
-    if (x_sz > 1 && o_sz > 1) { 
-        std::cerr << "The game is not turn-taking" << std::endl;
-        exit(1);
-    }
+    std::vector<std::string> actions;
+    
+    if (otherp != "" && randp != "") {
+        for (auto &x_mv : x_move) {
+            actions.push_back("does(" + player + "," +  x_mv + ")");
+            int reward1 = 1;
+            for (auto &o_mv : o_move) {
+                actions.push_back("does(" + otherp + "," +  o_mv + ")");
+                int reward2 = 1;
+                for (auto &rd_mv : rd_move) {
+                    actions.push_back("does(" + randp + "," +  rd_mv + ")");
+                    add_facts(actions);
+                    add_facts(s_true);
+                    auto s_next = query_next();
+                    remove_facts(s_true);
+                    remove_facts(actions);
+                    reward2 = std::min(reward2, minimax(depth - 1, s_next, argv));
+                    actions.pop_back();
+                    if (reward2 == 0) {
+                        break;
+                    }
+                }
+                reward1 = std::min(reward1, reward2);
+                actions.pop_back();
 
-    if (x_sz < 1 || o_sz < 1) {
-        std::cerr << "Invalid game description, the game is not playable" << std::endl;
-        exit(1);
-    }
-
-    if (o_sz == 1) {
-        for (auto &move : legal_moves) {
-            
-            add_facts(move);
-            add_facts(s_true);
-            
-            auto s_next = query_next();
-            
-            remove_facts(s_true);
-            remove_facts(move);
-            
-            if (reward == -1) {
-                reward = minimax(depth - 1, s_next, argv);
-            } else {
-                reward = std::max(reward, minimax(depth - 1, s_next, argv));
+                if (reward1 == 0) {
+                    break;
+                }
             }
+
+            actions.pop_back();
+            
+            reward = std::max(reward, reward1);
+            
+            if (reward == 1) break;
+        }
+    } else if (otherp != "") {
+        for (auto &x_mv : x_move) {
+            actions.push_back(std::string("does(" + player + "," +  x_mv + ")"));
+            int reward1 = 1.0;
+            for (auto &o_mv : o_move) {
+                actions.push_back(std::string("does(" + otherp + "," +  o_mv + ")"));
+                add_facts(actions);
+                add_facts(s_true);
+                auto s_next = query_next();
+                remove_facts(s_true);
+                remove_facts(actions);
+                reward1 = std::min(reward1, minimax(depth - 1, s_next, argv));
+                actions.pop_back();
+                
+                if (reward1 == 0) {
+                    break;
+                }
+            }
+
+            actions.pop_back();
+            
+            reward = std::max(reward, reward1);
             
             if (reward == 1) break;
         }
     } else {
-        for (auto &move : legal_moves) {
-            
-            add_facts(move);
-            add_facts(s_true);
-            
-            auto s_next = query_next();
-            
-            remove_facts(s_true);
-            remove_facts(move);
-            
-            if (reward == -1) {
-                reward = minimax(depth - 1, s_next, argv);
-            } else {
-                reward = std::min(reward, minimax(depth - 1, s_next, argv));
+        for (auto &x_mv : x_move) {
+            actions.push_back("does(" + player + "," +  x_mv + ")");
+            int reward2 = 1;
+            for (auto &rd_mv : rd_move) {
+                actions.push_back("does(" + randp + "," +  rd_mv + ")");
+                add_facts(actions);
+                add_facts(s_true);
+                auto s_next = query_next();
+                remove_facts(s_true);
+                remove_facts(actions);
+                reward2 = std::min(reward2, minimax(depth - 1, s_next, argv));
+                actions.pop_back();
+                if (reward2 == 0) break;
             }
+
+            actions.pop_back();
             
-            if (reward == 0) break;
+            reward = std::max(reward, reward2);
+            
+            if (reward == 1) break;
         }
     }
-
 
     if (table.size() >= 1000000) {
         while ((int) table.size() >= 500000) {
@@ -333,7 +346,7 @@ int minimax(int depth, std::vector<std::string> &s_true, char *argv[]) {
     if (table.find(s_true) == table.end()) {
         table[s_true] = std::make_pair(depth, reward);
     } else {
-        if (reward == 1) {
+        if (reward == 1.0) {
             table[s_true] = std::make_pair(depth, reward);
         } else {
             auto entry = table[s_true];
@@ -349,27 +362,54 @@ int minimax(int depth, std::vector<std::string> &s_true, char *argv[]) {
 
 int main(int argc, char *argv[]) {
     if (argc != 4) {
-        std::cerr << "Usage: ./minimax_solver [game prolog file] [player name] [depth]" << std::endl;
+        std::cerr << "Usage: ./minimax_solver [game prolog file] [player_name,adversarial_name,random_name] [depth]" << std::endl;
         exit(1);
     }
+
+    
 
     Plx_initialise(2, argv);
     int depth = atoi(argv[3]);
-    player = std::string(argv[2]);
-    // game description is invalid
-    if (!role_ok()) {
-        std::cerr << player << " not a role or the game is not a 2-player game" << std::endl;
+    std::string tmp;
+    cnt = 0;
+    for (int i = 0 ; i < strlen(argv[2]); ++i) {
+        if (argv[2][i] == ',') {
+            ++cnt;
+            if (cnt == 1) {
+                player = tmp;
+            } else if (cnt == 2) {
+                otherp = tmp;
+            }
+            tmp = "";
+        } else {
+            tmp.push_back(argv[2][i]);
+        }
+    }
+
+    randp = tmp;
+    
+    if (cnt != 2) {
+        std::cerr << "wrong player format! Should be [player,opponent,random] and at least one of opponent and random is not empty" << std::endl;
         exit(1);
     }
 
+    // game description is invalid
+    if (!role_ok()) {
+        std::cerr << "Incorrect role names or the game is not a game with at least 2 players" << std::endl;
+        exit(1);
+    }
+
+    cnt = 0;
     auto s_init = query_init();
-    clock_t start = clock();
+    //clock_t start = clock();
+    auto start = std::chrono::steady_clock::now();
     auto res = minimax(depth, s_init, argv);
-    clock_t end = clock();
-    auto tt = 1.0 * (end - start) / CLOCKS_PER_SEC;
-    printf("Nodes: %d, Time: %.2lfs, nps: %.2lf, TT size: %d\n", iteration, tt, round(1.0 * iteration / tt), remove_state + (int) table.size());
+    //clock_t end = clock();
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> tt = end - start;
+    printf("Nodes: %d, Time: %.2lfs, nps: %.2lf, TT size: %d\n", iteration, tt.count(), round(1.0 * iteration / tt.count()), remove_state + (int) table.size());
     std::cout << std::endl;
-    std::cout << (res ? "SAT" : "UNSAT") << std::endl;
+    std::cout << (res ? "WIN" : "CANNOT WIN") << std::endl;
     PL_halt(0);
     return 0;
 }
