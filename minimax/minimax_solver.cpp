@@ -203,7 +203,11 @@ int minimax(int depth, std::vector<std::string> &s_true, char *argv[]) {
     }
     add_facts(s_true);
     
-    
+    //for (auto &v : s_true) {
+    //    std::cout << v << " ";
+    //}
+    //std::cout << "\n";
+
     ++cnt;
     ++iteration;
     // if (cnt % 1000 == 0) std::cout << iteration << " tt: " << table.size() << " " << add_cnt << " " << remove_cnt << " " << add_cnt - remove_cnt << std::endl;
@@ -211,7 +215,7 @@ int minimax(int depth, std::vector<std::string> &s_true, char *argv[]) {
 
     if (is_terminal()) {
         int rew = get_reward();
-        
+        //std::cout << "terminal!" << std::endl;
         remove_facts(s_true);
         
         if (rew == 100) return 1;
@@ -241,6 +245,18 @@ int minimax(int depth, std::vector<std::string> &s_true, char *argv[]) {
     auto rd_move = std::get<2>(legals);
     //std::cout << x_move.size() << " " << o_move.size() << " " << rd_move.size() << std::endl;
     remove_facts(s_true);
+
+    //std::cout << x_move.size() << " " << o_move.size() << " " << rd_move.size() << std::endl;
+    //for (auto &v : x_move) {
+    //    std::cout << v << " ";
+   // }
+   // std::cout << "\n";
+
+    //for (auto &v : o_move) {
+     //   std::cout << v << " ";
+   // }
+    //std::cout << "\n";
+    
 
     if (x_move.empty() || (o_move.empty() && otherp != "") || (rd_move.empty() && randp != "")) {
         std::cerr << "The game is not playable!" << std::endl;

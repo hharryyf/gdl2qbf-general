@@ -1,0 +1,211 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; GTTT-4x4-2-2 Elly, remove the base proposition blank
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Roles
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(role xplayer)
+(role oplayer)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Base & Input
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(index 1) (index 2) (index 3) (index 4)
+(<= (base (cell ?x ?y x)) (index ?x) (index ?y))
+(<= (base (cell ?x ?y o)) (index ?x) (index ?y))
+(<= (base (control1 ?p)) (role ?p))
+(<= (base (control2 ?p)) (role ?p))
+
+(<= (input ?p (mark ?x ?y)) (index ?x) (index ?y) (role ?p))
+(<= (input ?p noop) (role ?p))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Initial State
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+(init (control1 xplayer))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Dynamic Components
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Cell
+
+(<= (next (cell ?m ?n x))
+(does xplayer (mark ?m ?n)))
+
+(<= (next (cell ?m ?n o))
+(does oplayer (mark ?m ?n)))
+
+(<= (next (cell ?m ?n ?w))
+(true (cell ?m ?n ?w)))
+
+(<= (next (control1 xplayer))
+(true (control2 oplayer)))
+
+(<= (next (control1 oplayer))
+(true (control2 xplayer)))
+
+
+
+(<= (next (control2 xplayer))
+(true (control1 xplayer)))
+
+(<= (next (control2 oplayer))
+(true (control1 oplayer)))
+
+(<= open
+(not (true (cell ?m ?n x)))
+(not (true (cell ?m ?n o)))
+(index ?m)
+(index ?n))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+(<= (legal ?w (mark ?x ?y))
+(not (true (cell ?x ?y x)))
+(not (true (cell ?x ?y o)))
+(true (control1 ?w))
+(index ?x)
+(index ?y))
+
+(<= (legal xplayer noop)
+(true (control1 oplayer)))
+
+(<= (legal oplayer noop)
+(true (control1 xplayer)))
+
+
+(<= (legal ?w (mark ?x ?y))
+(not (true (cell ?x ?y x)))
+(not (true (cell ?x ?y o)))
+(true (control2 ?w))
+(index ?x)
+(index ?y))
+
+(<= (legal xplayer noop)
+(true (control2 oplayer)))
+
+(<= (legal oplayer noop)
+(true (control2 xplayer)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(<= (goal xplayer 100)
+(line x))
+
+(<= (goal xplayer 50)
+(not (line x))
+(not (line o))
+(not open))
+
+(<= (goal xplayer 0)
+(line o))
+
+(<= (goal oplayer 100)
+(line o))
+
+(<= (goal oplayer 50)
+(not (line x))
+(not (line o))
+(not open))
+
+(<= (goal oplayer 0)
+(line x))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(<= terminal
+(line x))
+
+(<= terminal
+(line o))
+
+(<= terminal
+(not open))
+
+(succ 1 2) (succ 2 3) (succ 3 4)
+
+
+
+(<= (line ?x) 
+(true (cell ?x1 ?y1 ?x))
+(true (cell ?x1 ?y2 ?x))
+(true (cell ?x1 ?y3 ?x))
+(true (cell ?x2 ?y1 ?x))
+(succ ?y1 ?y2)
+(succ ?x1 ?x2)
+(succ ?y2 ?y3))
+
+(<= (line ?x) 
+(true (cell ?x1 ?y1 ?x))
+(true (cell ?x1 ?y2 ?x))
+(true (cell ?x1 ?y3 ?x))
+(true (cell ?x2 ?y1 ?x))
+(succ ?y1 ?y2)
+(succ ?x2 ?x1)
+(succ ?y2 ?y3))
+
+(<= (line ?x) 
+(true (cell ?x1 ?y1 ?x))
+(true (cell ?x1 ?y2 ?x))
+(true (cell ?x1 ?y3 ?x))
+(true (cell ?x2 ?y3 ?x))
+(succ ?y1 ?y2)
+(succ ?x1 ?x2)
+(succ ?y2 ?y3))
+
+
+(<= (line ?x) 
+(true (cell ?x1 ?y1 ?x))
+(true (cell ?x1 ?y2 ?x))
+(true (cell ?x1 ?y3 ?x))
+(true (cell ?x2 ?y3 ?x))
+(succ ?y1 ?y2)
+(succ ?x2 ?x1)
+(succ ?y2 ?y3))
+
+
+
+(<= (line ?x) 
+(true (cell ?x1 ?y1 ?x))
+(true (cell ?x2 ?y1 ?x))
+(true (cell ?x3 ?y1 ?x))
+(true (cell ?x1 ?y2 ?x))
+(succ ?y1 ?y2)
+(succ ?x1 ?x2)
+(succ ?x2 ?x3))
+
+(<= (line ?x) 
+(true (cell ?x1 ?y1 ?x))
+(true (cell ?x2 ?y1 ?x))
+(true (cell ?x3 ?y1 ?x))
+(true (cell ?x1 ?y2 ?x))
+(succ ?y2 ?y1)
+(succ ?x1 ?x2)
+(succ ?x2 ?x3))
+
+(<= (line ?x) 
+(true (cell ?x1 ?y1 ?x))
+(true (cell ?x2 ?y1 ?x))
+(true (cell ?x3 ?y1 ?x))
+(true (cell ?x3 ?y2 ?x))
+(succ ?y1 ?y2)
+(succ ?x1 ?x2)
+(succ ?x2 ?x3))
+
+(<= (line ?x) 
+(true (cell ?x1 ?y1 ?x))
+(true (cell ?x2 ?y1 ?x))
+(true (cell ?x3 ?y1 ?x))
+(true (cell ?x3 ?y2 ?x))
+(succ ?y2 ?y1)
+(succ ?x1 ?x2)
+(succ ?x2 ?x3))
+
+

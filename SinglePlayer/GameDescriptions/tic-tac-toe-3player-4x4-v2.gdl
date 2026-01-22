@@ -1,0 +1,168 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Tictactoe 3-player 4x4 board draw means a win for the xplayer, remove the blank base propositions
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Roles
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(role xplayer)
+(role oplayer)
+(role zplayer)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Initial State
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(init (control xplayer))
+
+(succ 1 2)
+(succ 2 3)
+(succ 3 4)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Dynamic Components
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Cell
+
+(<= (next (cell ?m ?n ?s))
+    (does ?p (mark ?m ?n))
+    (sign ?p ?s))
+
+(<= (next (cell ?m ?n ?w))
+    (true (cell ?m ?n ?w)))
+
+(<= (next (control zplayer))
+    (true (control oplayer)))
+
+(<= (next (control oplayer))
+    (true (control xplayer)))
+
+(<= (next (control xplayer))
+    (true (control zplayer)))
+
+(<= (row3 ?m ?x)
+    (true (cell ?m ?a ?x))
+    (succ ?a ?b)
+    (true (cell ?m ?b ?x))
+    (succ ?b ?c)
+    (true (cell ?m ?c ?x)))
+
+(<= (column3 ?n ?x)
+    (true (cell ?a ?n ?x))
+    (succ ?a ?b)
+    (true (cell ?b ?n ?x))
+    (succ ?b ?c)
+    (true (cell ?c ?n ?x)))
+
+(<= (diagonal3 ?x)
+    (true (cell ?a ?k ?x))
+    (succ ?a ?b)
+    (succ ?k ?l)
+    (true (cell ?b ?l ?x))
+    (succ ?b ?c)
+    (succ ?l ?m)
+    (true (cell ?c ?m ?x)))
+
+(<= (diagonal3 ?x)
+    (true (cell ?a ?k ?x))
+    (succ ?b ?a)
+    (succ ?k ?l)
+    (true (cell ?b ?l ?x))
+    (succ ?c ?b)
+    (succ ?l ?m)
+    (true (cell ?c ?m ?x)))
+
+(<= (line3 ?x) (row3 ?m ?x))
+(<= (line3 ?x) (column3 ?m ?x))
+(<= (line3 ?x) (diagonal3 ?x))
+
+(<= open
+    (not (true (cell ?m ?n x)))
+    (not (true (cell ?m ?n o)))
+    (not (true (cell ?m ?n z)))
+    (index ?m)
+    (index ?n))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(<= (legal ?w (mark ?x ?y))
+    (not (true (cell ?x ?y x)))
+    (not (true (cell ?x ?y o)))
+    (not (true (cell ?x ?y z)))
+    (true (control ?w))
+    (index ?x)
+    (index ?y))
+
+(<= (legal ?p noop)
+    (role ?p)
+    (not (true (control ?p))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(<= (goal ?p 100)
+    (role ?p)
+    (sign ?p ?s)
+    (line3 ?s))
+
+(<= (goal xplayer 100)
+    (not (line3 x))
+    (not (line3 o))
+    (not (line3 z))
+    (not open))
+
+(<= (goal oplayer 0)
+    (not (line3 x))
+    (not (line3 o))
+    (not (line3 z))
+    (not open))
+
+(<= (goal zplayer 0)
+    (not (line3 x))
+    (not (line3 o))
+    (not (line3 z))
+    (not open))
+
+
+(<= (goal ?p 0)
+    (role ?p)
+    (sign ?p ?s)
+    (sign ?p1 ?s2)
+    (distinct ?p1 ?p)
+    (line3 ?s2))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(<= terminal
+    (sign ?p ?s)
+    (line3 ?s))
+
+(<= terminal
+    (not open))
+
+(sign xplayer x)
+(sign oplayer o)
+(sign zplayer z)
+
+
+(<= (index ?x)
+    (succ ?x ?y))
+
+(<= (index ?y)
+    (succ ?x ?y))
+
+(<= (base (cell ?m ?n ?s))
+    (index ?m)
+    (index ?n)
+    (sign ?p ?s))
+(<= (base (control ?player))
+    (role ?player))
+
+(<= (input ?w (mark ?x ?y))
+    (role ?w)
+    (index ?x)
+    (index ?y))
+(<= (input ?p noop)
+    (role ?p))
+    
