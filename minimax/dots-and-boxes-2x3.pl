@@ -54,7 +54,7 @@ two_boxes_formed :- box_formed(X1, Y1), box_formed(X2, Y2), Y1 \= Y2.
 
 next(box_count(P, N)) :- true(box_count(P, N)), \+ true(control(P)).
 next(box_count(P, N)) :- true(box_count(P, N)), true(control(P)), \+ any_box_formed.    
-next(box_count(P, NP1)) :- true(box_count(P, N)), true(control(P)), any_box_formed, \+ two_boxes_formed, succ(N, NP1).
+next(box_count(P, NP1)) :- true(box_count(P, N)), true(control(P)), any_box_formed, succ(N, NP1), \+ two_boxes_formed.
 next(box_count(P, NP2)) :- true(box_count(P, N)), true(control(P)), two_boxes_formed, succ(N, NP1), succ(NP1, NP2).
 
 
