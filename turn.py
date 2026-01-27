@@ -16,7 +16,7 @@ def get_o_noop(gamefile, horizon, timeout, player):
             ASP_program += g2.read()
         ASP_program += f'mtdom(1..{horizon}).'
         ASP_program += f'#show legal/3.'
-        ASP_program += f':-  terminated({i}).'
+        ASP_program += f':-  terminated({i-1}).'
         ASP_program += ':-  {' +  f'legal({player}, A, {i}) : input({player}, A)' + '} 1.'
 
         # Control object is a low-level interface for controlling the grounding/solving process.
