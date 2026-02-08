@@ -32,8 +32,6 @@ any_undrawn :- undrawn(X1, Y1, X2, Y2).
 
 legal(P, draw(X1, Y1, X2, Y2)) :- true(control(P)), undrawn(X1, Y1, X2, Y2).
 
-next(line(X1, Y1, X2, Y2)) :- does(P, draw(X1, Y1, X2, Y2)).
-next(line(X1, Y1, X2, Y2)) :- true(line(X1, Y1, X2, Y2)). 
 
 legal(P, noop) :- role(P), \+ true(control(P)).
 
@@ -51,6 +49,10 @@ box_formed(X1, Y1) :- h_drawn(X1, Y2, X2, Y2), true(line(X1, Y1, X1, Y2)), true(
 any_box_formed :- box_formed(X, Y).
 two_boxes_formed :- box_formed(X1, Y1), box_formed(X2, Y2), X1 \= X2.
 two_boxes_formed :- box_formed(X1, Y1), box_formed(X2, Y2), Y1 \= Y2.
+
+next(line(X1, Y1, X2, Y2)) :- does(P, draw(X1, Y1, X2, Y2)).
+next(line(X1, Y1, X2, Y2)) :- true(line(X1, Y1, X2, Y2)). 
+
 
 next(box_count(P, N)) :- true(box_count(P, N)), \+ true(control(P)).
 next(box_count(P, N)) :- true(box_count(P, N)), true(control(P)), \+ any_box_formed.    

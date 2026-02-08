@@ -32,7 +32,7 @@ goal(red, 0) :- not(line(red)), not(line(black)), boardOpen.
 
 goal(red, 0) :- line(black).
 
-goal(black, 100) :- black(red).
+goal(black, 100) :- line(black).
 
 goal(black, 50) :- not(line(red)), not(line(black)), not(boardOpen).
 

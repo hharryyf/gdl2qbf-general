@@ -6,16 +6,20 @@
 std::string player;
 std::string otherp;
 std::string randp;
-
+std::chrono::_V2::steady_clock::time_point start;
+// state -> (minimal depth player can win, maximum depth player cannot win)
+// first depth < second depth
 std::map<std::vector<std::string>, std::pair<int, int>> table;
+int max_depth, min_depth = -1;
 /*
     swipl-ld -goal true -o minimax_solver -ld g++ -g -O minimax_solver.cpp
     
     command line arguments
     ./minimax_solver [game prolog file] [player name] [depth]
 */ 
-int cnt = 0, add_cnt = 0, remove_cnt = 0, iteration = 0, remove_state = 0;
+int add_cnt = 0, remove_cnt = 0, iteration = 0, remove_state = 0;
 bool role_ok() {
+    PlFrame frame;
     PlTermv av(1);
     PlQuery q("role", av);
     std::set<std::string> role;
@@ -38,6 +42,7 @@ bool role_ok() {
 }
 
 std::tuple<std::set<std::string>,std::set<std::string>,std::set<std::string>> get_legal() {
+    PlFrame frame;
     PlTermv av(2);
     PlQuery q("legal", av);
     std::set<std::string> our;
@@ -67,6 +72,7 @@ std::tuple<std::set<std::string>,std::set<std::string>,std::set<std::string>> ge
 }
 
 bool is_terminal() {
+    PlFrame frame;
     PlTermv av(0);
     PlQuery q("terminal", av);
     try {
@@ -84,6 +90,7 @@ bool is_terminal() {
 int get_reward() {
     
     int curr = -1;
+    PlFrame frame;
     PlTermv av(2);
     PlQuery q("goal", av);
     try {
@@ -101,7 +108,7 @@ int get_reward() {
 
 
     if (curr == -1) {
-        printf("bad\n");
+        printf("no goal value\n");
         exit(1);
     }
     return curr;
@@ -110,7 +117,7 @@ int get_reward() {
 std::vector<std::string> query_next() {
     std::vector<std::string> result;
     std::set<std::string> st;
-
+    PlFrame frame;
     PlTermv av(1);
     PlQuery q("next", av);
     
@@ -134,7 +141,7 @@ std::vector<std::string> query_next() {
 std::vector<std::string> query_init() {
     std::vector<std::string> result;
     std::set<std::string> st;
-
+    PlFrame frame;
     PlTermv av(1);
     PlQuery q("init", av);
     
@@ -156,6 +163,7 @@ std::vector<std::string> query_init() {
 }
 
 void add_facts(std::vector<std::string> &facts) {
+    PlFrame frame;
     for (auto &s : facts) {
         //std::cout << "add fact: " << s << std::endl;
         std::string res = "assertz(";
@@ -174,14 +182,13 @@ void add_facts(std::vector<std::string> &facts) {
 }
 
 void remove_facts(std::vector<std::string> &facts) {
+    PlFrame frame;
     for (auto &s : facts) {
-        //std::cout << "remove fact: " << s << std::endl;
         std::string res = "retractall(";
         res.append(s);
         res.append(")");
         try {
             remove_cnt++;
-            //PL_STRINGS_MARK();
             if (!PlCall(res)) {
                 std::cerr << "Error retract!" << std::endl;
             }
@@ -196,21 +203,10 @@ void remove_facts(std::vector<std::string> &facts) {
 }
 
 int minimax(int depth, std::vector<std::string> &s_true, char *argv[]) {
-    if (cnt > 20000) {
-        cnt = 0;
-        Plx_cleanup(1);
-        Plx_initialise(2, argv);
-    }
     add_facts(s_true);
     
-    //for (auto &v : s_true) {
-    //    std::cout << v << " ";
-    //}
-    //std::cout << "\n";
-
-    ++cnt;
+    
     ++iteration;
-    // if (cnt % 1000 == 0) std::cout << iteration << " tt: " << table.size() << " " << add_cnt << " " << remove_cnt << " " << add_cnt - remove_cnt << std::endl;
     
 
     if (is_terminal()) {
@@ -224,12 +220,16 @@ int minimax(int depth, std::vector<std::string> &s_true, char *argv[]) {
 
     if (table.find(s_true) != table.end()) {
         auto entry = table[s_true];
-        if (entry.first >= depth || entry.second == 1) {
-            
+        if (entry.first <= depth) {
             remove_facts(s_true);
-            
-            return entry.second;
+            return 1;
+        } 
+        
+        if (entry.second >= depth) {
+            remove_facts(s_true);
+            return 0;
         }
+        
     }
 
     if (depth == 0) {
@@ -243,20 +243,7 @@ int minimax(int depth, std::vector<std::string> &s_true, char *argv[]) {
     auto x_move = std::get<0>(legals);
     auto o_move = std::get<1>(legals);
     auto rd_move = std::get<2>(legals);
-    //std::cout << x_move.size() << " " << o_move.size() << " " << rd_move.size() << std::endl;
     remove_facts(s_true);
-
-    //std::cout << x_move.size() << " " << o_move.size() << " " << rd_move.size() << std::endl;
-    //for (auto &v : x_move) {
-    //    std::cout << v << " ";
-   // }
-   // std::cout << "\n";
-
-    //for (auto &v : o_move) {
-     //   std::cout << v << " ";
-   // }
-    //std::cout << "\n";
-    
 
     if (x_move.empty() || (o_move.empty() && otherp != "") || (rd_move.empty() && randp != "")) {
         std::cerr << "The game is not playable!" << std::endl;
@@ -304,7 +291,7 @@ int minimax(int depth, std::vector<std::string> &s_true, char *argv[]) {
     } else if (otherp != "") {
         for (auto &x_mv : x_move) {
             actions.push_back(std::string("does(" + player + "," +  x_mv + ")"));
-            int reward1 = 1.0;
+            int reward1 = 1;
             for (auto &o_mv : o_move) {
                 actions.push_back(std::string("does(" + otherp + "," +  o_mv + ")"));
                 add_facts(actions);
@@ -350,25 +337,40 @@ int minimax(int depth, std::vector<std::string> &s_true, char *argv[]) {
         }
     }
 
+    // need to clean up the transposition table to ensure that the memory won't explode
+    // we keep 50% and eliminate 50% 
     if (table.size() >= 1000000) {
-        while ((int) table.size() >= 500000) {
-            auto v = *table.begin();
-            table.erase(v.first);
-        }
-
-        remove_state += 500000;
+        auto now = std::chrono::steady_clock::now();
+        std::chrono::duration<double> tt = now - start;
+        std::cout << "Clean up Transposition Table at iteration " << iteration << " total time elasped: " << tt.count() << std::endl;
+        //remove_state += (int) table.size();
+        //table.clear();
+        int c = 0;
+        auto it = table.begin();
+        while (it != table.end()) {
+            if (rand() % 2 == 0) {
+                it = table.erase(it);
+                remove_state++;
+                c++;
+            } else {
+                ++it;
+            }
+        } 
+        std::cout <<  "Removed " << c << " entries" << std::endl; 
     }
 
     if (table.find(s_true) == table.end()) {
-        table[s_true] = std::make_pair(depth, reward);
-    } else {
-        if (reward == 1.0) {
-            table[s_true] = std::make_pair(depth, reward);
+        if (reward == 1) {
+            table[s_true] = std::make_pair(depth, min_depth);
         } else {
-            auto entry = table[s_true];
-            if (entry.first < depth) {
-                table[s_true] = std::make_pair(depth, reward);
-            }
+            table[s_true] = std::make_pair(max_depth, depth);
+        }
+    } else {
+        auto entry = table[s_true];
+        if (reward == 1) {
+            table[s_true] = std::make_pair(std::min(depth, entry.first), entry.second);
+        } else {
+            table[s_true] = std::make_pair(entry.first, std::max(depth, entry.second));
         }
     }
     
@@ -383,11 +385,11 @@ int main(int argc, char *argv[]) {
     }
 
     
-
     Plx_initialise(2, argv);
     int depth = atoi(argv[3]);
+    srand(0);
     std::string tmp;
-    cnt = 0;
+    int cnt = 0;
     for (int i = 0 ; i < strlen(argv[2]); ++i) {
         if (argv[2][i] == ',') {
             ++cnt;
@@ -418,7 +420,8 @@ int main(int argc, char *argv[]) {
     cnt = 0;
     auto s_init = query_init();
     //clock_t start = clock();
-    auto start = std::chrono::steady_clock::now();
+    start = std::chrono::steady_clock::now();
+    max_depth = depth + 1;
     auto res = minimax(depth, s_init, argv);
     //clock_t end = clock();
     auto end = std::chrono::steady_clock::now();

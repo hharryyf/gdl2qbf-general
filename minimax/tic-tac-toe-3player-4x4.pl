@@ -58,5 +58,5 @@ goal(xplayer, 100) :- \+ line3(x), \+ line3(o), \+ line3(z), \+ open.
 goal(oplayer, 0) :- \+ line3(x), \+ line3(o), \+ line3(z), \+ open.
 goal(zplayer, 0) :- \+ line3(x), \+ line3(o), \+ line3(z), \+ open.
 
-goal(P, 0) :- role(P), sign(P, S), sign(P1, S2), P1 \= P, line3(S2).
+goal(P, 0) :- role(P), line3(S2), sign(P, S), sign(P1, S2), P1 \= P.
 
