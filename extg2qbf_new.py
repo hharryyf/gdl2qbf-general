@@ -157,7 +157,7 @@ def model_adverse(adv, moveL, turns, horizon, fg):
 
 def basic_quantification(xname, filelist):
     cmd = f'clingo --output=smodels {' '.join(filelist)} > encoding_smodels.txt'
-    os.system(f"bash -c '{cmd}'")
+    os.system(f"{cmd}")
     f = open('encoding_smodels.txt', 'r')
     outfile = open('quantification.lp', 'w')
     prefix = []
@@ -197,7 +197,7 @@ def basic_quantification(xname, filelist):
         
 def quantifier_shifting(filelist):
     cmd = f'clingo --output=smodels {' '.join(filelist)} > encoding_smodels.txt'
-    os.system(f"bash -c '{cmd}'")
+    os.system(f"{cmd}")
     f = open('encoding_smodels.txt', 'r')
     outfile = open('quantification.lp', 'a')
     # construct the dependency graph
@@ -397,7 +397,7 @@ if __name__ == '__main__':
     if len(adv) == 0:
         print('The game is a single-player determinstic game!')
         cmd = f'clingo {path} base_encoding.lp'
-        os.system(f"bash -c '{cmd}'")
+        os.system(f"{cmd}")
         exit(0)
     
     filelist = ['base_encoding.lp', path]
@@ -419,7 +419,7 @@ if __name__ == '__main__':
     cmd = f'clingo --output=smodels {' '.join(filelist)} '
     
     cmd += f'| python qasp2qbf.py | lp2normal2 | lp2acyc | lp2sat | python qasp2qbf.py --cnf2qdimacs > {outfile}'
-    os.system(f"bash -c '{cmd}'")
+    os.system(f"{cmd}")
 
     if preprocess == True:
         ps = outfile.split('/')
@@ -427,7 +427,7 @@ if __name__ == '__main__':
         cmd = f'bloqqer  {outfile} > {'/'.join(ps)}'
         print('Bloqqer preprocessing start')
         start = time.time()
-        os.system(f"bash -c '{cmd}'")
+        os.system(f"{cmd}")
         end = time.time()
         print(f'Bloqqer finishes in {round(end - start, 2)}s')
 

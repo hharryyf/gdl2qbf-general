@@ -11,3 +11,4 @@ encoding_smodels.txt
 quantification.lp
 countstat.py
 result.txt
+check_valid.py
