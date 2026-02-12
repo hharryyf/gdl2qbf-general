@@ -1,0 +1,819 @@
+====================Start New Logs==============================
+config: GD | instance: break-through-2x5  | solver: caqe | preprocessor: bloqqer | time: 5
+config: GD | instance: break-through-2x5  | solver: depqbf | preprocessor: bloqqer | time: 5
+config: GD | instance: break-through-3x4  | solver: caqe | preprocessor: bloqqer | time: 7
+config: GD | instance: break-through-3x4  | solver: depqbf | preprocessor: bloqqer | time: 8
+config: GD | instance: break-through-2x6  | solver: caqe | preprocessor: bloqqer | time: 15
+config: GD | instance: break-through-2x6  | solver: depqbf | preprocessor: bloqqer | time: 38
+config: GD | instance: break-through-4x4  | solver: caqe | preprocessor: bloqqer | time: 55
+config: GD | instance: break-through-4x4  | solver: depqbf | preprocessor: bloqqer | time: 89
+config: GD | instance: connect-3-4x4  | solver: caqe | preprocessor: bloqqer | time: 1
+config: GD | instance: connect-3-4x4  | solver: depqbf | preprocessor: bloqqer | time: 1
+config: GD | instance: connect-3-5x5  | solver: caqe | preprocessor: bloqqer | time: 8
+config: GD | instance: connect-3-5x5  | solver: depqbf | preprocessor: bloqqer | time: 10
+config: GD | instance: connect-3-6x6  | solver: caqe | preprocessor: bloqqer | time: 130
+config: GD | instance: connect-3-6x6  | solver: depqbf | preprocessor: bloqqer | time: 311
+config: GD | instance: connect-4-4x4  | solver: caqe | preprocessor: bloqqer | time: 1
+config: GD | instance: connect-4-4x4  | solver: depqbf | preprocessor: bloqqer | time: 1
+config: GD | instance: connect-4-5x4  | solver: caqe | preprocessor: bloqqer | time: 53
+config: GD | instance: connect-4-5x4  | solver: depqbf | preprocessor: bloqqer | time: 68
+config: GD | instance: connect-4-5x5  | solver: caqe | preprocessor: bloqqer | time: 1516
+config: GD | instance: connect-4-5x5  | solver: depqbf | preprocessor: bloqqer | time: > 1800
+config: GD | instance: gttt-4x4-1-1-fatty-v2  | solver: caqe | preprocessor: bloqqer | time: 103
+config: GD | instance: gttt-4x4-1-1-fatty-v2  | solver: depqbf | preprocessor: bloqqer | time: 60
+config: GD | instance: gttt-4x4-1-1-elly-v2  | solver: caqe | preprocessor: bloqqer | time: 711
+config: GD | instance: gttt-4x4-1-1-elly-v2  | solver: depqbf | preprocessor: bloqqer | time: 102
+config: GD | instance: gttt-4x4-1-1-knobby-v2  | solver: caqe | preprocessor: bloqqer | time: 623
+config: GD | instance: gttt-4x4-1-1-knobby-v2  | solver: depqbf | preprocessor: bloqqer | time: 71
+config: GD | instance: gttt-4x4-1-1-skinny-v2  | solver: caqe | preprocessor: bloqqer | time: 1043
+config: GD | instance: gttt-4x4-1-1-skinny-v2  | solver: depqbf | preprocessor: bloqqer | time: 60
+config: GD | instance: gttt-4x4-1-1-tippy-v2  | solver: caqe | preprocessor: bloqqer | time: 179
+config: GD | instance: gttt-4x4-1-1-tippy-v2  | solver: depqbf | preprocessor: bloqqer | time: 48
+config: GD | instance: gttt-4x4-1-1-fatty-v2  | solver: caqe | preprocessor: bloqqer | time: 103
+config: GD | instance: gttt-4x4-1-1-fatty-v2  | solver: depqbf | preprocessor: bloqqer | time: 59
+config: GD | instance: gttt-4x4-2-2-elly-v2  | solver: caqe | preprocessor: bloqqer | time: 33
+config: GD | instance: gttt-4x4-2-2-elly-v2  | solver: depqbf | preprocessor: bloqqer | time: 6
+config: GD | instance: gttt-4x4-2-2-knobby-v2  | solver: caqe | preprocessor: bloqqer | time: 43
+config: GD | instance: gttt-4x4-2-2-knobby-v2  | solver: depqbf | preprocessor: bloqqer | time: 28
+config: GD | instance: gttt-4x4-2-2-skinny-v2  | solver: caqe | preprocessor: bloqqer | time: 390
+config: GD | instance: gttt-4x4-2-2-skinny-v2  | solver: depqbf | preprocessor: bloqqer | time: 61
+config: GD | instance: gttt-4x4-2-2-tippy-v2  | solver: caqe | preprocessor: bloqqer | time: 26
+config: GD | instance: gttt-4x4-2-2-tippy-v2  | solver: depqbf | preprocessor: bloqqer | time: 19
+config: GD | instance: dots-and-boxes-2x2  | solver: caqe | preprocessor: bloqqer | time: 6
+config: GD | instance: dots-and-boxes-2x2  | solver: depqbf | preprocessor: bloqqer | time: 12
+config: GD | instance: dots-and-boxes-2x3  | solver: caqe | preprocessor: bloqqer | time: 128
+config: GD | instance: dots-and-boxes-2x3  | solver: depqbf | preprocessor: bloqqer | time: > 1800
+config: GD | instance: connect-3-3player-4x4  | solver: caqe | preprocessor: bloqqer | time: 3
+config: GD | instance: connect-3-3player-4x4  | solver: depqbf | preprocessor: bloqqer | time: 2
+config: GD | instance: connect-3-3player-5x5  | solver: caqe | preprocessor: bloqqer | time: 180
+config: GD | instance: connect-3-3player-5x5  | solver: depqbf | preprocessor: bloqqer | time: 27
+config: GD | instance: connect-3-3player-6x6  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: GD | instance: connect-3-3player-6x6  | solver: depqbf | preprocessor: bloqqer | time: 129
+config: GD | instance: connect-4-3player-4x4  | solver: caqe | preprocessor: bloqqer | time: 40
+config: GD | instance: connect-4-3player-4x4  | solver: depqbf | preprocessor: bloqqer | time: 18
+config: GD | instance: connect-4-3player-5x4  | solver: caqe | preprocessor: bloqqer | time: 315
+config: GD | instance: connect-4-3player-5x4  | solver: depqbf | preprocessor: bloqqer | time: 717
+config: GD | instance: connect-4-3player-5x5  | solver: caqe | preprocessor: bloqqer | time: 70
+config: GD | instance: connect-4-3player-5x5  | solver: depqbf | preprocessor: bloqqer | time: 23
+config: GD | instance: tic-tac-toe-3player-3x3  | solver: caqe | preprocessor: bloqqer | time: 1
+config: GD | instance: tic-tac-toe-3player-3x3  | solver: depqbf | preprocessor: bloqqer | time: 2
+config: GD | instance: tic-tac-toe-3player-4x4  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: GD | instance: tic-tac-toe-3player-4x4  | solver: depqbf | preprocessor: bloqqer | time: 153
+====================Start New Logs==============================
+config: ND | instance: break-through-2x5  | solver: caqe | preprocessor: bloqqer | time: 5
+config: ND | instance: break-through-2x5  | solver: depqbf | preprocessor: bloqqer | time: 6
+config: ND | instance: break-through-3x4  | solver: caqe | preprocessor: bloqqer | time: 8
+config: ND | instance: break-through-3x4  | solver: depqbf | preprocessor: bloqqer | time: 8
+config: ND | instance: break-through-2x6  | solver: caqe | preprocessor: bloqqer | time: 20
+config: ND | instance: break-through-2x6  | solver: depqbf | preprocessor: bloqqer | time: 58
+config: ND | instance: break-through-4x4  | solver: caqe | preprocessor: bloqqer | time: 49
+config: ND | instance: break-through-4x4  | solver: depqbf | preprocessor: bloqqer | time: 122
+config: ND | instance: connect-3-4x4  | solver: caqe | preprocessor: bloqqer | time: 3
+config: ND | instance: connect-3-4x4  | solver: depqbf | preprocessor: bloqqer | time: 3
+config: ND | instance: connect-3-5x5  | solver: caqe | preprocessor: bloqqer | time: 47
+config: ND | instance: connect-3-5x5  | solver: depqbf | preprocessor: bloqqer | time: 12
+config: ND | instance: connect-3-6x6  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: ND | instance: connect-3-6x6  | solver: depqbf | preprocessor: bloqqer | time: 149
+config: ND | instance: connect-4-4x4  | solver: caqe | preprocessor: bloqqer | time: 3
+config: ND | instance: connect-4-4x4  | solver: depqbf | preprocessor: bloqqer | time: 4
+config: ND | instance: connect-4-5x4  | solver: caqe | preprocessor: bloqqer | time: 62
+config: ND | instance: connect-4-5x4  | solver: depqbf | preprocessor: bloqqer | time: 128
+config: ND | instance: connect-4-5x5  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: ND | instance: connect-4-5x5  | solver: depqbf | preprocessor: bloqqer | time: > 1800
+config: ND | instance: gttt-4x4-1-1-fatty-v2  | solver: caqe | preprocessor: bloqqer | time: 190
+config: ND | instance: gttt-4x4-1-1-fatty-v2  | solver: depqbf | preprocessor: bloqqer | time: 35
+config: ND | instance: gttt-4x4-1-1-elly-v2  | solver: caqe | preprocessor: bloqqer | time: 719
+config: ND | instance: gttt-4x4-1-1-elly-v2  | solver: depqbf | preprocessor: bloqqer | time: 238
+config: ND | instance: gttt-4x4-1-1-knobby-v2  | solver: caqe | preprocessor: bloqqer | time: 297
+config: ND | instance: gttt-4x4-1-1-knobby-v2  | solver: depqbf | preprocessor: bloqqer | time: 146
+config: ND | instance: gttt-4x4-1-1-skinny-v2  | solver: caqe | preprocessor: bloqqer | time: 1173
+config: ND | instance: gttt-4x4-1-1-skinny-v2  | solver: depqbf | preprocessor: bloqqer | time: 59
+config: ND | instance: gttt-4x4-1-1-tippy-v2  | solver: caqe | preprocessor: bloqqer | time: 346
+config: ND | instance: gttt-4x4-1-1-tippy-v2  | solver: depqbf | preprocessor: bloqqer | time: 47
+config: ND | instance: gttt-4x4-2-2-elly-v2  | solver: caqe | preprocessor: bloqqer | time: 15
+config: ND | instance: gttt-4x4-2-2-elly-v2  | solver: depqbf | preprocessor: bloqqer | time: 11
+config: ND | instance: gttt-4x4-2-2-knobby-v2  | solver: caqe | preprocessor: bloqqer | time: 45
+config: ND | instance: gttt-4x4-2-2-knobby-v2  | solver: depqbf | preprocessor: bloqqer | time: 33
+config: ND | instance: gttt-4x4-2-2-skinny-v2  | solver: caqe | preprocessor: bloqqer | time: 224
+config: ND | instance: gttt-4x4-2-2-skinny-v2  | solver: depqbf | preprocessor: bloqqer | time: 55
+config: ND | instance: gttt-4x4-2-2-tippy-v2  | solver: caqe | preprocessor: bloqqer | time: 83
+config: ND | instance: gttt-4x4-2-2-tippy-v2  | solver: depqbf | preprocessor: bloqqer | time: 22
+config: ND | instance: dots-and-boxes-2x2  | solver: caqe | preprocessor: bloqqer | time: 9
+config: ND | instance: dots-and-boxes-2x2  | solver: depqbf | preprocessor: bloqqer | time: 9
+config: ND | instance: dots-and-boxes-2x3  | solver: caqe | preprocessor: bloqqer | time: 262
+config: ND | instance: dots-and-boxes-2x3  | solver: depqbf | preprocessor: bloqqer | time: > 1800
+config: ND | instance: connect-3-3player-4x4  | solver: caqe | preprocessor: bloqqer | time: 3
+config: ND | instance: connect-3-3player-4x4  | solver: depqbf | preprocessor: bloqqer | time: 2
+config: ND | instance: connect-3-3player-5x5  | solver: caqe | preprocessor: bloqqer | time: 137
+config: ND | instance: connect-3-3player-5x5  | solver: depqbf | preprocessor: bloqqer | time: 32
+config: ND | instance: connect-3-3player-6x6  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: ND | instance: connect-3-3player-6x6  | solver: depqbf | preprocessor: bloqqer | time: 1569
+config: ND | instance: connect-4-3player-4x4  | solver: caqe | preprocessor: bloqqer | time: 25
+config: ND | instance: connect-4-3player-4x4  | solver: depqbf | preprocessor: bloqqer | time: 16
+config: ND | instance: connect-4-3player-5x4  | solver: caqe | preprocessor: bloqqer | time: 434
+config: ND | instance: connect-4-3player-5x4  | solver: depqbf | preprocessor: bloqqer | time: 98
+config: ND | instance: connect-4-3player-5x5  | solver: caqe | preprocessor: bloqqer | time: 197
+config: ND | instance: connect-4-3player-5x5  | solver: depqbf | preprocessor: bloqqer | time: 20
+config: ND | instance: tic-tac-toe-3player-3x3  | solver: caqe | preprocessor: bloqqer | time: 1
+config: ND | instance: tic-tac-toe-3player-3x3  | solver: depqbf | preprocessor: bloqqer | time: 1
+config: ND | instance: tic-tac-toe-3player-4x4  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: ND | instance: tic-tac-toe-3player-4x4  | solver: depqbf | preprocessor: bloqqer | time: 194
+config: GB | instance: break-through-2x5  | solver: caqe | preprocessor: bloqqer | time: 43
+config: GB | instance: break-through-2x5  | solver: depqbf | preprocessor: bloqqer | time: 5
+config: GB | instance: break-through-3x4  | solver: caqe | preprocessor: bloqqer | time: 37
+config: GB | instance: break-through-3x4  | solver: depqbf | preprocessor: bloqqer | time: 9
+config: GB | instance: break-through-2x6  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: GB | instance: break-through-2x6  | solver: depqbf | preprocessor: bloqqer | time: 41
+config: GB | instance: break-through-4x4  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: GB | instance: break-through-4x4  | solver: depqbf | preprocessor: bloqqer | time: 118
+config: GB | instance: connect-3-4x4  | solver: caqe | preprocessor: bloqqer | time: 1
+config: GB | instance: connect-3-4x4  | solver: depqbf | preprocessor: bloqqer | time: 1
+config: GB | instance: connect-3-5x5  | solver: caqe | preprocessor: bloqqer | time: 187
+config: GB | instance: connect-3-5x5  | solver: depqbf | preprocessor: bloqqer | time: 15
+config: GB | instance: connect-3-6x6  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: GB | instance: connect-3-6x6  | solver: depqbf | preprocessor: bloqqer | time: 953
+config: GB | instance: connect-4-4x4  | solver: caqe | preprocessor: bloqqer | time: 2
+config: GB | instance: connect-4-4x4  | solver: depqbf | preprocessor: bloqqer | time: 1
+config: GB | instance: connect-4-5x4  | solver: caqe | preprocessor: bloqqer | time: 497
+config: GB | instance: connect-4-5x4  | solver: depqbf | preprocessor: bloqqer | time: 81
+config: GB | instance: connect-4-5x5  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: GB | instance: connect-4-5x5  | solver: depqbf | preprocessor: bloqqer | time: > 1800
+config: GB | instance: gttt-4x4-1-1-fatty-v2  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: GB | instance: gttt-4x4-1-1-fatty-v2  | solver: depqbf | preprocessor: bloqqer | time: 44
+config: GB | instance: gttt-4x4-1-1-elly-v2  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: GB | instance: gttt-4x4-1-1-elly-v2  | solver: depqbf | preprocessor: bloqqer | time: 108
+config: GB | instance: gttt-4x4-1-1-knobby-v2  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: GB | instance: gttt-4x4-1-1-knobby-v2  | solver: depqbf | preprocessor: bloqqer | time: 100
+config: GB | instance: gttt-4x4-1-1-skinny-v2  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: GB | instance: gttt-4x4-1-1-skinny-v2  | solver: depqbf | preprocessor: bloqqer | time: 65
+config: GB | instance: gttt-4x4-1-1-tippy-v2  | solver: caqe | preprocessor: bloqqer | time: 401
+config: GB | instance: gttt-4x4-1-1-tippy-v2  | solver: depqbf | preprocessor: bloqqer | time: 47
+config: GB | instance: gttt-4x4-2-2-elly-v2  | solver: caqe | preprocessor: bloqqer | time: 235
+config: GB | instance: gttt-4x4-2-2-elly-v2  | solver: depqbf | preprocessor: bloqqer | time: 4
+config: GB | instance: gttt-4x4-2-2-knobby-v2  | solver: caqe | preprocessor: bloqqer | time: 99
+config: GB | instance: gttt-4x4-2-2-knobby-v2  | solver: depqbf | preprocessor: bloqqer | time: 3
+config: GB | instance: gttt-4x4-2-2-skinny-v2  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: GB | instance: gttt-4x4-2-2-skinny-v2  | solver: depqbf | preprocessor: bloqqer | time: 28
+config: GB | instance: gttt-4x4-2-2-tippy-v2  | solver: caqe | preprocessor: bloqqer | time: 212
+config: GB | instance: gttt-4x4-2-2-tippy-v2  | solver: depqbf | preprocessor: bloqqer | time: 3
+config: GB | instance: dots-and-boxes-2x2  | solver: caqe | preprocessor: bloqqer | time: 38
+config: GB | instance: dots-and-boxes-2x2  | solver: depqbf | preprocessor: bloqqer | time: 8
+config: GB | instance: dots-and-boxes-2x3  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: GB | instance: dots-and-boxes-2x3  | solver: depqbf | preprocessor: bloqqer | time: > 1800
+config: GB | instance: connect-3-3player-4x4  | solver: caqe | preprocessor: bloqqer | time: 3
+config: GB | instance: connect-3-3player-4x4  | solver: depqbf | preprocessor: bloqqer | time: 2
+config: GB | instance: connect-3-3player-5x5  | solver: caqe | preprocessor: bloqqer | time: 462
+config: GB | instance: connect-3-3player-5x5  | solver: depqbf | preprocessor: bloqqer | time: 13
+config: GB | instance: connect-3-3player-6x6  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: GB | instance: connect-3-3player-6x6  | solver: depqbf | preprocessor: bloqqer | time: 208
+config: GB | instance: connect-4-3player-4x4  | solver: caqe | preprocessor: bloqqer | time: 74
+config: GB | instance: connect-4-3player-4x4  | solver: depqbf | preprocessor: bloqqer | time: 13
+config: GB | instance: connect-4-3player-5x4  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: GB | instance: connect-4-3player-5x4  | solver: depqbf | preprocessor: bloqqer | time: 228
+config: GB | instance: connect-4-3player-5x5  | solver: caqe | preprocessor: bloqqer | time: 160
+config: GB | instance: connect-4-3player-5x5  | solver: depqbf | preprocessor: bloqqer | time: 18
+config: GB | instance: tic-tac-toe-3player-3x3  | solver: caqe | preprocessor: bloqqer | time: 4
+config: GB | instance: tic-tac-toe-3player-3x3  | solver: depqbf | preprocessor: bloqqer | time: 1
+config: GB | instance: tic-tac-toe-3player-4x4  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: GB | instance: tic-tac-toe-3player-4x4  | solver: depqbf | preprocessor: bloqqer | time: 31
+config: NB | instance: break-through-2x5  | solver: caqe | preprocessor: bloqqer | time: 31
+config: NB | instance: break-through-2x5  | solver: depqbf | preprocessor: bloqqer | time: 5
+config: NB | instance: break-through-3x4  | solver: caqe | preprocessor: bloqqer | time: 20
+config: NB | instance: break-through-3x4  | solver: depqbf | preprocessor: bloqqer | time: 8
+config: NB | instance: break-through-2x6  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: NB | instance: break-through-2x6  | solver: depqbf | preprocessor: bloqqer | time: 34
+config: NB | instance: break-through-4x4  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: NB | instance: break-through-4x4  | solver: depqbf | preprocessor: bloqqer | time: 92
+config: NB | instance: connect-3-4x4  | solver: caqe | preprocessor: bloqqer | time: 4
+config: NB | instance: connect-3-4x4  | solver: depqbf | preprocessor: bloqqer | time: 3
+config: NB | instance: connect-3-5x5  | solver: caqe | preprocessor: bloqqer | time: 149
+config: NB | instance: connect-3-5x5  | solver: depqbf | preprocessor: bloqqer | time: 14
+config: NB | instance: connect-3-6x6  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: NB | instance: connect-3-6x6  | solver: depqbf | preprocessor: bloqqer | time: 67
+config: NB | instance: connect-4-4x4  | solver: caqe | preprocessor: bloqqer | time: 5
+config: NB | instance: connect-4-4x4  | solver: depqbf | preprocessor: bloqqer | time: 4
+config: NB | instance: connect-4-5x4  | solver: caqe | preprocessor: bloqqer | time: 548
+config: NB | instance: connect-4-5x4  | solver: depqbf | preprocessor: bloqqer | time: 73
+config: NB | instance: connect-4-5x5  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: NB | instance: connect-4-5x5  | solver: depqbf | preprocessor: bloqqer | time: > 1800
+config: NB | instance: gttt-4x4-1-1-elly-v2  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: NB | instance: gttt-4x4-1-1-elly-v2  | solver: depqbf | preprocessor: bloqqer | time: 190
+config: NB | instance: gttt-4x4-1-1-knobby-v2  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: NB | instance: gttt-4x4-1-1-knobby-v2  | solver: depqbf | preprocessor: bloqqer | time: 78
+config: NB | instance: gttt-4x4-1-1-skinny-v2  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: NB | instance: gttt-4x4-1-1-skinny-v2  | solver: depqbf | preprocessor: bloqqer | time: 72
+config: NB | instance: gttt-4x4-1-1-tippy-v2  | solver: caqe | preprocessor: bloqqer | time: 418
+config: NB | instance: gttt-4x4-1-1-tippy-v2  | solver: depqbf | preprocessor: bloqqer | time: 33
+config: NB | instance: gttt-4x4-1-1-fatty-v2  | solver: caqe | preprocessor: bloqqer | time: 1441
+config: NB | instance: gttt-4x4-1-1-fatty-v2  | solver: depqbf | preprocessor: bloqqer | time: 49
+config: NB | instance: gttt-4x4-2-2-elly-v2  | solver: caqe | preprocessor: bloqqer | time: 111
+config: NB | instance: gttt-4x4-2-2-elly-v2  | solver: depqbf | preprocessor: bloqqer | time: 14
+config: NB | instance: gttt-4x4-2-2-knobby-v2  | solver: caqe | preprocessor: bloqqer | time: 203
+config: NB | instance: gttt-4x4-2-2-knobby-v2  | solver: depqbf | preprocessor: bloqqer | time: 8
+config: NB | instance: gttt-4x4-2-2-skinny-v2  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: NB | instance: gttt-4x4-2-2-skinny-v2  | solver: depqbf | preprocessor: bloqqer | time: 41
+config: NB | instance: gttt-4x4-2-2-tippy-v2  | solver: caqe | preprocessor: bloqqer | time: 61
+config: NB | instance: gttt-4x4-2-2-tippy-v2  | solver: depqbf | preprocessor: bloqqer | time: 6
+config: NB | instance: dots-and-boxes-2x2  | solver: caqe | preprocessor: bloqqer | time: 82
+config: NB | instance: dots-and-boxes-2x2  | solver: depqbf | preprocessor: bloqqer | time: 14
+config: NB | instance: dots-and-boxes-2x3  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: NB | instance: dots-and-boxes-2x3  | solver: depqbf | preprocessor: bloqqer | time: > 1800
+config: NB | instance: connect-3-3player-4x4  | solver: caqe | preprocessor: bloqqer | time: 3
+config: NB | instance: connect-3-3player-4x4  | solver: depqbf | preprocessor: bloqqer | time: 2
+config: NB | instance: connect-3-3player-5x5  | solver: caqe | preprocessor: bloqqer | time: 527
+config: NB | instance: connect-3-3player-5x5  | solver: depqbf | preprocessor: bloqqer | time: 16
+config: NB | instance: connect-3-3player-6x6  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: NB | instance: connect-3-3player-6x6  | solver: depqbf | preprocessor: bloqqer | time: 606
+config: NB | instance: connect-4-3player-4x4  | solver: caqe | preprocessor: bloqqer | time: 82
+config: NB | instance: connect-4-3player-4x4  | solver: depqbf | preprocessor: bloqqer | time: 17
+config: NB | instance: connect-4-3player-5x4  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: NB | instance: connect-4-3player-5x4  | solver: depqbf | preprocessor: bloqqer | time: 425
+config: NB | instance: connect-4-3player-5x5  | solver: caqe | preprocessor: bloqqer | time: 278
+config: NB | instance: connect-4-3player-5x5  | solver: depqbf | preprocessor: bloqqer | time: 20
+config: NB | instance: tic-tac-toe-3player-3x3  | solver: caqe | preprocessor: bloqqer | time: 3
+config: NB | instance: tic-tac-toe-3player-3x3  | solver: depqbf | preprocessor: bloqqer | time: 1
+config: NB | instance: tic-tac-toe-3player-4x4  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: NB | instance: tic-tac-toe-3player-4x4  | solver: depqbf | preprocessor: bloqqer | time: 45
+====================Start New Logs==============================
+config: GD | instance: gttt-4x4-2-2-fatty-v2  | solver: caqe | preprocessor: bloqqer | time: 68
+config: GD | instance: gttt-4x4-2-2-fatty-v2  | solver: depqbf | preprocessor: bloqqer | time: 35
+config: ND | instance: gttt-4x4-2-2-fatty-v2  | solver: caqe | preprocessor: bloqqer | time: 92
+config: ND | instance: gttt-4x4-2-2-fatty-v2  | solver: depqbf | preprocessor: bloqqer | time: 44
+config: GB | instance: gttt-4x4-2-2-fatty-v2  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: GB | instance: gttt-4x4-2-2-fatty-v2  | solver: depqbf | preprocessor: bloqqer | time: 14
+config: NB | instance: gttt-4x4-2-2-fatty-v2  | solver: caqe | preprocessor: bloqqer | time: > 1800
+config: NB | instance: gttt-4x4-2-2-fatty-v2  | solver: depqbf | preprocessor: bloqqer | time: 16
+====================Start New Logs 2026-01-25 21:56:19.508863==============================
+config: GD | instance: break-through-2x5  | solver: depqbf --no-qbce-dynamic | time: 5
+config: GD | instance: break-through-3x4  | solver: depqbf --no-qbce-dynamic | time: 8
+config: GD | instance: break-through-2x6  | solver: depqbf --no-qbce-dynamic | time: 43
+config: GD | instance: break-through-4x4  | solver: depqbf --no-qbce-dynamic | time: 88
+config: GD | instance: connect-3-4x4  | solver: depqbf --no-qbce-dynamic | time: 1
+config: GD | instance: connect-3-5x5  | solver: depqbf --no-qbce-dynamic | time: 8
+config: GD | instance: connect-3-6x6  | solver: depqbf --no-qbce-dynamic | time: 536
+config: GD | instance: connect-4-4x4  | solver: depqbf --no-qbce-dynamic | time: 2
+config: GD | instance: connect-4-5x4  | solver: depqbf --no-qbce-dynamic | time: 107
+====================Start New Logs 2026-02-08 16:06:40.962057==============================
+config: GD | instance: break-through-2x5  | solver: depqbf | preprocessor: bloqqer | time: 6
+config: GD | instance: break-through-2x5  | solver: caqe | preprocessor: bloqqer | time: 5
+====================Start New Logs 2026-02-08 16:07:09.898212==============================
+====================Start New Logs 2026-02-08 16:07:38.119098==============================
+config: GD | instance: connect-4-5x5  | solver: depqbf | preprocessor: bloqqer | time: 678
+config: GD | instance: connect-4-5x5  | solver: caqe | preprocessor: bloqqer | time: 201
+config: ND | instance: connect-4-5x5  | solver: depqbf | preprocessor: bloqqer | time: 673
+config: ND | instance: connect-4-5x5  | solver: caqe | preprocessor: bloqqer | time: 207
+config: GB | instance: connect-4-5x5  | solver: depqbf | preprocessor: bloqqer | time: > 1200
+config: GB | instance: connect-4-5x5  | solver: caqe | preprocessor: bloqqer | time: > 1200
+config: NB | instance: connect-4-5x5  | solver: depqbf | preprocessor: bloqqer | time: > 1200
+config: NB | instance: connect-4-5x5  | solver: caqe | preprocessor: bloqqer | time: > 1200
+
+====================Start New Logs 2026-02-10 16:49:25.139173==============================
+config: GD | instance: break-through-2x5  | preprocessor-only: bloqqer | time: 5
+config: GD | instance: break-through-3x4  | preprocessor-only: bloqqer | time: 7
+config: GD | instance: break-through-2x6  | preprocessor-only: bloqqer | time: 13
+config: GD | instance: break-through-4x4  | preprocessor-only: bloqqer | time: 36
+config: GD | instance: connect-3-4x4  | preprocessor-only: bloqqer | time: 1
+config: GD | instance: connect-3-5x5  | preprocessor-only: bloqqer | time: 4
+config: GD | instance: connect-3-6x6  | preprocessor-only: bloqqer | time: 12
+config: GD | instance: connect-4-4x4  | preprocessor-only: bloqqer | time: 1
+config: GD | instance: connect-4-5x4  | preprocessor-only: bloqqer | time: 1
+config: GD | instance: connect-4-5x5  | preprocessor-only: bloqqer | time: 2
+config: GD | instance: gttt-4x4-1-1-fatty-v2  | preprocessor-only: bloqqer | time: 1
+config: GD | instance: gttt-4x4-1-1-elly-v2  | preprocessor-only: bloqqer | time: 2
+config: GD | instance: gttt-4x4-1-1-knobby-v2  | preprocessor-only: bloqqer | time: 1
+config: GD | instance: gttt-4x4-1-1-skinny-v2  | preprocessor-only: bloqqer | time: 1
+config: GD | instance: gttt-4x4-1-1-tippy-v2  | preprocessor-only: bloqqer | time: 2
+config: GD | instance: gttt-4x4-2-2-fatty-v2  | preprocessor-only: bloqqer | time: 1
+config: GD | instance: gttt-4x4-2-2-elly-v2  | preprocessor-only: bloqqer | time: 2
+config: GD | instance: gttt-4x4-2-2-knobby-v2  | preprocessor-only: bloqqer | time: 1
+config: GD | instance: gttt-4x4-2-2-skinny-v2  | preprocessor-only: bloqqer | time: 1
+config: GD | instance: gttt-4x4-2-2-tippy-v2  | preprocessor-only: bloqqer | time: 2
+config: GD | instance: dots-and-boxes-2x2  | preprocessor-only: bloqqer | time: 1
+config: GD | instance: dots-and-boxes-2x3  | preprocessor-only: bloqqer | time: 4
+config: GD | instance: connect-3-3player-4x4  | preprocessor-only: bloqqer | time: 1
+config: GD | instance: connect-3-3player-5x5  | preprocessor-only: bloqqer | time: 6
+config: GD | instance: connect-3-3player-6x6  | preprocessor-only: bloqqer | time: 22
+config: GD | instance: connect-4-3player-4x4  | preprocessor-only: bloqqer | time: 1
+config: GD | instance: connect-4-3player-5x4  | preprocessor-only: bloqqer | time: 2
+config: GD | instance: connect-4-3player-5x5  | preprocessor-only: bloqqer | time: 4
+config: GD | instance: tic-tac-toe-3player-3x3  | preprocessor-only: bloqqer | time: 1
+config: GD | instance: tic-tac-toe-3player-4x4  | preprocessor-only: bloqqer | time: 8
+config: ND | instance: break-through-2x5  | preprocessor-only: bloqqer | time: 5
+config: ND | instance: break-through-3x4  | preprocessor-only: bloqqer | time: 8
+config: ND | instance: break-through-2x6  | preprocessor-only: bloqqer | time: 15
+config: ND | instance: break-through-4x4  | preprocessor-only: bloqqer | time: 41
+config: ND | instance: connect-3-4x4  | preprocessor-only: bloqqer | time: 3
+config: ND | instance: connect-3-5x5  | preprocessor-only: bloqqer | time: 4
+config: ND | instance: connect-3-6x6  | preprocessor-only: bloqqer | time: 16
+config: ND | instance: connect-4-4x4  | preprocessor-only: bloqqer | time: 3
+config: ND | instance: connect-4-5x4  | preprocessor-only: bloqqer | time: 4
+config: ND | instance: connect-4-5x5  | preprocessor-only: bloqqer | time: 3
+config: ND | instance: gttt-4x4-1-1-fatty-v2  | preprocessor-only: bloqqer | time: 3
+config: ND | instance: gttt-4x4-1-1-elly-v2  | preprocessor-only: bloqqer | time: 4
+config: ND | instance: gttt-4x4-1-1-knobby-v2  | preprocessor-only: bloqqer | time: 4
+config: ND | instance: gttt-4x4-1-1-skinny-v2  | preprocessor-only: bloqqer | time: 3
+config: ND | instance: gttt-4x4-1-1-tippy-v2  | preprocessor-only: bloqqer | time: 4
+config: ND | instance: gttt-4x4-2-2-fatty-v2  | preprocessor-only: bloqqer | time: 3
+config: ND | instance: gttt-4x4-2-2-elly-v2  | preprocessor-only: bloqqer | time: 4
+config: ND | instance: gttt-4x4-2-2-knobby-v2  | preprocessor-only: bloqqer | time: 4
+config: ND | instance: gttt-4x4-2-2-skinny-v2  | preprocessor-only: bloqqer | time: 3
+config: ND | instance: gttt-4x4-2-2-tippy-v2  | preprocessor-only: bloqqer | time: 4
+config: ND | instance: dots-and-boxes-2x2  | preprocessor-only: bloqqer | time: 3
+config: ND | instance: dots-and-boxes-2x3  | preprocessor-only: bloqqer | time: 6
+config: ND | instance: connect-3-3player-4x4  | preprocessor-only: bloqqer | time: 2
+config: ND | instance: connect-3-3player-5x5  | preprocessor-only: bloqqer | time: 7
+config: ND | instance: connect-3-3player-6x6  | preprocessor-only: bloqqer | time: 27
+config: ND | instance: connect-4-3player-4x4  | preprocessor-only: bloqqer | time: 1
+config: ND | instance: connect-4-3player-5x4  | preprocessor-only: bloqqer | time: 5
+config: ND | instance: connect-4-3player-5x5  | preprocessor-only: bloqqer | time: 5
+config: ND | instance: tic-tac-toe-3player-3x3  | preprocessor-only: bloqqer | time: 1
+config: ND | instance: tic-tac-toe-3player-4x4  | preprocessor-only: bloqqer | time: 10
+config: GB | instance: break-through-2x5  | preprocessor-only: bloqqer | time: 4
+config: GB | instance: break-through-3x4  | preprocessor-only: bloqqer | time: 6
+config: GB | instance: break-through-2x6  | preprocessor-only: bloqqer | time: 11
+config: GB | instance: break-through-4x4  | preprocessor-only: bloqqer | time: 33
+config: GB | instance: connect-3-4x4  | preprocessor-only: bloqqer | time: 1
+config: GB | instance: connect-3-5x5  | preprocessor-only: bloqqer | time: 3
+config: GB | instance: connect-3-6x6  | preprocessor-only: bloqqer | time: 9
+config: GB | instance: connect-4-4x4  | preprocessor-only: bloqqer | time: 0
+config: GB | instance: connect-4-5x4  | preprocessor-only: bloqqer | time: 1
+config: GB | instance: connect-4-5x5  | preprocessor-only: bloqqer | time: 2
+config: GB | instance: gttt-4x4-1-1-fatty-v2  | preprocessor-only: bloqqer | time: 1
+config: GB | instance: gttt-4x4-1-1-elly-v2  | preprocessor-only: bloqqer | time: 2
+config: GB | instance: gttt-4x4-1-1-knobby-v2  | preprocessor-only: bloqqer | time: 1
+config: GB | instance: gttt-4x4-1-1-skinny-v2  | preprocessor-only: bloqqer | time: 1
+config: GB | instance: gttt-4x4-1-1-tippy-v2  | preprocessor-only: bloqqer | time: 1
+config: GB | instance: gttt-4x4-2-2-fatty-v2  | preprocessor-only: bloqqer | time: 1
+config: GB | instance: gttt-4x4-2-2-elly-v2  | preprocessor-only: bloqqer | time: 2
+config: GB | instance: gttt-4x4-2-2-knobby-v2  | preprocessor-only: bloqqer | time: 1
+config: GB | instance: gttt-4x4-2-2-skinny-v2  | preprocessor-only: bloqqer | time: 1
+config: GB | instance: gttt-4x4-2-2-tippy-v2  | preprocessor-only: bloqqer | time: 1
+config: GB | instance: dots-and-boxes-2x2  | preprocessor-only: bloqqer | time: 1
+config: GB | instance: dots-and-boxes-2x3  | preprocessor-only: bloqqer | time: 2
+config: GB | instance: connect-3-3player-4x4  | preprocessor-only: bloqqer | time: 1
+config: GB | instance: connect-3-3player-5x5  | preprocessor-only: bloqqer | time: 5
+config: GB | instance: connect-3-3player-6x6  | preprocessor-only: bloqqer | time: 16
+config: GB | instance: connect-4-3player-4x4  | preprocessor-only: bloqqer | time: 1
+config: GB | instance: connect-4-3player-5x4  | preprocessor-only: bloqqer | time: 2
+config: GB | instance: connect-4-3player-5x5  | preprocessor-only: bloqqer | time: 3
+config: GB | instance: tic-tac-toe-3player-3x3  | preprocessor-only: bloqqer | time: 0
+config: GB | instance: tic-tac-toe-3player-4x4  | preprocessor-only: bloqqer | time: 7
+config: NB | instance: break-through-2x5  | preprocessor-only: bloqqer | time: 4
+config: NB | instance: break-through-3x4  | preprocessor-only: bloqqer | time: 7
+config: NB | instance: break-through-2x6  | preprocessor-only: bloqqer | time: 13
+config: NB | instance: break-through-4x4  | preprocessor-only: bloqqer | time: 35
+config: NB | instance: connect-3-4x4  | preprocessor-only: bloqqer | time: 3
+config: NB | instance: connect-3-5x5  | preprocessor-only: bloqqer | time: 3
+config: NB | instance: connect-3-6x6  | preprocessor-only: bloqqer | time: 13
+config: NB | instance: connect-4-4x4  | preprocessor-only: bloqqer | time: 3
+config: NB | instance: connect-4-5x4  | preprocessor-only: bloqqer | time: 3
+config: NB | instance: connect-4-5x5  | preprocessor-only: bloqqer | time: 2
+config: NB | instance: gttt-4x4-1-1-fatty-v2  | preprocessor-only: bloqqer | time: 3
+config: NB | instance: gttt-4x4-1-1-elly-v2  | preprocessor-only: bloqqer | time: 4
+config: NB | instance: gttt-4x4-1-1-knobby-v2  | preprocessor-only: bloqqer | time: 3
+config: NB | instance: gttt-4x4-1-1-skinny-v2  | preprocessor-only: bloqqer | time: 3
+config: NB | instance: gttt-4x4-1-1-tippy-v2  | preprocessor-only: bloqqer | time: 3
+config: NB | instance: gttt-4x4-2-2-fatty-v2  | preprocessor-only: bloqqer | time: 3
+config: NB | instance: gttt-4x4-2-2-elly-v2  | preprocessor-only: bloqqer | time: 4
+config: NB | instance: gttt-4x4-2-2-knobby-v2  | preprocessor-only: bloqqer | time: 3
+config: NB | instance: gttt-4x4-2-2-skinny-v2  | preprocessor-only: bloqqer | time: 3
+config: NB | instance: gttt-4x4-2-2-tippy-v2  | preprocessor-only: bloqqer | time: 3
+config: NB | instance: dots-and-boxes-2x2  | preprocessor-only: bloqqer | time: 3
+config: NB | instance: dots-and-boxes-2x3  | preprocessor-only: bloqqer | time: 5
+config: NB | instance: connect-3-3player-4x4  | preprocessor-only: bloqqer | time: 1
+config: NB | instance: connect-3-3player-5x5  | preprocessor-only: bloqqer | time: 6
+config: NB | instance: connect-3-3player-6x6  | preprocessor-only: bloqqer | time: 22
+config: NB | instance: connect-4-3player-4x4  | preprocessor-only: bloqqer | time: 1
+config: NB | instance: connect-4-3player-5x4  | preprocessor-only: bloqqer | time: 4
+config: NB | instance: connect-4-3player-5x5  | preprocessor-only: bloqqer | time: 4
+config: NB | instance: tic-tac-toe-3player-3x3  | preprocessor-only: bloqqer | time: 1
+config: NB | instance: tic-tac-toe-3player-4x4  | preprocessor-only: bloqqer | time: 8
+config: GD | instance: break-through-2x5  | preprocessor-only: qratpre+ | time: 53
+config: GD | instance: break-through-3x4  | preprocessor-only: qratpre+ | time: 134
+config: GD | instance: break-through-2x6  | preprocessor-only: qratpre+ | time: 359
+config: GD | instance: break-through-4x4  | preprocessor-only: qratpre+ | time: > 1200
+config: GD | instance: connect-3-4x4  | preprocessor-only: qratpre+ | time: 1
+config: GD | instance: connect-3-5x5  | preprocessor-only: qratpre+ | time: 11
+config: GD | instance: connect-3-6x6  | preprocessor-only: qratpre+ | time: 61
+config: GD | instance: connect-4-4x4  | preprocessor-only: qratpre+ | time: 1
+config: GD | instance: connect-4-5x4  | preprocessor-only: qratpre+ | time: 2
+config: GD | instance: connect-4-5x5  | preprocessor-only: qratpre+ | time: 6
+config: GD | instance: gttt-4x4-1-1-fatty-v2  | preprocessor-only: qratpre+ | time: 1
+config: GD | instance: gttt-4x4-1-1-elly-v2  | preprocessor-only: qratpre+ | time: 3
+config: GD | instance: gttt-4x4-1-1-knobby-v2  | preprocessor-only: qratpre+ | time: 1
+config: GD | instance: gttt-4x4-1-1-skinny-v2  | preprocessor-only: qratpre+ | time: 1
+config: GD | instance: gttt-4x4-1-1-tippy-v2  | preprocessor-only: qratpre+ | time: 1
+config: GD | instance: gttt-4x4-2-2-fatty-v2  | preprocessor-only: qratpre+ | time: 1
+config: GD | instance: gttt-4x4-2-2-elly-v2  | preprocessor-only: qratpre+ | time: 3
+config: GD | instance: gttt-4x4-2-2-knobby-v2  | preprocessor-only: qratpre+ | time: 2
+config: GD | instance: gttt-4x4-2-2-skinny-v2  | preprocessor-only: qratpre+ | time: 1
+config: GD | instance: gttt-4x4-2-2-tippy-v2  | preprocessor-only: qratpre+ | time: 2
+config: GD | instance: dots-and-boxes-2x2  | preprocessor-only: qratpre+ | time: 0
+config: GD | instance: dots-and-boxes-2x3  | preprocessor-only: qratpre+ | time: 3
+config: GD | instance: connect-3-3player-4x4  | preprocessor-only: qratpre+ | time: 3
+config: GD | instance: connect-3-3player-5x5  | preprocessor-only: qratpre+ | time: 27
+config: GD | instance: connect-3-3player-6x6  | preprocessor-only: qratpre+ | time: 155
+config: GD | instance: connect-4-3player-4x4  | preprocessor-only: qratpre+ | time: 2
+config: GD | instance: connect-4-3player-5x4  | preprocessor-only: qratpre+ | time: 7
+config: GD | instance: connect-4-3player-5x5  | preprocessor-only: qratpre+ | time: 19
+config: GD | instance: tic-tac-toe-3player-3x3  | preprocessor-only: qratpre+ | time: 4
+config: GD | instance: tic-tac-toe-3player-4x4  | preprocessor-only: qratpre+ | time: 221
+config: ND | instance: break-through-2x5  | preprocessor-only: qratpre+ | time: 53
+config: ND | instance: break-through-3x4  | preprocessor-only: qratpre+ | time: 137
+config: ND | instance: break-through-2x6  | preprocessor-only: qratpre+ | time: 374
+config: ND | instance: break-through-4x4  | preprocessor-only: qratpre+ | time: > 1200
+config: ND | instance: connect-3-4x4  | preprocessor-only: qratpre+ | time: 4
+config: ND | instance: connect-3-5x5  | preprocessor-only: qratpre+ | time: 19
+config: ND | instance: connect-3-6x6  | preprocessor-only: qratpre+ | time: 106
+config: ND | instance: connect-4-4x4  | preprocessor-only: qratpre+ | time: 3
+config: ND | instance: connect-4-5x4  | preprocessor-only: qratpre+ | time: 6
+config: ND | instance: connect-4-5x5  | preprocessor-only: qratpre+ | time: 10
+config: ND | instance: gttt-4x4-1-1-fatty-v2  | preprocessor-only: qratpre+ | time: 3
+config: ND | instance: gttt-4x4-1-1-elly-v2  | preprocessor-only: qratpre+ | time: 7
+config: ND | instance: gttt-4x4-1-1-knobby-v2  | preprocessor-only: qratpre+ | time: 4
+config: ND | instance: gttt-4x4-1-1-skinny-v2  | preprocessor-only: qratpre+ | time: 3
+config: ND | instance: gttt-4x4-1-1-tippy-v2  | preprocessor-only: qratpre+ | time: 4
+config: ND | instance: gttt-4x4-2-2-fatty-v2  | preprocessor-only: qratpre+ | time: 4
+config: ND | instance: gttt-4x4-2-2-elly-v2  | preprocessor-only: qratpre+ | time: 7
+config: ND | instance: gttt-4x4-2-2-knobby-v2  | preprocessor-only: qratpre+ | time: 4
+config: ND | instance: gttt-4x4-2-2-skinny-v2  | preprocessor-only: qratpre+ | time: 3
+config: ND | instance: gttt-4x4-2-2-tippy-v2  | preprocessor-only: qratpre+ | time: 4
+config: ND | instance: dots-and-boxes-2x2  | preprocessor-only: qratpre+ | time: 3
+config: ND | instance: dots-and-boxes-2x3  | preprocessor-only: qratpre+ | time: 7
+config: ND | instance: connect-3-3player-4x4  | preprocessor-only: qratpre+ | time: 4
+config: ND | instance: connect-3-3player-5x5  | preprocessor-only: qratpre+ | time: 35
+config: ND | instance: connect-3-3player-6x6  | preprocessor-only: qratpre+ | time: 208
+config: ND | instance: connect-4-3player-4x4  | preprocessor-only: qratpre+ | time: 3
+config: ND | instance: connect-4-3player-5x4  | preprocessor-only: qratpre+ | time: 12
+config: ND | instance: connect-4-3player-5x5  | preprocessor-only: qratpre+ | time: 29
+config: ND | instance: tic-tac-toe-3player-3x3  | preprocessor-only: qratpre+ | time: 6
+config: ND | instance: tic-tac-toe-3player-4x4  | preprocessor-only: qratpre+ | time: 356
+config: GB | instance: break-through-2x5  | preprocessor-only: qratpre+ | time: 74
+config: GB | instance: break-through-3x4  | preprocessor-only: qratpre+ | time: 193
+config: GB | instance: break-through-2x6  | preprocessor-only: qratpre+ | time: 614
+config: GB | instance: break-through-4x4  | preprocessor-only: qratpre+ | time: > 1200
+config: GB | instance: connect-3-4x4  | preprocessor-only: qratpre+ | time: 1
+config: GB | instance: connect-3-5x5  | preprocessor-only: qratpre+ | time: 9
+config: GB | instance: connect-3-6x6  | preprocessor-only: qratpre+ | time: 59
+config: GB | instance: connect-4-4x4  | preprocessor-only: qratpre+ | time: 1
+config: GB | instance: connect-4-5x4  | preprocessor-only: qratpre+ | time: 3
+config: GB | instance: connect-4-5x5  | preprocessor-only: qratpre+ | time: 6
+config: GB | instance: gttt-4x4-1-1-fatty-v2  | preprocessor-only: qratpre+ | time: 1
+config: GB | instance: gttt-4x4-1-1-elly-v2  | preprocessor-only: qratpre+ | time: 3
+config: GB | instance: gttt-4x4-1-1-knobby-v2  | preprocessor-only: qratpre+ | time: 2
+config: GB | instance: gttt-4x4-1-1-skinny-v2  | preprocessor-only: qratpre+ | time: 1
+config: GB | instance: gttt-4x4-1-1-tippy-v2  | preprocessor-only: qratpre+ | time: 2
+config: GB | instance: gttt-4x4-2-2-fatty-v2  | preprocessor-only: qratpre+ | time: 1
+config: GB | instance: gttt-4x4-2-2-elly-v2  | preprocessor-only: qratpre+ | time: 4
+config: GB | instance: gttt-4x4-2-2-knobby-v2  | preprocessor-only: qratpre+ | time: 2
+config: GB | instance: gttt-4x4-2-2-skinny-v2  | preprocessor-only: qratpre+ | time: 1
+config: GB | instance: gttt-4x4-2-2-tippy-v2  | preprocessor-only: qratpre+ | time: 2
+config: GB | instance: dots-and-boxes-2x2  | preprocessor-only: qratpre+ | time: 0
+config: GB | instance: dots-and-boxes-2x3  | preprocessor-only: qratpre+ | time: 2
+config: GB | instance: connect-3-3player-4x4  | preprocessor-only: qratpre+ | time: 3
+config: GB | instance: connect-3-3player-5x5  | preprocessor-only: qratpre+ | time: 29
+config: GB | instance: connect-3-3player-6x6  | preprocessor-only: qratpre+ | time: 164
+config: GB | instance: connect-4-3player-4x4  | preprocessor-only: qratpre+ | time: 2
+config: GB | instance: connect-4-3player-5x4  | preprocessor-only: qratpre+ | time: 7
+config: GB | instance: connect-4-3player-5x5  | preprocessor-only: qratpre+ | time: 18
+config: GB | instance: tic-tac-toe-3player-3x3  | preprocessor-only: qratpre+ | time: 4
+config: GB | instance: tic-tac-toe-3player-4x4  | preprocessor-only: qratpre+ | time: 343
+config: NB | instance: break-through-2x5  | preprocessor-only: qratpre+ | time: 81
+config: NB | instance: break-through-3x4  | preprocessor-only: qratpre+ | time: 170
+config: NB | instance: break-through-2x6  | preprocessor-only: qratpre+ | time: 538
+config: NB | instance: break-through-4x4  | preprocessor-only: qratpre+ | time: > 1200
+config: NB | instance: connect-3-4x4  | preprocessor-only: qratpre+ | time: 3
+config: NB | instance: connect-3-5x5  | preprocessor-only: qratpre+ | time: 10
+config: NB | instance: connect-3-6x6  | preprocessor-only: qratpre+ | time: 57
+config: NB | instance: connect-4-4x4  | preprocessor-only: qratpre+ | time: 3
+config: NB | instance: connect-4-5x4  | preprocessor-only: qratpre+ | time: 4
+config: NB | instance: connect-4-5x5  | preprocessor-only: qratpre+ | time: 6
+config: NB | instance: gttt-4x4-1-1-fatty-v2  | preprocessor-only: qratpre+ | time: 3
+config: NB | instance: gttt-4x4-1-1-elly-v2  | preprocessor-only: qratpre+ | time: 5
+config: NB | instance: gttt-4x4-1-1-knobby-v2  | preprocessor-only: qratpre+ | time: 4
+config: NB | instance: gttt-4x4-1-1-skinny-v2  | preprocessor-only: qratpre+ | time: 3
+config: NB | instance: gttt-4x4-1-1-tippy-v2  | preprocessor-only: qratpre+ | time: 4
+config: NB | instance: gttt-4x4-2-2-fatty-v2  | preprocessor-only: qratpre+ | time: 3
+config: NB | instance: gttt-4x4-2-2-elly-v2  | preprocessor-only: qratpre+ | time: 6
+config: NB | instance: gttt-4x4-2-2-knobby-v2  | preprocessor-only: qratpre+ | time: 4
+config: NB | instance: gttt-4x4-2-2-skinny-v2  | preprocessor-only: qratpre+ | time: 3
+config: NB | instance: gttt-4x4-2-2-tippy-v2  | preprocessor-only: qratpre+ | time: 4
+config: NB | instance: dots-and-boxes-2x2  | preprocessor-only: qratpre+ | time: 3
+config: NB | instance: dots-and-boxes-2x3  | preprocessor-only: qratpre+ | time: 6
+config: NB | instance: connect-3-3player-4x4  | preprocessor-only: qratpre+ | time: 4
+config: NB | instance: connect-3-3player-5x5  | preprocessor-only: qratpre+ | time: 28
+config: NB | instance: connect-3-3player-6x6  | preprocessor-only: qratpre+ | time: 168
+config: NB | instance: connect-4-3player-4x4  | preprocessor-only: qratpre+ | time: 2
+config: NB | instance: connect-4-3player-5x4  | preprocessor-only: qratpre+ | time: 9
+config: NB | instance: connect-4-3player-5x5  | preprocessor-only: qratpre+ | time: 20
+config: NB | instance: tic-tac-toe-3player-3x3  | preprocessor-only: qratpre+ | time: 4
+config: NB | instance: tic-tac-toe-3player-4x4  | preprocessor-only: qratpre+ | time: 235
+config: GD | instance: break-through-2x5  | preprocessor-only: hqspre | time: 53
+config: GD | instance: break-through-3x4  | preprocessor-only: hqspre | time: 64
+config: GD | instance: break-through-2x6  | preprocessor-only: hqspre | time: 191
+config: GD | instance: break-through-4x4  | preprocessor-only: hqspre | time: Abort
+config: GD | instance: connect-3-4x4  | preprocessor-only: hqspre | time: 36
+config: GD | instance: connect-3-5x5  | preprocessor-only: hqspre | time: 97
+config: GD | instance: connect-3-6x6  | preprocessor-only: hqspre | time: 411
+config: GD | instance: connect-4-4x4  | preprocessor-only: hqspre | time: 33
+config: GD | instance: connect-4-5x4  | preprocessor-only: hqspre | time: 86
+config: GD | instance: connect-4-5x5  | preprocessor-only: hqspre | time: 60
+config: GD | instance: gttt-4x4-1-1-fatty-v2  | preprocessor-only: hqspre | time: 38
+config: GD | instance: gttt-4x4-1-1-elly-v2  | preprocessor-only: hqspre | time: 77
+config: GD | instance: gttt-4x4-1-1-knobby-v2  | preprocessor-only: hqspre | time: Abort
+config: GD | instance: gttt-4x4-1-1-skinny-v2  | preprocessor-only: hqspre | time: 46
+config: GD | instance: gttt-4x4-1-1-tippy-v2  | preprocessor-only: hqspre | time: 38
+config: GD | instance: gttt-4x4-2-2-fatty-v2  | preprocessor-only: hqspre | time: 32
+config: GD | instance: gttt-4x4-2-2-elly-v2  | preprocessor-only: hqspre | time: 39
+config: GD | instance: gttt-4x4-2-2-knobby-v2  | preprocessor-only: hqspre | time: 61
+config: GD | instance: gttt-4x4-2-2-skinny-v2  | preprocessor-only: hqspre | time: 21
+config: GD | instance: gttt-4x4-2-2-tippy-v2  | preprocessor-only: hqspre | time: 53
+config: GD | instance: dots-and-boxes-2x2  | preprocessor-only: hqspre | time: 30
+config: GD | instance: dots-and-boxes-2x3  | preprocessor-only: hqspre | time: 68
+config: GD | instance: connect-3-3player-4x4  | preprocessor-only: hqspre | time: 32
+config: GD | instance: connect-3-3player-5x5  | preprocessor-only: hqspre | time: 97
+config: GD | instance: connect-3-3player-6x6  | preprocessor-only: hqspre | time: 739
+config: GD | instance: connect-4-3player-4x4  | preprocessor-only: hqspre | time: 42
+config: GD | instance: connect-4-3player-5x4  | preprocessor-only: hqspre | time: 71
+config: GD | instance: connect-4-3player-5x5  | preprocessor-only: hqspre | time: 112
+config: GD | instance: tic-tac-toe-3player-3x3  | preprocessor-only: hqspre | time: 10
+config: GD | instance: tic-tac-toe-3player-4x4  | preprocessor-only: hqspre | time: 125
+config: ND | instance: break-through-2x5  | preprocessor-only: hqspre | time: 43
+config: ND | instance: break-through-3x4  | preprocessor-only: hqspre | time: 54
+config: ND | instance: break-through-2x6  | preprocessor-only: hqspre | time: 221
+config: ND | instance: break-through-4x4  | preprocessor-only: hqspre | time: > 1200
+config: ND | instance: connect-3-4x4  | preprocessor-only: hqspre | time: 57
+config: ND | instance: connect-3-5x5  | preprocessor-only: hqspre | time: 123
+config: ND | instance: connect-3-6x6  | preprocessor-only: hqspre | time: 308
+config: ND | instance: connect-4-4x4  | preprocessor-only: hqspre | time: 23
+config: ND | instance: connect-4-5x4  | preprocessor-only: hqspre | time: 62
+config: ND | instance: connect-4-5x5  | preprocessor-only: hqspre | time: 63
+config: ND | instance: gttt-4x4-1-1-fatty-v2  | preprocessor-only: hqspre | time: 37
+config: ND | instance: gttt-4x4-1-1-elly-v2  | preprocessor-only: hqspre | time: 56
+config: ND | instance: gttt-4x4-1-1-knobby-v2  | preprocessor-only: hqspre | time: 120
+config: ND | instance: gttt-4x4-1-1-skinny-v2  | preprocessor-only: hqspre | time: 53
+config: ND | instance: gttt-4x4-1-1-tippy-v2  | preprocessor-only: hqspre | time: 68
+config: ND | instance: gttt-4x4-2-2-fatty-v2  | preprocessor-only: hqspre | time: 32
+config: ND | instance: gttt-4x4-2-2-elly-v2  | preprocessor-only: hqspre | time: 82
+config: ND | instance: gttt-4x4-2-2-knobby-v2  | preprocessor-only: hqspre | time: 43
+config: ND | instance: gttt-4x4-2-2-skinny-v2  | preprocessor-only: hqspre | time: 21
+config: ND | instance: gttt-4x4-2-2-tippy-v2  | preprocessor-only: hqspre | time: 133
+config: ND | instance: dots-and-boxes-2x2  | preprocessor-only: hqspre | time: 45
+config: ND | instance: dots-and-boxes-2x3  | preprocessor-only: hqspre | time: 55
+config: ND | instance: connect-3-3player-4x4  | preprocessor-only: hqspre | time: 42
+config: ND | instance: connect-3-3player-5x5  | preprocessor-only: hqspre | time: 269
+config: ND | instance: connect-3-3player-6x6  | preprocessor-only: hqspre | time: 888
+config: ND | instance: connect-4-3player-4x4  | preprocessor-only: hqspre | time: 33
+config: ND | instance: connect-4-3player-5x4  | preprocessor-only: hqspre | time: 57
+config: ND | instance: connect-4-3player-5x5  | preprocessor-only: hqspre | time: 151
+config: ND | instance: tic-tac-toe-3player-3x3  | preprocessor-only: hqspre | time: 13
+config: ND | instance: tic-tac-toe-3player-4x4  | preprocessor-only: hqspre | time: 227
+config: GB | instance: break-through-2x5  | preprocessor-only: hqspre | time: 83
+config: GB | instance: break-through-3x4  | preprocessor-only: hqspre | time: 126
+config: GB | instance: break-through-2x6  | preprocessor-only: hqspre | time: 696
+config: GB | instance: break-through-4x4  | preprocessor-only: hqspre | time: > 1200
+config: GB | instance: connect-3-4x4  | preprocessor-only: hqspre | time: 102
+config: GB | instance: connect-3-5x5  | preprocessor-only: hqspre | time: 468
+config: GB | instance: connect-3-6x6  | preprocessor-only: hqspre | time: > 1200
+config: GB | instance: connect-4-4x4  | preprocessor-only: hqspre | time: 34
+config: GB | instance: connect-4-5x4  | preprocessor-only: hqspre | time: 208
+config: GB | instance: connect-4-5x5  | preprocessor-only: hqspre | time: 242
+config: GB | instance: gttt-4x4-1-1-fatty-v2  | preprocessor-only: hqspre | time: 32
+config: GB | instance: gttt-4x4-1-1-elly-v2  | preprocessor-only: hqspre | time: 44
+config: GB | instance: gttt-4x4-1-1-knobby-v2  | preprocessor-only: hqspre | time: 136
+config: GB | instance: gttt-4x4-1-1-skinny-v2  | preprocessor-only: hqspre | time: 45
+config: GB | instance: gttt-4x4-1-1-tippy-v2  | preprocessor-only: hqspre | time: 111
+config: GB | instance: gttt-4x4-2-2-fatty-v2  | preprocessor-only: hqspre | time: 23
+config: GB | instance: gttt-4x4-2-2-elly-v2  | preprocessor-only: hqspre | time: 27
+config: GB | instance: gttt-4x4-2-2-knobby-v2  | preprocessor-only: hqspre | time: 93
+config: GB | instance: gttt-4x4-2-2-skinny-v2  | preprocessor-only: hqspre | time: 17
+config: GB | instance: gttt-4x4-2-2-tippy-v2  | preprocessor-only: hqspre | time: 36
+config: GB | instance: dots-and-boxes-2x2  | preprocessor-only: hqspre | time: 43
+config: GB | instance: dots-and-boxes-2x3  | preprocessor-only: hqspre | time: 91
+config: GB | instance: connect-3-3player-4x4  | preprocessor-only: hqspre | time: 131
+config: GB | instance: connect-3-3player-5x5  | preprocessor-only: hqspre | time: 354
+config: GB | instance: connect-3-3player-6x6  | preprocessor-only: hqspre | time: 536
+config: GB | instance: connect-4-3player-4x4  | preprocessor-only: hqspre | time: 72
+config: GB | instance: connect-4-3player-5x4  | preprocessor-only: hqspre | time: 111
+config: GB | instance: connect-4-3player-5x5  | preprocessor-only: hqspre | time: 430
+config: GB | instance: tic-tac-toe-3player-3x3  | preprocessor-only: hqspre | time: 14
+config: GB | instance: tic-tac-toe-3player-4x4  | preprocessor-only: hqspre | time: 233
+config: NB | instance: break-through-2x5  | preprocessor-only: hqspre | time: 93
+config: NB | instance: break-through-3x4  | preprocessor-only: hqspre | time: 252
+config: NB | instance: break-through-2x6  | preprocessor-only: hqspre | time: 1043
+config: NB | instance: break-through-4x4  | preprocessor-only: hqspre | time: > 1200
+config: NB | instance: connect-3-4x4  | preprocessor-only: hqspre | time: 121
+config: NB | instance: connect-3-5x5  | preprocessor-only: hqspre | time: 531
+config: NB | instance: connect-3-6x6  | preprocessor-only: hqspre | time: > 1200
+config: NB | instance: connect-4-4x4  | preprocessor-only: hqspre | time: 55
+config: NB | instance: connect-4-5x4  | preprocessor-only: hqspre | time: 102
+config: NB | instance: connect-4-5x5  | preprocessor-only: hqspre | time: 190
+config: NB | instance: gttt-4x4-1-1-fatty-v2  | preprocessor-only: hqspre | time: 26
+config: NB | instance: gttt-4x4-1-1-elly-v2  | preprocessor-only: hqspre | time: 39
+config: NB | instance: gttt-4x4-1-1-knobby-v2  | preprocessor-only: hqspre | time: 102
+config: NB | instance: gttt-4x4-1-1-skinny-v2  | preprocessor-only: hqspre | time: 35
+config: NB | instance: gttt-4x4-1-1-tippy-v2  | preprocessor-only: hqspre | time: 110
+config: NB | instance: gttt-4x4-2-2-fatty-v2  | preprocessor-only: hqspre | time: 26
+config: NB | instance: gttt-4x4-2-2-elly-v2  | preprocessor-only: hqspre | time: 32
+config: NB | instance: gttt-4x4-2-2-knobby-v2  | preprocessor-only: hqspre | time: 93
+config: NB | instance: gttt-4x4-2-2-skinny-v2  | preprocessor-only: hqspre | time: 17
+config: NB | instance: gttt-4x4-2-2-tippy-v2  | preprocessor-only: hqspre | time: 35
+config: NB | instance: dots-and-boxes-2x2  | preprocessor-only: hqspre | time: 67
+config: NB | instance: dots-and-boxes-2x3  | preprocessor-only: hqspre | time: 84
+config: NB | instance: connect-3-3player-4x4  | preprocessor-only: hqspre | time: 105
+config: NB | instance: connect-3-3player-5x5  | preprocessor-only: hqspre | time: 419
+config: NB | instance: connect-3-3player-6x6  | preprocessor-only: hqspre | time: > 1200
+config: NB | instance: connect-4-3player-4x4  | preprocessor-only: hqspre | time: 75
+config: NB | instance: connect-4-3player-5x4  | preprocessor-only: hqspre | time: 133
+config: NB | instance: connect-4-3player-5x5  | preprocessor-only: hqspre | time: 443
+config: NB | instance: tic-tac-toe-3player-3x3  | preprocessor-only: hqspre | time: 13
+config: NB | instance: tic-tac-toe-3player-4x4  | preprocessor-only: hqspre | time: 243
+====================Start New Logs 2026-02-11 08:42:05.943510==============================
+config: GD | instance: break-through-2x5  | solver: caqe | preprocessor: hqspre | time: 64
+config: ND | instance: break-through-2x5  | solver: caqe | preprocessor: hqspre | time: 71
+config: GB | instance: break-through-2x5  | solver: caqe | preprocessor: hqspre | time: 300
+config: NB | instance: break-through-2x5  | solver: caqe | preprocessor: hqspre | time: 283
+config: GD | instance: break-through-3x4  | solver: caqe | preprocessor: hqspre | time: 78
+config: ND | instance: break-through-3x4  | solver: caqe | preprocessor: hqspre | time: 94
+config: GB | instance: break-through-3x4  | solver: caqe | preprocessor: hqspre | time: 298
+config: NB | instance: break-through-3x4  | solver: caqe | preprocessor: hqspre | time: 394
+config: GD | instance: break-through-2x6  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: ND | instance: break-through-2x6  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GB | instance: break-through-2x6  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: NB | instance: break-through-2x6  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GD | instance: break-through-4x4  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: ND | instance: break-through-4x4  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GB | instance: break-through-4x4  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: NB | instance: break-through-4x4  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GD | instance: connect-3-4x4  | solver: caqe | preprocessor: hqspre | time: 37
+config: ND | instance: connect-3-4x4  | solver: caqe | preprocessor: hqspre | time: 58
+config: GB | instance: connect-3-4x4  | solver: caqe | preprocessor: hqspre | time: 105
+config: NB | instance: connect-3-4x4  | solver: caqe | preprocessor: hqspre | time: 123
+config: GD | instance: connect-3-5x5  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: ND | instance: connect-3-5x5  | solver: caqe | preprocessor: hqspre | time: 254
+config: GB | instance: connect-3-5x5  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: NB | instance: connect-3-5x5  | solver: caqe | preprocessor: hqspre | time: 894
+config: GD | instance: connect-3-6x6  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: ND | instance: connect-3-6x6  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GB | instance: connect-3-6x6  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: NB | instance: connect-3-6x6  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GD | instance: connect-4-4x4  | solver: caqe | preprocessor: hqspre | time: 33
+config: ND | instance: connect-4-4x4  | solver: caqe | preprocessor: hqspre | time: 24
+config: GB | instance: connect-4-4x4  | solver: caqe | preprocessor: hqspre | time: 37
+config: NB | instance: connect-4-4x4  | solver: caqe | preprocessor: hqspre | time: 57
+config: GD | instance: connect-4-5x4  | solver: caqe | preprocessor: hqspre | time: 433
+config: ND | instance: connect-4-5x4  | solver: caqe | preprocessor: hqspre | time: 520
+config: GB | instance: connect-4-5x4  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: NB | instance: connect-4-5x4  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GD | instance: connect-4-5x5  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: ND | instance: connect-4-5x5  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GB | instance: connect-4-5x5  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: NB | instance: connect-4-5x5  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GD | instance: gttt-4x4-1-1-fatty-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: ND | instance: gttt-4x4-1-1-fatty-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GB | instance: gttt-4x4-1-1-fatty-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: NB | instance: gttt-4x4-1-1-fatty-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GD | instance: gttt-4x4-1-1-elly-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: ND | instance: gttt-4x4-1-1-elly-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GB | instance: gttt-4x4-1-1-elly-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: NB | instance: gttt-4x4-1-1-elly-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GD | instance: gttt-4x4-1-1-knobby-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: ND | instance: gttt-4x4-1-1-knobby-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GB | instance: gttt-4x4-1-1-knobby-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: NB | instance: gttt-4x4-1-1-knobby-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GD | instance: gttt-4x4-1-1-skinny-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: ND | instance: gttt-4x4-1-1-skinny-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GB | instance: gttt-4x4-1-1-skinny-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: NB | instance: gttt-4x4-1-1-skinny-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GD | instance: gttt-4x4-1-1-tippy-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: ND | instance: gttt-4x4-1-1-tippy-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GB | instance: gttt-4x4-1-1-tippy-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: NB | instance: gttt-4x4-1-1-tippy-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GD | instance: gttt-4x4-2-2-fatty-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: ND | instance: gttt-4x4-2-2-fatty-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GB | instance: gttt-4x4-2-2-fatty-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: NB | instance: gttt-4x4-2-2-fatty-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GD | instance: gttt-4x4-2-2-elly-v2  | solver: caqe | preprocessor: hqspre | time: 994
+config: ND | instance: gttt-4x4-2-2-elly-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GB | instance: gttt-4x4-2-2-elly-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: NB | instance: gttt-4x4-2-2-elly-v2  | solver: caqe | preprocessor: hqspre | time: 772
+config: GD | instance: gttt-4x4-2-2-knobby-v2  | solver: caqe | preprocessor: hqspre | time: 1140
+config: ND | instance: gttt-4x4-2-2-knobby-v2  | solver: caqe | preprocessor: hqspre | time: 1055
+config: GB | instance: gttt-4x4-2-2-knobby-v2  | solver: caqe | preprocessor: hqspre | time: 625
+config: NB | instance: gttt-4x4-2-2-knobby-v2  | solver: caqe | preprocessor: hqspre | time: 647
+config: GD | instance: gttt-4x4-2-2-skinny-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: ND | instance: gttt-4x4-2-2-skinny-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GB | instance: gttt-4x4-2-2-skinny-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: NB | instance: gttt-4x4-2-2-skinny-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GD | instance: gttt-4x4-2-2-tippy-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: ND | instance: gttt-4x4-2-2-tippy-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GB | instance: gttt-4x4-2-2-tippy-v2  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: NB | instance: gttt-4x4-2-2-tippy-v2  | solver: caqe | preprocessor: hqspre | time: 424
+config: GD | instance: dots-and-boxes-2x2  | solver: caqe | preprocessor: hqspre | time: 265
+config: ND | instance: dots-and-boxes-2x2  | solver: caqe | preprocessor: hqspre | time: 518
+config: GB | instance: dots-and-boxes-2x2  | solver: caqe | preprocessor: hqspre | time: 278
+config: NB | instance: dots-and-boxes-2x2  | solver: caqe | preprocessor: hqspre | time: 324
+config: GD | instance: dots-and-boxes-2x3  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: ND | instance: dots-and-boxes-2x3  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GB | instance: dots-and-boxes-2x3  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: NB | instance: dots-and-boxes-2x3  | solver: caqe | preprocessor: hqspre | time: > 1200
+
+====================Start New Logs 2026-02-12 12:45:27.267099==============================
+config: GD | instance: connect-3-3player-4x4  | solver: caqe | preprocessor: hqspre | time: 40
+config: ND | instance: connect-3-3player-4x4  | solver: caqe | preprocessor: hqspre | time: 49
+config: GB | instance: connect-3-3player-4x4  | solver: caqe | preprocessor: hqspre | time: 137
+config: NB | instance: connect-3-3player-4x4  | solver: caqe | preprocessor: hqspre | time: 109
+config: GD | instance: connect-3-3player-5x5  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: ND | instance: connect-3-3player-5x5  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GB | instance: connect-3-3player-5x5  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: NB | instance: connect-3-3player-5x5  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GD | instance: connect-3-3player-6x6  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: ND | instance: connect-3-3player-6x6  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GB | instance: connect-3-3player-6x6  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: NB | instance: connect-3-3player-6x6  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GD | instance: connect-4-3player-4x4  | solver: caqe | preprocessor: hqspre | time: 231
+config: ND | instance: connect-4-3player-4x4  | solver: caqe | preprocessor: hqspre | time: 649
+config: GB | instance: connect-4-3player-4x4  | solver: caqe | preprocessor: hqspre | time: 439
+config: NB | instance: connect-4-3player-4x4  | solver: caqe | preprocessor: hqspre | time: 417
+config: GD | instance: connect-4-3player-5x4  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: ND | instance: connect-4-3player-5x4  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GB | instance: connect-4-3player-5x4  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: NB | instance: connect-4-3player-5x4  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GD | instance: connect-4-3player-5x5  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: ND | instance: connect-4-3player-5x5  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GB | instance: connect-4-3player-5x5  | solver: caqe | preprocessor: hqspre | time: 1069
+config: NB | instance: connect-4-3player-5x5  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GD | instance: tic-tac-toe-3player-3x3  | solver: caqe | preprocessor: hqspre | time: 11
+config: ND | instance: tic-tac-toe-3player-3x3  | solver: caqe | preprocessor: hqspre | time: 13
+config: GB | instance: tic-tac-toe-3player-3x3  | solver: caqe | preprocessor: hqspre | time: 18
+config: NB | instance: tic-tac-toe-3player-3x3  | solver: caqe | preprocessor: hqspre | time: 14
+config: GD | instance: tic-tac-toe-3player-4x4  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: ND | instance: tic-tac-toe-3player-4x4  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GB | instance: tic-tac-toe-3player-4x4  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: NB | instance: tic-tac-toe-3player-4x4  | solver: caqe | preprocessor: hqspre | time: > 1200
+config: GD | instance: break-through-2x5  | solver: caqe | preprocessor: qratpre+ | time: 54
+config: ND | instance: break-through-2x5  | solver: caqe | preprocessor: qratpre+ | time: 54
+config: GB | instance: break-through-2x5  | solver: caqe | preprocessor: qratpre+ | time: 160
+config: NB | instance: break-through-2x5  | solver: caqe | preprocessor: qratpre+ | time: 167
+config: GD | instance: break-through-3x4  | solver: caqe | preprocessor: qratpre+ | time: 136
+config: ND | instance: break-through-3x4  | solver: caqe | preprocessor: qratpre+ | time: 139
+config: GB | instance: break-through-3x4  | solver: caqe | preprocessor: qratpre+ | time: 267
+config: NB | instance: break-through-3x4  | solver: caqe | preprocessor: qratpre+ | time: 234
+config: GD | instance: break-through-2x6  | solver: caqe | preprocessor: qratpre+ | time: 389
+config: ND | instance: break-through-2x6  | solver: caqe | preprocessor: qratpre+ | time: 389
+config: GB | instance: break-through-2x6  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: NB | instance: break-through-2x6  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: GD | instance: break-through-4x4  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: ND | instance: break-through-4x4  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: GB | instance: break-through-4x4  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: NB | instance: break-through-4x4  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: GD | instance: connect-3-4x4  | solver: caqe | preprocessor: qratpre+ | time: 1
+config: ND | instance: connect-3-4x4  | solver: caqe | preprocessor: qratpre+ | time: 4
+config: GB | instance: connect-3-4x4  | solver: caqe | preprocessor: qratpre+ | time: 2
+config: NB | instance: connect-3-4x4  | solver: caqe | preprocessor: qratpre+ | time: 4
+config: GD | instance: connect-3-5x5  | solver: caqe | preprocessor: qratpre+ | time: 56
+config: ND | instance: connect-3-5x5  | solver: caqe | preprocessor: qratpre+ | time: 56
+config: GB | instance: connect-3-5x5  | solver: caqe | preprocessor: qratpre+ | time: 1161
+config: NB | instance: connect-3-5x5  | solver: caqe | preprocessor: qratpre+ | time: 662
+config: GD | instance: connect-3-6x6  | solver: caqe | preprocessor: qratpre+ | time: 1135
+config: ND | instance: connect-3-6x6  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: GB | instance: connect-3-6x6  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: NB | instance: connect-3-6x6  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: GD | instance: connect-4-4x4  | solver: caqe | preprocessor: qratpre+ | time: 1
+config: ND | instance: connect-4-4x4  | solver: caqe | preprocessor: qratpre+ | time: 3
+config: GB | instance: connect-4-4x4  | solver: caqe | preprocessor: qratpre+ | time: 5
+config: NB | instance: connect-4-4x4  | solver: caqe | preprocessor: qratpre+ | time: 7
+config: GD | instance: connect-4-5x4  | solver: caqe | preprocessor: qratpre+ | time: 34
+config: ND | instance: connect-4-5x4  | solver: caqe | preprocessor: qratpre+ | time: 39
+config: GB | instance: connect-4-5x4  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: NB | instance: connect-4-5x4  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: GD | instance: connect-4-5x5  | solver: caqe | preprocessor: qratpre+ | time: 208
+config: ND | instance: connect-4-5x5  | solver: caqe | preprocessor: qratpre+ | time: 213
+config: GB | instance: connect-4-5x5  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: NB | instance: connect-4-5x5  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: GD | instance: gttt-4x4-1-1-fatty-v2  | solver: caqe | preprocessor: qratpre+ | time: 248
+config: ND | instance: gttt-4x4-1-1-fatty-v2  | solver: caqe | preprocessor: qratpre+ | time: 270
+config: GB | instance: gttt-4x4-1-1-fatty-v2  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: NB | instance: gttt-4x4-1-1-fatty-v2  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: GD | instance: gttt-4x4-1-1-elly-v2  | solver: caqe | preprocessor: qratpre+ | time: 359
+config: ND | instance: gttt-4x4-1-1-elly-v2  | solver: caqe | preprocessor: qratpre+ | time: 201
+config: GB | instance: gttt-4x4-1-1-elly-v2  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: NB | instance: gttt-4x4-1-1-elly-v2  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: GD | instance: gttt-4x4-1-1-knobby-v2  | solver: caqe | preprocessor: qratpre+ | time: 271
+config: ND | instance: gttt-4x4-1-1-knobby-v2  | solver: caqe | preprocessor: qratpre+ | time: 349
+config: GB | instance: gttt-4x4-1-1-knobby-v2  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: NB | instance: gttt-4x4-1-1-knobby-v2  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: GD | instance: gttt-4x4-1-1-skinny-v2  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: ND | instance: gttt-4x4-1-1-skinny-v2  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: GB | instance: gttt-4x4-1-1-skinny-v2  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: NB | instance: gttt-4x4-1-1-skinny-v2  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: GD | instance: gttt-4x4-1-1-tippy-v2  | solver: caqe | preprocessor: qratpre+ | time: 168
+config: ND | instance: gttt-4x4-1-1-tippy-v2  | solver: caqe | preprocessor: qratpre+ | time: 148
+config: GB | instance: gttt-4x4-1-1-tippy-v2  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: NB | instance: gttt-4x4-1-1-tippy-v2  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: GD | instance: gttt-4x4-2-2-fatty-v2  | solver: caqe | preprocessor: qratpre+ | time: 397
+config: ND | instance: gttt-4x4-2-2-fatty-v2  | solver: caqe | preprocessor: qratpre+ | time: 277
+config: GB | instance: gttt-4x4-2-2-fatty-v2  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: NB | instance: gttt-4x4-2-2-fatty-v2  | solver: caqe | preprocessor: qratpre+ | time: > 1200
+config: GD | instance: gttt-4x4-2-2-elly-v2  | solver: caqe | preprocessor: qratpre+ | time: 22
+config: ND | instance: gttt-4x4-2-2-elly-v2  | solver: caqe | preprocessor: qratpre+ | time: 15

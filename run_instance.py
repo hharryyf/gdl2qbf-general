@@ -3,10 +3,10 @@ import time
 import datetime
 
 dir = ['GD', 'ND', 'GB', 'NB']
-solvers = ['caqe', 'depqbf', 'qute']
-preprocessors = ['bloqqer', 'hqspre', 'qratpre+']
+solvers = ['caqe', 'depqbf']
+preprocessors = ['bloqqer', 'hqspre', 'qratpre+', 'no']
 
-preprefix = {'bloqqer':'bloq', 'hqspre': 'hqs', 'qratpre+': 'qrat'}
+preprefix = {'bloqqer':'bloq_', 'hqspre': 'hqs_', 'qratpre+': 'qrat_', 'no': ''}
 
 blacklist = set()
 
@@ -112,7 +112,9 @@ for sol in solvers:
                 if (config, inst, sol, pre) in blacklist:
                     print('skip', (config, inst, pre, sol))
                 else:
-                    used = pretime[pre][inst][con]
+                    used = 0
+                    if pre != 'no':
+                        used = pretime[pre][inst][config]
                     if used == -1:
                         print(f'{sol} start solving {inst}, with preprocessor {pre} and time limit -1, skip')
                         print(f'config: {config} | instance: {inst}  | solver: {sol} | preprocessor: {pre} | time: > 1200', file=f)
@@ -121,12 +123,12 @@ for sol in solvers:
                         print(f'{sol} start solving {inst}, with preprocessor {pre} and time limit {T}')
                         start = time.time()
                         try:
-                            subprocess.run([sol, f'instances/{config}/{preprefix[pre]}_{inst}.qdimacs'],  start_new_session=True, timeout=T + 1)
+                            subprocess.run([sol, f'instances/{config}/{preprefix[pre]}{inst}.qdimacs'],  start_new_session=True, timeout=T + 1)
                         except subprocess.TimeoutExpired as e:
                             print('TIMEOUT')
                         end = time.time()
                         if end - start > T:
                             print(f'config: {config} | instance: {inst}  | solver: {sol} | preprocessor: {pre} | time: > 1200', file=f)
                         else:
-                            print(f'config: {config} | instance: {inst}  | solver: {sol} | preprocessor: {pre} | time: {int(end - start)}', file=f)
+                            print(f'config: {config} | instance: {inst}  | solver: {sol} | preprocessor: {pre} | time: {int(end - start + used)}', file=f)
                 f.close()            
