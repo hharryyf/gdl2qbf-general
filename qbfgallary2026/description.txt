@@ -1,4 +1,4 @@
-GDL games of breakthrough (2x5, 2x6, 3x5, and 4x4) board. 
+GDL games of breakthrough (2x5, 2x6, 3x4, 4x4, 3x5 for player o at depth 18, 3x5 for player x at depth 19) board. 
              connect-3    (4x4, 5x5, and 6x6) board.
              connect-4    (5x4, 5x5 at depth 22, 5x5) board.
              dots-and-boxes    (2x2, 2x3) board.
