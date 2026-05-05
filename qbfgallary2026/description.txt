@@ -1,14 +1,17 @@
 GDL games of breakthrough (2x5, 2x6, 3x4, 4x4, 3x5 for player o at depth 18, 3x5 for player x at depth 19) board. 
              connect-3    (4x4, 5x5, and 6x6) board.
              connect-4    (5x4, 5x5 at depth 22, 5x5) board.
-             dots-and-boxes    (2x2, 2x3) board.
+             dots-and-boxes    (2x2, 2x3, and 2x4) board.
              gttt-4x4-1-1  (elly, fatty, knobby, skinny, tippy)
              gttt-4x4-2-2  (elly, fatty, knobby, skinny, tippy) 
              3-player game (whether a player can draw the game):
                 3p-connect-3   (4x4, 5x5, 6x6) board 
-                3p-connect-4   (4x4, 5x5 at depth 24, 5x5) board 
+                3p-connect-4   (4x4, 5x4, 5x5 at depth 24, 5x5) board 
                 3p-tic-tac-tie (3x3, 4x4) board
 
 GB contains instances generated with the baseline encoding
 GD contains instances generated with the dependency-based encoding. These instances perform quantifier shifting based on 
-the atom dependency graph of the GDL description. Correctness can be justified by the spliiting theorem.
+the atom dependency graph of the GDL description. Correctness can be justified by the splitting theorem.
+
+Generator + README are in the root directory. https://github.com/hharryyf/gdl2qbf-general/
+
