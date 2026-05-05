@@ -1,4 +1,4 @@
-mtdom(1..24).
+mtdom(1..25).
 role(xplayer).
 role(oplayer).
 role(zplayer).
