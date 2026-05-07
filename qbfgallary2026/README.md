@@ -4,59 +4,81 @@ The QBF instances answer the question: can a player get 100 points within n step
 
 ## Instance Description
 
-### Breakthrough (with board size 2x5, 2x6, 3x4, 4x4, and 3x5). 
+### Breakthrough 
+
+   Configurations: board size 2x5, 2x6, 3x4, 4x4, and 3x5. 
    
-   -- instances are named as break-through-[width]x[height]-[depth]-[player].qdimacs
-      
-      SAT iff player can win within depth many steps. 
-
-### Connect-3    (with board size 4x4, 5x5, and 6x6).
-
-   -- instances are named as connect-3-[width]x[height]-[depth]-[player].qdimacs
-      
-      SAT iff player can win within depth many steps.
-
-### Connect-4    (with board size 4x4, 5x4 and 5x5).               <- connect-4-5x5 at full depth is hard 
+   Instances are named as break-through-[width]x[height]-[depth]-[player].qdimacs
    
-   -- instances are named as connect-4-[width]x[height]-[depth]-[player].qdimacs
+   SAT iff player can win within depth many steps. 
+
+### Connect-3    
+
+   Configurations: board size 4x4, 5x5, and 6x6.
+
+   Instances are named as connect-3-[width]x[height]-[depth]-[player].qdimacs
       
-      SAT iff player can win within depth many steps.
+   SAT iff player can win within depth many steps.
 
-### Dots-and-Boxes    (with board size 2x2, 2x3, and 2x4).         <- dots-and-boxes-2x4 at full depth is hard
+### Connect-4    
+   
+   Configurations: board size 4x4, 5x4 and 5x5               
 
-   -- instances are named as dots-and-boxes-[width]x[height]-[depth]-[player].qdimacs
+   Instances are named as connect-4-[width]x[height]-[depth]-[player].qdimacs
       
-      SAT iff player can win within depth many steps.
+   SAT iff player can win within depth many steps (connect-4-5x5 at full depth is hard).
 
-### Generalized Tic-Tac-Toe-4x4-board-1 piece per player per turn  (with winning configuration elly, fatty, knobby, skinny, tippy)
+### Dots-and-Boxes    
 
-   -- instances are named as gttt-4x4-1-1-[config]-[depth]-[player].qdimacs
+   Configurations: board size 2x2, 2x3, and 2x4.         
+
+   Instances are named as dots-and-boxes-[width]x[height]-[depth]-[player].qdimacs
       
-      SAT iff player can win within depth many steps.
+   SAT iff player can win within depth many steps (dots-and-boxes-2x4 at full depth is hard).
 
-### Generalized Tic-Tac-Toe-4x4-board-2 pieces per player per turn  (with winning configuration elly, fatty, knobby, skinny, tippy)
+### Generalized Tic-Tac-Toe-4x4-board
 
-   -- instances are named as gttt-4x4-2-2-[config]-[depth]-[player].qdimacs
+   Each player places 1 piece on the board per turn
 
-      SAT iff player can win within depth many steps.
+   Configurations: winning configuration elly, fatty, knobby, skinny, and tippy
+
+   Instances are named as gttt-4x4-1-1-[config]-[depth]-[player].qdimacs
+      
+   SAT iff player can win within depth many steps.
+
+### Generalized Tic-Tac-Toe-4x4-board
+
+   Each player places 2 pieces on the board per turn
+
+   Configurations: winning configuration elly, fatty, knobby, skinny, and tippy
+
+   Instances are named as gttt-4x4-2-2-[config]-[depth]-[player].qdimacs
+
+   SAT iff player can win within depth many steps.
 
 ### Three-player games (whether the a player can force a win/draw, players are xplayer - oplayer -zplayer):
 
-   *  3p-connect-3   (with board size 4x4, 5x5, and 6x6) 
+   *  3p-connect-3   
 
-      -- instances are named as connect-3-splayer-[width]x[height]-[depth]-[player].qdimacs
+         Configurations: board size 4x4, 5x5, and 6x6 
 
-         SAT iff player can win or draw within depth many steps.
-
-   * 3p-connect-4   (with board size 4x4, 5x4, and 5x5)   <- 3p-connect-4-5x5 at full depth is hard
-
-      -- instances are named as connect-4-splayer-[width]x[height]-[depth]-[player].qdimacs
+         Instances are named as connect-3-splayer-[width]x[height]-[depth]-[player].qdimacs
 
          SAT iff player can win or draw within depth many steps.
 
-   * 3p-tic-tac-tie (with board size 3x3 and 4x4)
+   * 3p-connect-4   
+         
+         Configurations: board size 4x4, 5x4, and 5x5  
 
-      -- instances are named as tic-tac-toe-3player-[width]x[height]-[depth]-[player].qdimacs
+         Instances are named as connect-4-splayer-[width]x[height]-[depth]-[player].qdimacs
+
+         SAT iff player can win or draw within depth many steps (3p-connect-4-5x5 at full depth is hard).
+
+   * 3p-tic-tac-tie 
+   
+         Configurations: board size 3x3 and 4x4
+
+         Instances are named as tic-tac-toe-3player-[width]x[height]-[depth]-[player].qdimacs
 
          SAT iff player can win or draw within depth many steps.
 
