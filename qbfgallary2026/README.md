@@ -14,8 +14,8 @@ The framework is formally introduced in [our AAMAS 2024 paper](https://www.ifaam
 ```dependency_based_encoding.zip``` (or the ```GD/``` directory) contains instances generated with the dependency-based encoding (Def. 8 in [the paper](https://www.ifaamas.org/Proceedings/aamas2024/pdfs/p807.pdf)). These instances perform quantifier shifting based on the atom dependency graph of the GDL description. Correctness can be justified by the splitting theorem.
 
 
-Instances in the GD/ directory are friendly to both CEGAR-based solvers and QCDCL solvers after bloqqer preprocessing.
-However, instances in GB/ are very unfriendly to CEGAR-based solvers but fine for QCDCL-based solvers. 
+Instances in the ```GD/``` directory are friendly to both CEGAR-based solvers and QCDCL solvers after bloqqer preprocessing.
+However, instances in ```GB/``` are very unfriendly to CEGAR-based solvers but fine for QCDCL-based solvers. 
 
 
 ## Instance Family Description
