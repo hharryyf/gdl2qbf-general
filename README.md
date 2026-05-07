@@ -35,7 +35,7 @@ Our contributions are:
 * We designed and implemented an efficient encoding and quantification method that converts Ext(G, N) to QASP(G, N).
 
 
-## Dependencies
+## Dependencies (please download all of them)
 
 * Clingo (version 5.8.0) https://github.com/potassco/clingo (clingo must be put into PATH)
 

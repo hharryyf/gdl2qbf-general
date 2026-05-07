@@ -14,10 +14,10 @@ GDL games of
             2. connect-3    (4x4, 5x5, and 6x6) board.
                -- instances are named as connect-3-[width]x[height]-[depth]-[player].qdimacs
                   SAT iff player can win within depth many steps.
-            3. connect-4    (5x4, 5x5 at depth 22, 5x5) board. 
+            3. connect-4    (5x4, 5x5 at depth 22, 5x5) board.      <- connect-4-5x5 at full depth is hard 
                -- instances are named as connect-4-[width]x[height]-[depth]-[player].qdimacs
                   SAT iff player can win within depth many steps.
-            4. dots-and-boxes    (2x2, 2x3, and 2x4) board.    
+            4. dots-and-boxes    (2x2, 2x3, and 2x4) board.         <- dots-and-boxes-2x4 at full depth is hard
                -- instances are named as dots-and-boxes-[width]x[height]-[depth]-[player].qdimacs
                   SAT iff player can win within depth many steps.
             5. gttt-4x4-1-1  (elly, fatty, knobby, skinny, tippy)
@@ -28,13 +28,13 @@ GDL games of
                   SAT iff player can win within depth many steps.
             7. 3-player game (whether the a player can force a win/draw, players are xplayer - oplayer -zplayer):
                 (7.1) 3p-connect-3   (4x4, 5x5, 6x6) board 
-                  -- instances are names as connect-3-splayer-[width]x[height]-[depth]-[player].qdimacs
+                  -- instances are named as connect-3-splayer-[width]x[height]-[depth]-[player].qdimacs
                      SAT iff player can win or draw within depth many steps.
-                (7.2) 3p-connect-4   (4x4, 5x4, 5x5 at depth 24, 5x5) board  
-                  -- instances are names as connect-4-splayer-[width]x[height]-[depth]-[player].qdimacs
+                (7.2) 3p-connect-4   (4x4, 5x4, 5x5 at depth 24, 5x5) board   <- 3p-connect-4-5x5 at full depth is hard
+                  -- instances are named as connect-4-splayer-[width]x[height]-[depth]-[player].qdimacs
                      SAT iff player can win or draw within depth many steps.
                 (7.3) 3p-tic-tac-tie (3x3, 4x4) board
-                  -- instances are names as tic-tac-toe-3player-[width]x[height]-[depth]-[player].qdimacs
+                  -- instances are named as tic-tac-toe-3player-[width]x[height]-[depth]-[player].qdimacs
                      SAT iff player can win or draw within depth many steps.
 GB/naive_encoding.zip contains instances generated with the baseline encoding (Def. 6 in the paper).
 GD/dependency_based_encoding.zip contains instances generated with the dependency-based encoding (Def. 8 in the paper). These instances perform quantifier shifting based on 
