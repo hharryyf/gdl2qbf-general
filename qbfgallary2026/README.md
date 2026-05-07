@@ -69,9 +69,8 @@ However, instances in GB/ are very unfriendly to CEGAR-based solvers but fine fo
    * SAT iff player can win within depth many steps.
 
 
-**The following are Three-player games. In these games, players xplayer-oplayer-zplayer alternatingly place pieces on the board with the original game rules, we decide:**
+**The following are Three-player games. In these games, players xplayer-oplayer-zplayer alternatingly place pieces on the board with the original game rules, we decide: whether the a player can at least draw the game with n steps**
 
-   * Whether the a player can at least draw the game
 
 ### Three-Player-Connect-3   
 
