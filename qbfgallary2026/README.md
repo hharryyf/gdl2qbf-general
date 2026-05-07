@@ -57,7 +57,7 @@ The QBF instances answer the question: can a player get 100 points within n step
    * SAT iff player can win within depth many steps.
 
 
-The following are Three-player games. In these games, players xplayer-oplayer-zplayer alternatingly place pieces on the board with the original game rules, we decide:
+**The following are Three-player games. In these games, players xplayer-oplayer-zplayer alternatingly place pieces on the board with the original game rules, we decide:**
 
    * Whether the a player can at least draw the game
 
