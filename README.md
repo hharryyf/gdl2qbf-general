@@ -5,7 +5,7 @@ A converter from multi-player GDL games to QBF, [the paper](https://www.ifaamas.
 The proof and experiments of the NMR paper are available in the NMR branch https://github.com/hharryyf/gdl2qbf-general/tree/NMR.
 
 
-**The experients in the AAMAS paper were based on an old and less generic implementation that can only handle games with exactly 2 players https://github.com/hharryyf/gdl2qbf while the current implementation is more general than that. We can now deal with the bounded-depth strong winnability against arbitarily many players.**
+**The experients in the AAMAS paper were based on an old and less generic implementation that can only handle games with exactly 2 players https://github.com/hharryyf/gdl2qbf while the current implementation is more general. We can now deal with the bounded-depth strong winnability against arbitarily many players.**
 
 ## Description
 
