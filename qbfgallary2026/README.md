@@ -56,33 +56,34 @@ The QBF instances answer the question: can a player get 100 points within n step
 
    * SAT iff player can win within depth many steps.
 
-### Three-player games:
 
-   * Whether the a player can force a win or draw, players are xplayer-oplayer-zplayer
+The following are Three-player games. In these games, players xplayer-oplayer-zplayer alternatingly place pieces on the board with the original game rules, we decide:
 
-   ####  3p-Connect-3   
+   * Whether the a player can at least draw the game
 
-         * Configurations: board size 4x4, 5x5, and 6x6 
+### Three-Player-Connect-3   
 
-         * Instances are named as ```connect-3-splayer-[width]x[height]-[depth]-[player].qdimacs```
+   * Configurations: board size 4x4, 5x5, and 6x6 
 
-         * SAT iff player can win or draw within depth many steps.
+   * Instances are named as ```connect-3-3player-[width]x[height]-[depth]-[player].qdimacs```
 
-   #### 3p-Connect-4   
+   * SAT iff player can win or draw within depth many steps.
+
+### Three-Player-Connect-4   
          
-         * Configurations: board size 4x4, 5x4, and 5x5  
+   * Configurations: board size 4x4, 5x4, and 5x5  
 
-         * Instances are named as  ```connect-4-splayer-[width]x[height]-[depth]-[player].qdimacs```
+   * Instances are named as  ```connect-4-3player-[width]x[height]-[depth]-[player].qdimacs```
 
-         * SAT iff player can win or draw within depth many steps (3p-connect-4-5x5 at full depth is hard).
+   * SAT iff player can win or draw within depth many steps (3p-connect-4-5x5 at full depth is hard).
 
-   #### 3p-Tic-Tac-Tie 
+### Three-Player-Tic-Tac-Toe 
    
-         * Configurations: board size 3x3 and 4x4
+   * Configurations: board size 3x3 and 4x4
 
-         * Instances are named as ```tic-tac-toe-3player-[width]x[height]-[depth]-[player].qdimacs```
+   * Instances are named as ```tic-tac-toe-3player-[width]x[height]-[depth]-[player].qdimacs```
 
-         * SAT iff player can win or draw within depth many steps.
+   * SAT iff player can win or draw within depth many steps.
 
 GB/naive_encoding.zip contains instances generated with the baseline encoding (Def. 6 in the paper).
 
