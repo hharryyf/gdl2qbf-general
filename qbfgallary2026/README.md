@@ -42,7 +42,7 @@ The QBF instances answer the question: can a player get 100 points within n step
 
    Configurations: winning configuration elly, fatty, knobby, skinny, and tippy
 
-   Instances are named as gttt-4x4-1-1-[config]-[depth]-[player].qdimacs
+   Instances are named as ```gttt-4x4-1-1-[config]-[depth]-[player].qdimacs```
       
    SAT iff player can win within depth many steps.
 
@@ -52,17 +52,19 @@ The QBF instances answer the question: can a player get 100 points within n step
 
    Configurations: winning configuration elly, fatty, knobby, skinny, and tippy
 
-   Instances are named as gttt-4x4-2-2-[config]-[depth]-[player].qdimacs
+   Instances are named as ```gttt-4x4-2-2-[config]-[depth]-[player].qdimacs```
 
    SAT iff player can win within depth many steps.
 
-### Three-player games (whether the a player can force a win/draw, players are xplayer - oplayer -zplayer):
+### Three-player games:
+
+   Whether the a player can force a win or draw, players are xplayer-oplayer-zplayer
 
    *  3p-connect-3   
 
          Configurations: board size 4x4, 5x5, and 6x6 
 
-         Instances are named as connect-3-splayer-[width]x[height]-[depth]-[player].qdimacs
+         Instances are named as ```connect-3-splayer-[width]x[height]-[depth]-[player].qdimacs```
 
          SAT iff player can win or draw within depth many steps.
 
@@ -70,7 +72,7 @@ The QBF instances answer the question: can a player get 100 points within n step
          
          Configurations: board size 4x4, 5x4, and 5x5  
 
-         Instances are named as connect-4-splayer-[width]x[height]-[depth]-[player].qdimacs
+         Instances are named as  ```connect-4-splayer-[width]x[height]-[depth]-[player].qdimacs```
 
          SAT iff player can win or draw within depth many steps (3p-connect-4-5x5 at full depth is hard).
 
@@ -78,7 +80,7 @@ The QBF instances answer the question: can a player get 100 points within n step
    
          Configurations: board size 3x3 and 4x4
 
-         Instances are named as tic-tac-toe-3player-[width]x[height]-[depth]-[player].qdimacs
+         Instances are named as ```tic-tac-toe-3player-[width]x[height]-[depth]-[player].qdimacs```
 
          SAT iff player can win or draw within depth many steps.
 
