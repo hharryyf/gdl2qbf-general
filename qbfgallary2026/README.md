@@ -17,8 +17,12 @@ The framework is formally introduced in [our AAMAS 2024 paper](https://www.ifaam
 Instances in the ```GD/``` directory are friendly to both CEGAR-based solvers and QCDCL solvers after bloqqer preprocessing.
 However, instances in ```GB/``` are very unfriendly to CEGAR-based solvers but fine for QCDCL-based solvers. 
 
+The ```bloqqer``` preprocessed instances of ```GB/``` (resp. ```GD/```) are in ```bloq_GB/``` (or ```bloq_naive_encoding.zip```) (resp. ```bloq_GD/``` or ```bloq_dependency_based_encoding.zip```). 
+
 
 ## Instance Family Description
+
+**To the best of our knowledge, we also provided the first QBF encoding of the game Dots-and-Boxes, Three-Player-Connect-3, Three-Player-Connect-4, and Three-Player-Tic-Tac-Toe.**
 
 ### Breakthrough 
 
