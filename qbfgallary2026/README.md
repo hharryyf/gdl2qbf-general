@@ -9,15 +9,18 @@ The framework is formally introduced in [our AAMAS 2024 paper](https://www.ifaam
 
 ## Data Description (all in QDIMACS format)
 
-```naive_encoding.zip``` (or the ```GB/``` directory) contains instances generated with the baseline encoding (Def. 6 in [the paper](https://www.ifaamas.org/Proceedings/aamas2024/pdfs/p807.pdf)).
+The ```GB/``` directory contains instances generated with the baseline encoding (Def. 6 in [the paper](https://www.ifaamas.org/Proceedings/aamas2024/pdfs/p807.pdf)).
 
-```dependency_based_encoding.zip``` (or the ```GD/``` directory) contains instances generated with the dependency-based encoding (Def. 8 in [the paper](https://www.ifaamas.org/Proceedings/aamas2024/pdfs/p807.pdf)). These instances perform quantifier shifting based on the atom dependency graph of the GDL description. Correctness can be justified by the splitting theorem.
+The ```GD/``` directory contains instances generated with the dependency-based encoding (Def. 8 in [the paper](https://www.ifaamas.org/Proceedings/aamas2024/pdfs/p807.pdf)). These instances perform quantifier shifting based on the atom dependency graph of the GDL description. Correctness can be justified by the splitting theorem.
 
 
 Instances in the ```GD/``` directory are friendly to both CEGAR-based solvers and QCDCL solvers after bloqqer preprocessing.
 However, instances in ```GB/``` are very unfriendly to CEGAR-based solvers but fine for QCDCL-based solvers. 
 
-The ```bloqqer``` preprocessed instances of ```GB/``` (resp. ```GD/```) are in ```bloq_GB/``` (or ```bloq_naive_encoding.zip```) (resp. ```bloq_GD/``` or ```bloq_dependency_based_encoding.zip```). 
+The ```bloqqer``` preprocessed instances of ```GB/``` (resp. ```GD/```) are in ```bloq_GB/``` (resp. ```bloq_GD/```). 
+
+
+```instances_compressed.zip``` also contains all the instances in a zip file.
 
 
 ## Instance Family Description
@@ -42,11 +45,11 @@ The ```bloqqer``` preprocessed instances of ```GB/``` (resp. ```GD/```) are in `
 
 ### Connect-4    
    
-   * Configurations: board size 4x4, 5x4 and 5x5               
+   * Configurations: board size 4x4, 5x4, 5x5, 6x4, 6x6               
 
    * Instances are named as connect-4-[width]x[height]-[depth]-[player].qdimacs
       
-   * SAT iff player can win within depth many steps (connect-4-5x5 at full depth is hard).
+   * SAT iff player can win within depth many steps (connect-4-5x5, connect-4-6x4, and connect-4-6x6 at full depth are hard).
 
 ### Dots-and-Boxes    
 
