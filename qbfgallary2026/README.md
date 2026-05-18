@@ -43,7 +43,7 @@ The ```bloqqer``` preprocessed instances of ```GB/``` (resp. ```GD/```) are in `
 
    * Configurations: board size 2x5, 2x6, 3x4, 4x4, and 3x5. 
    
-   * Instances are named as break-through-[width]x[height]-[depth]-[player].qdimacs
+   * Instances are named as ```break-through-[width]x[height]-[depth]-[player].qdimacs```
    
    * SAT iff player can win within depth many steps. 
 
@@ -51,7 +51,7 @@ The ```bloqqer``` preprocessed instances of ```GB/``` (resp. ```GD/```) are in `
 
    * Configurations: board size 4x4, 5x5, and 6x6.
 
-   * Instances are named as connect-3-[width]x[height]-[depth]-[player].qdimacs
+   * Instances are named as ```connect-3-[width]x[height]-[depth]-[player].qdimacs```
       
    * SAT iff player can win within depth many steps.
 
@@ -59,7 +59,7 @@ The ```bloqqer``` preprocessed instances of ```GB/``` (resp. ```GD/```) are in `
    
    * Configurations: board size 4x4, 5x4, 5x5, 6x4, 6x6               
 
-   * Instances are named as connect-4-[width]x[height]-[depth]-[player].qdimacs
+   * Instances are named as ```connect-4-[width]x[height]-[depth]-[player].qdimacs```
       
    * SAT iff player can win within depth many steps (connect-4-5x5, connect-4-6x4, and connect-4-6x6 at full depth are hard).
 
@@ -67,7 +67,7 @@ The ```bloqqer``` preprocessed instances of ```GB/``` (resp. ```GD/```) are in `
 
    * Configurations: board size 2x2, 2x3, and 2x4.         
 
-   * Instances are named as dots-and-boxes-[width]x[height]-[depth]-[player].qdimacs
+   * Instances are named as ```dots-and-boxes-[width]x[height]-[depth]-[player].qdimacs```
       
    * SAT iff player can win within depth many steps (dots-and-boxes-2x4 at full depth is hard).
 
